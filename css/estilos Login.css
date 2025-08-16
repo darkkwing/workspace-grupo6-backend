@@ -1,7 +1,6 @@
 body {
     font-family: 'Jost', sans-serif;
     background: #fff;
-    min-height: 100vh;
 }
 
 header {
@@ -18,8 +17,6 @@ header {
 
 header h1 {
     font-size: 60px;
-    font-weight: 700;
-    margin-top: 20px;
 }
 
 main {
@@ -32,11 +29,9 @@ main {
 .login-card {
     background: #fff;
     border-radius: 8px;
-    box-shadow: 3px 5px 8px 0 rgba(0, 0, 0, 0.13);
+    box-shadow: 5px 8px 10px 0 rgba(0, 0, 0, 0.219);
     padding: 40px;
     min-width: 320px;
-    display: flex;
-    align-items: center;
 }
 
 form {
@@ -56,8 +51,6 @@ input[type="password"] {
     font-size: 16px;
     text-align: center;
     color: #888;
-    outline: none;
-    transition: border 0.2s;
 }
 
 input[type="email"]:focus,
@@ -75,8 +68,14 @@ button[type="submit"] {
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 2px;
-    border: none;
     border-radius: 6px;
     box-shadow: 2px 4px 5px 0 rgba(0, 0, 0, 0.15);
     cursor: pointer;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0;
 }
