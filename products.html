@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Listado de Autos</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
      <header class="header">
@@ -19,17 +19,21 @@
   </header>
 
     <section class="filters">
-    <select>
+    <select >
       <option>Seleccionar Marcas</option>
       <option>Nissan</option>
       <option>Chevrolet</option>
       <option>Toyota</option>
       <option>Peugeot</option>
     </select>
-    <input type="text" placeholder="¿Qué estás buscando?">
+    <input type="text"  placeholder="¿Qué estás buscando?">
   </section>
+
+  <ul class="product-list" id="list-products">
+    <!-- aca es donde el js imprime los datos del JSON -->
+  </ul>
   
-  <ul class="product-list">
+  <ul class="product-list" id="list-products">
     <li class="product-card">
       <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjDJnGmf5KhZMMKxVQgyOBymSbNwB3QzmgrLj6-uYFQGlzxnxS_R2VG_KAmmwl3SslfhEYUrK5E4_70VY1J9BHVBMA0jVICGDPw93Bwvt-SSFFIP064U6-uu6M61KeE6KEWWEzhzFXRgNA/s1600/12BBFB4B-A556-4C96-9FD8-4761460C9C11_1_201_a.jpeg" alt="Auto Nissan Sentra">
       <div class="info">
@@ -82,5 +86,6 @@
       </div>
     </li>
   </ul>
+  <script src="./js/products.js"></script>
 </body>
 </html>
