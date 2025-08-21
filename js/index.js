@@ -12,11 +12,12 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location = "products.html"
     });
 
-    window.addEventListener("load", function(){     //Espera a que cargue el contenido de la ventana
+});
+
+window.addEventListener("load", function(){     //Espera a que cargue el contenido de la ventana
         const loguearse=sessionStorage.getItem("logueado");  //Carga la info de inicio de sesión a la variable "loguearse"
 
         if(loguearse !== "true"){               //Condición: si no hay info de inicio de sesión
             window.location.href="login.html";   //Redirige al login para ingresar
         }
     });
-});

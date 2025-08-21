@@ -1,3 +1,4 @@
+
 .jumbotron,
 .card-body,
 .container,
@@ -188,3 +189,131 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+    body { 
+      font-family: Arial, sans-serif; 
+      background: #f9f9f9; 
+      margin: 0; 
+      padding: 0; 
+    }
+    h1 { 
+      text-align: center; 
+      padding: 20px; 
+      background: white; 
+      color: black; 
+      margin: 0; 
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      padding: 10px 20px;
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .header-left img {
+      height: 40px;
+    }
+    .header-right button {
+      background: white;
+      color: black;
+      border: 1px solid #ccc;
+      margin-left: 8px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .header-right button:hover {
+      background: #777;
+    }
+    .header-right .active {
+      background: white;
+      color: black;
+    }
+
+    .filters {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: #eee;
+    }
+    .filters input, .filters select {
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .product-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+      padding: 1rem;
+      list-style: none;
+    }
+    .product-card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .info {
+      padding: 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .name { 
+      font-size: 1.2em; 
+      margin: 0 0 0.5em; 
+    }
+    .stars { 
+      color: gold; 
+      font-size: 16px; 
+      margin-bottom: 1em; 
+    }
+    .stars span { 
+      font-size: 14px; 
+      color: #666; 
+      font-weight: normal;
+      margin-left: 5px; 
+    }
+    .meta { 
+      display: flex; 
+      justify-content: space-between; 
+      font-weight: bold; 
+      margin-bottom: 0.8em; 
+    }
+    .sold { 
+      font-size: 14px; 
+      color: #666; 
+      font-weight: normal; 
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.5em 1em;
+      background: black;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.95em;
+      transition: background 0.3s;
+      text-align: center;
+    }
+    .btn:hover {
+      background: black;
+    }
