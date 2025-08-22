@@ -1,30 +1,62 @@
 //constante de fuente de los datos
-const PRODUCTS_LIST_URL= 'https://japceibal.github.io/emercado-api/cats_products/101.json'
+const PRODUCTS_LIST_URL = 'https://japceibal.github.io/emercado-api/cats_products/101.json'
 
-let allProducts=[]; //contenido del json
-let visibleProducts=[]; //lo que se vera
+let allProducts = []; //contenido del json
+let visibleProducts = []; //lo que se vera
 
+let listEl, catEl, filterEl;
 document.addEventListener("DOMContentLoaded", async () => {
-    listEl = document.getElementById("list-products");
-    
+  listEl = document.getElementById("list-products");
+  catEl = document.getElementById("categories");
+  filterEl = document.getElementById("filtersID");
+
+  try {
     //carga del JSON Con fecth
-let response = await fetch (PRODUCTS_LIST_URL);
-let data = await response.json();
+    let response = await fetch(PRODUCTS_LIST_URL);
+    let data = await response.json();
 
-//normalizando datos, esto es dejar los datos en un formato mas sencillo y organizado
-allProducts = data.products.map(p =>({ //con map recorremos el arreglo, y creamos un arreglo nuevo
-    ...p, // los puntos suspensivos sonun operador de propagacion
-    brand: p.name.split(" ")[0],//con esta linea se usara la primera palabra como marca, split divide el string en el array
-    costNum: p.cost// asegura el numero de costo
-}))
+    //normalizando datos, esto es dejar los datos en un formato mas sencillo y organizado
+    allProducts = data.products.map(p => ({ //con map recorremos el arreglo, y creamos un arreglo nuevo
+      ...p, // los puntos suspensivos son un operador de propagacion
+      brand: p.name.split(" ")[0],//con esta linea se usara la primera palabra como marca, split divide el string en el array
+      costNum: Number(p.cost),// asegura el numero de costo
+    }))
 
-//estado inicial del products.html, todo visible
-visibleProducts = [...allProducts];
+    //estado inicial del products.html, todo visible
+    visibleProducts = [...allProducts];
 
-//llamada de la funcion para crear los elementos
-createList(visibleProducts);
-
+    let visualCat = [{ cat: data.catName }];
+    //llamada de la funcion para crear los elementos
+    catName(visualCat)
+    createList(visibleProducts);
+    filtersList(visibleProducts)
+  } catch (error) {
+    console.error("Error al cargar los productos:", error);
+    listEl.innerHTML = `
+  <li class="error">
+      No se pudieron cargar los productos. 
+      <br>Por favor, intenta recargar la página más tarde.
+    </li>
+  `;
+  }
 })
+
+
+function catName(categories) {
+  let catHTML = categories.map(c => `
+    ${c.cat}
+  `).join("");
+  catEl.innerHTML = catHTML;
+}
+
+function filtersList(fList) {
+  const listHTML = fList.map(f => `
+    <option value="${f.brand}">${f.brand}</option>
+  `).join("");
+
+  filterEl.innerHTML = `<option selected disabled>Seleccionar Marcas</option>${listHTML}
+  `;
+}
 
 //crea el formato del precio para el html
 function formatPrice(currency, costNum) {

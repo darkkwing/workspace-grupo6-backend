@@ -317,3 +317,15 @@ a.custom-card:hover {
     .btn:hover {
       background: black;
     }
+#categories {
+  background-color: #fff;  
+  padding: 10px 20px;
+  border-bottom: 1px solid #eaeaea; 
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
+  color: #333;
+  height: min-content;
+
+}
+
