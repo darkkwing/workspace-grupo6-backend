@@ -326,14 +326,19 @@ a.custom-card:hover {
       background: black;
     }
 #categories {
-  background-color: #fff;  
-  padding: 10px 20px;
-  border-bottom: 1px solid #eaeaea; 
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin: 0;
-  color: #333;
-  height: min-content;
-
+      font-family: Arial, sans-serif;
+      background: white;
+      color: black;
+      padding: 1rem;
+      text-align: center;
+      border: 1px solid #ccc;
+      padding: 8px 12px;
+      border-radius: 6px;    
+      font-weight: bold;
+      width: fit-content;
+      margin: 0 auto;
+      margin-bottom: 1em;
+      background: #eee;
+      font-size: 1.5rem;
 }
 
