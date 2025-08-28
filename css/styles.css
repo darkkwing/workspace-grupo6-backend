@@ -341,4 +341,6 @@ a.custom-card:hover {
       background: #eee;
       font-size: 1.5rem;
 }
-
+nav {
+  margin-bottom: 1rem;
+}
