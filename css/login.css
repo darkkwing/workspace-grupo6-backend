@@ -17,7 +17,7 @@ header {
 }
 
 #LogoJaP {
-    width: 15%;
+    width: 16rem;
     height: auto;
 }
 
@@ -100,3 +100,78 @@ footer {
     align-items: center;
     margin: 40px 0;
 }
+
+/* Tablet (iPad Mini) */
+@media (max-width: 768px) {
+    .header {
+        display: flex;
+        justify-content: center;
+        margin: auto;
+    }
+    .header h1 {
+        font-size: 3.5rem;
+    }
+    #LogoJaP {
+        width: 8rem;
+        height: auto;
+    }
+}
+
+/* Mobile (iPhone SE) */
+@media (max-width: 400px) {
+    header {
+        margin: 60px 0 0 0;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    #LogoJaP {
+        width: 100px;
+    }
+
+    header h1 {
+        font-size: 40px;
+        text-align: center;
+    }
+
+    main {
+        min-height: 40vh;
+        padding: 0 4vw;
+    }
+
+    .login-card {
+        min-width: 0;
+        width: 98vw;
+        padding: 2px;
+        box-sizing: border-box;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+        font-size: 14px;
+        padding: 10px 0;
+    }
+
+    button[type="submit"] {
+        font-size: 16px;
+        padding: 10px 0;
+    }
+
+
+    #LogoJaP {
+        display: none !important;
+    }
+    
+    #LogoJaPFooter {
+        display: block !important;
+        width: 130px;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    #TextoFooter {
+        display: none !important;
+    }
+}
+
