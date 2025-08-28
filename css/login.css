@@ -118,7 +118,7 @@ footer {
 }
 
 /* Mobile (iPhone SE) */
-@media (max-width: 400px) {
+@media (max-width: 550px) {
     header {
         margin: 60px 0 0 0;
         flex-direction: column;
