@@ -225,7 +225,7 @@ a.custom-card:hover {
       line-height: normal; /* Anula Bootstrap */
     }
     .header-right button {
-      background: white;
+      background  : white;
       color: black;
       border: 1px solid #ccc;
       margin-left: 8px;
@@ -243,20 +243,6 @@ a.custom-card:hover {
       background: white;
       color: black;
     }
-
-    .filters {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      padding: 1rem;
-      background: #eee;
-    }
-    .filters input, .filters select {
-      padding: 8px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
-
     .product-list {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -342,37 +328,58 @@ a.custom-card:hover {
       font-size: 1.5rem;
 }
 
+.productos .card {
+  width: 100%;
+  max-width: 320px; /* límite para que no se estiren demasiado */
+}
 
+    .filters {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: #eee;
+    }
+    .filters input, .filters select {
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
 
-/* ---- Productos en Grid Responsivo ---- */
-.productos {
-  display: grid;
-  grid-template-columns: 1fr; /* En pantallas chicas: 1 sola columna */
-  gap: 1rem; /* espacio entre tarjetas */
+#nav {  
+  margin-bottom: 1rem;
 }
 
 
-/* A partir de tablets (768px o más) → 2 columnas */
-@media (min-width: 768px) {
-  .productos {
-    grid-template-columns: repeat(2, 1fr);
-  }
+
+/* Responsive Telefono */
+
+@media (max-width: 600px) {
+.header-right {
+  display: none !important;
+}
+  
+#nav {
+  display: none;
 }
 
-
-/* A partir de escritorio (1024px o más) → 3 columnas */
-@media (min-width: 1024px) {
-  .productos {
-    grid-template-columns: repeat(3, 1fr);
-  }
+select #filtersID {
+  padding: 0.5rem 2.5rem 0.5rem 0;
 }
 
+.header {
+  margin-bottom: 1rem;
+}
 
-/* ---- Estilos del menú ---- */
+/* Menu hamburgesa */
 .menu {
   position: relative;
+  display: block !important;
 }
 
+.filters #filters {
+  display: none;
+}
 
 .menu-icon {
   font-size: 2rem;
@@ -381,11 +388,9 @@ a.custom-card:hover {
   user-select: none;
 }
 
-
 #menu-toggle {
   display: none;
 }
-
 
 .menu-links {
   list-style: none;
@@ -402,11 +407,9 @@ a.custom-card:hover {
   border-radius: 6px;
 }
 
-
 .menu-links li {
   border-bottom: 1px solid #ddd;
 }
-
 
 .menu-links li a {
   display: block;
@@ -415,80 +418,27 @@ a.custom-card:hover {
   color: #333;
 }
 
-
 .menu-links li a:hover {
   background: #ddd;
 }
-
 
 /* Mostrar menú cuando el checkbox está activado */
 #menu-toggle:checked + .menu-icon + .menu-links {
   display: flex;
 }
 
+.header-left img {
+    height: 1.5rem; /* más pequeño que los 40px originales */
+  }
 
-/* En pantallas grandes mostrarlo horizontal */
-@media (min-width: 768px) {
-  .menu-icon {
-    display: none;
+  .header-left h1 {
+    font-size: 1.3rem;
   }
-  .menu-links {
-    display: flex !important;
-    position: static;
-    flex-direction: row;
-    box-shadow: none;
-    background: transparent;
-    width: auto;
-  }
-  .menu-links li {
-    border: none;
-  }
-  .menu-links li a {
-    padding: 10px 15px;
-  }
-}
 
-
+  /* ---- Productos en Grid Responsivo ---- */
 .productos {
   display: grid;
-  grid-template-columns: 1fr; /* 1 columna en pantallas chicas */
-  gap: 1rem;
-  justify-items: center; /* centra las tarjetas dentro de la grilla */
-  padding: 0 10px; /* pequeño espacio a los costados */
+  grid-template-columns: 1fr; /* En pantallas chicas: 1 sola columna */
+  gap: 1rem; /* espacio entre tarjetas */
 }
-
-
-.productos .card {
-  width: 100%;
-  max-width: 320px; /* límite para que no se estiren demasiado */
-}
-
-
-.filtros {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  margin: 10px 0;
-}
-
-
-.filtros select,
-.filtros input {
-  flex: 1; /* que ambos ocupen espacio proporcional */
-  min-width: 120px;
-}
-
-
-/* Logo más pequeño en móviles */
-@media (max-width: 767px) {
-  .header-left img {
-    height: 30px; /* más pequeño que los 40px originales */
-  }
-}
-
-
-@media (max-width: 767px) {
-  .header-left h1 {
-    font-size: 18px;
-  }
 }
