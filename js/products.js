@@ -89,3 +89,30 @@ function createList(items) {
   listEl.innerHTML = html; //aqui la variable html, agrega un nuevo elemento en el HTML
 }
 
+const marcas = [
+  "Chevrolet",
+  "Fiat",
+  "Suzuki",
+  "Peugeot",
+  "Bugatti"
+  // Aca se agregan las marcas pal despues
+];
+
+function llenarSelectMarcas() {
+  const selects = [
+    document.getElementById("filters"),
+    document.getElementById("filtersID")
+  ];
+  selects.forEach(select => {
+    if (!select) return;
+    select.innerHTML = '<option value="">Todas las marcas</option>';
+    marcas.forEach(marca => {
+      const option = document.createElement("option");
+      option.value = marca;
+      option.textContent = marca;
+      select.appendChild(option);
+    });
+  });
+}
+
+document.addEventListener("DOMContentLoaded", llenarSelectMarcas);
