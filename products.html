@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Listado de Productos</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="./css/styles.css">
 </head>
 
@@ -18,7 +19,14 @@
       </a>
       <h1>Grupo 6</h1>
     </div>
-    <nav class="menu">
+
+    <div class="header-right">
+      <button class="active">Destacados</button>
+      <button>Más Vendidos</button>
+      <button>Carrito (0)</button>
+    </div>
+
+    <nav class="menu" style="display: none;">
     <input type="checkbox" id="menu-toggle">
     <label for="menu-toggle" class="menu-icon">&#9776;</label>
      <ul class="menu-links">
@@ -26,28 +34,56 @@
         <li><a href="#">Más vendidos</a></li>
         <li><a href="#">Carrito (0)</a></li>
         <li>
-    <label for="marcas">Marcas:</label>
+    <label for="marcas"></label>
     <select id="filtersID">
- 
     </select>
   </li>
 </ul>
  </nav>
-    
   </header>
 
-    <section class="filters">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1" id="nav">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav w-100 justify-content-between">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html">Vender</a>
+          </li>
+          <li class="nav-item">
+            <span class="nav-link" id="user-info"></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+    <section>
       <h5 id="categories"></h5>
+  </section>
+    <section class="filters">
+      <select id="filters">
+        
+      </select>
       <input type="text" placeholder="¿Qué estás buscando?">
     </section>
-  
   <ul class="product-list" id="list-products">
     <!-- aca es donde el js imprime los datos del JSON -->
   </ul>
 
-
+  <script src="js/bootstrap.bundle.min.js"></script>
   <script src="./js/products.js"></script>
   <script src="js/index.js"></script>
+
 </body>
 
 </html>
