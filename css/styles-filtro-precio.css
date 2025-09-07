@@ -1,0 +1,87 @@
+/* Layout tipo fila */
+.filtros-precio {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+/* Cols genéricos */
+.filtros-precio .col {
+  flex: 1;
+}
+
+/* Texto alineado a la derecha */
+.filtros-precio p {
+  margin: 8px 0;
+  font-weight: 400;
+  text-align: right;
+}
+
+/* Inputs estilo Bootstrap */
+.filtros-precio input {
+  width: 100%;
+  padding: 6px 12px;
+  font-size: 14px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Botones */
+.filtros-precio .colBotones {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 25%; /* equivalente a col-3 */
+  padding: 0;
+}
+
+.filtros-precio button {
+  padding: 6px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  background-color: #f8f9fa;
+  cursor: pointer;
+  flex: 1;
+}
+
+/* Hover similar a btn-light */
+.filtros-precio button:hover {
+  background-color: #e2e6ea;
+}
+
+/* "btn-link" */
+.filtros-precio button.link {
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 14px;
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.filtros-precio button.link:hover {
+  color: #0056b3;
+}
+
+/* --- Responsive celular--- */
+@media (max-width: 600px) { 
+    .filters {
+    flex-direction: column;   /* apilar elementos */
+  }
+  
+  /* orden de aparición */
+  #buscar {
+    order: 1;   /* input de búsqueda arriba */
+  }
+  
+ .filtros-precio { 
+    order: 2; /* bloque de filtros debajo */ 
+    display: flex; gap: .5rem; 
+}
+
+
+
+}

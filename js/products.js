@@ -4,11 +4,13 @@ const PRODUCTS_LIST_URL = 'https://japceibal.github.io/emercado-api/cats_product
 let allProducts = []; //contenido del json
 let visibleProducts = []; //lo que se vera
 
-let listEl, catEl, filterEl;
+let listEl, catEl, filterEl, filterNav;
+
 document.addEventListener("DOMContentLoaded", async () => {
   listEl = document.getElementById("list-products");
   catEl = document.getElementById("categories");
-  filterEl = document.getElementById("filtersID");
+  filterEl = document.getElementById("marcas");  //cambie el id porque se pisaba con el del menu hamburguesa
+  filterNav = document.getElementById("filtersID"); //filtro marcas menu hamburguesa
 
   try {
     //carga del JSON Con fecth
@@ -29,7 +31,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     //llamada de la funcion para crear los elementos
     catName(visualCat)
     createList(visibleProducts);
-    filtersList(visibleProducts)
+
+    //muestra la opcion de filtrar marcas cuando es la categoria autos 
+    if (data.catID === 101) {
+    filtersList(visibleProducts);
+     filterEl.classList.remove("categoriaAutos");
+     filterNav.classList.remove("categoriaAutos");
+    };
+
   } catch (error) {
     console.error("Error al cargar los productos:", error);
     listEl.innerHTML = `
@@ -54,8 +63,10 @@ function filtersList(fList) {
     <option value="${f.brand}">${f.brand}</option>
   `).join("");
 
-  filterEl.innerHTML = `<option selected disabled>Seleccionar Marcas</option>${listHTML}
+  filterEl.innerHTML = `<option selected value="">Todas las marcas</option>${listHTML}
   `;
+  filterNav.innerHTML = `<option selected value="">Todas las marcas</option>${listHTML} 
+  `; //agrega las marcas tambien al filtro del menu hamburguesa
 }
 
 //crea el formato del precio para el html
@@ -89,30 +100,5 @@ function createList(items) {
   listEl.innerHTML = html; //aqui la variable html, agrega un nuevo elemento en el HTML
 }
 
-const marcas = [
-  "Chevrolet",
-  "Fiat",
-  "Suzuki",
-  "Peugeot",
-  "Bugatti"
-  // Aca se agregan las marcas pal despues
-];
 
-function llenarSelectMarcas() {
-  const selects = [
-    document.getElementById("filters"),
-    document.getElementById("filtersID")
-  ];
-  selects.forEach(select => {
-    if (!select) return;
-    select.innerHTML = '<option value="">Todas las marcas</option>';
-    marcas.forEach(marca => {
-      const option = document.createElement("option");
-      option.value = marca;
-      option.textContent = marca;
-      select.appendChild(option);
-    });
-  });
-}
 
-document.addEventListener("DOMContentLoaded", llenarSelectMarcas);
