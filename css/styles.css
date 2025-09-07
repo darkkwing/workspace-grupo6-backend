@@ -350,6 +350,11 @@ a.custom-card:hover {
   margin-bottom: 1rem;
 }
 
+/*clase usada para mostrar el filtro de marcas cuando los prod son autos*/
+.categoriaAutos {  
+  display: none;
+}
+
 
 
 /* Responsive Telefono */
@@ -377,7 +382,7 @@ select #filtersID {
   display: block !important;
 }
 
-.filters #filters {
+.filters #marcas {  /*filtro de marcas desaparece del body para mobile*/
   display: none;
 }
 
@@ -442,3 +447,5 @@ select #filtersID {
   gap: 1rem; /* espacio entre tarjetas */
 }
 }
+
+

@@ -7,6 +7,7 @@
   <title>Listado de Productos</title>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="./css/styles-filtro-precio.css">
 </head>
 
 <body>
@@ -27,19 +28,20 @@
     </div>
 
     <nav class="menu" style="display: none;">
-    <input type="checkbox" id="menu-toggle">
-    <label for="menu-toggle" class="menu-icon">&#9776;</label>
-     <ul class="menu-links">
+      <input type="checkbox" id="menu-toggle">
+      <label for="menu-toggle" class="menu-icon">&#9776;</label>
+      <ul class="menu-links">
         <li><a href="#">Destacados</a></li>
         <li><a href="#">Más vendidos</a></li>
         <li><a href="#">Carrito (0)</a></li>
         <li>
-    <label for="marcas"></label>
-    <select id="filtersID">
-    </select>
-  </li>
-</ul>
- </nav>
+          <label for="marcas"></label>
+          <select id="filtersID" class="categoriaAutos">
+            <!-- aca se cargan las marcas para filtrar en el menu hamburguesa -->
+          </select>
+        </li>
+      </ul>
+    </nav>
   </header>
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1" id="nav">
@@ -66,16 +68,33 @@
       </div>
     </div>
   </nav>
-  
-    <section>
-      <h5 id="categories"></h5>
+
+  <section>
+    <h5 id="categories"></h5>
   </section>
-    <section class="filters">
-      <select id="filters">
-        
-      </select>
-      <input type="text" placeholder="¿Qué estás buscando?">
-    </section>
+
+  <section class="filters">
+    <select id="marcas" class="categoriaAutos">
+      <!-- aca se cargan las marcas para filtrar -->
+    </select>
+    <input type="text" placeholder="¿Qué estás buscando?" id="buscar">
+    <div class="filtros-precio">
+      <div class="col">
+        <p>Precio</p>
+      </div>
+      <div class="col">
+        <input type="number" placeholder="min." id="rangeFilterCountMin">
+      </div>
+      <div class="col">
+        <input type="number" placeholder="máx." id="rangeFilterCountMax">
+      </div>
+      <div class="colBotones">
+        <button id="rangeFilterCount">Filtrar</button>
+        <button id="clearRangeFilter" class="link">Limpiar</button>
+      </div>
+    </div>
+  </section>
+
   <ul class="product-list" id="list-products">
     <!-- aca es donde el js imprime los datos del JSON -->
   </ul>
@@ -83,6 +102,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="./js/products.js"></script>
   <script src="js/index.js"></script>
+  <script src="js/filtros.js"></script>
 
 </body>
 
