@@ -9,8 +9,6 @@ let listEl, catEl, filterEl, filterNav;
 document.addEventListener("DOMContentLoaded", async () => {
   listEl = document.getElementById("list-products");
   catEl = document.getElementById("categories");
-  filterEl = document.getElementById("marcas");  //cambie el id porque se pisaba con el del menu hamburguesa
-  filterNav = document.getElementById("filtersID"); //filtro marcas menu hamburguesa
 
   try {
     //carga del JSON Con fecth
@@ -31,13 +29,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     //llamada de la funcion para crear los elementos
     catName(visualCat)
     createList(visibleProducts);
-
-    //muestra la opcion de filtrar marcas cuando es la categoria autos 
-    if (data.catID === 101) {
-    filtersList(visibleProducts);
-     filterEl.classList.remove("categoriaAutos");
-     filterNav.classList.remove("categoriaAutos");
-    };
+    
+     
 
   } catch (error) {
     console.error("Error al cargar los productos:", error);
@@ -58,16 +51,6 @@ function catName(categories) {
   catEl.innerHTML = catHTML;
 }
 
-function filtersList(fList) {
-  const listHTML = fList.map(f => `
-    <option value="${f.brand}">${f.brand}</option>
-  `).join("");
-
-  filterEl.innerHTML = `<option selected value="">Todas las marcas</option>${listHTML}
-  `;
-  filterNav.innerHTML = `<option selected value="">Todas las marcas</option>${listHTML} 
-  `; //agrega las marcas tambien al filtro del menu hamburguesa
-}
 
 //crea el formato del precio para el html
 function formatPrice(currency, costNum) {
