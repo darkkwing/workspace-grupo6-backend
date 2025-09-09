@@ -25,6 +25,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     //estado inicial del products.html, todo visible
     visibleProducts = [...allProducts];
 
+    window.productos = [...allProducts]; // Guarda los productos para la búsqueda
+    
     let visualCat = [{ cat: data.catName }];
     //llamada de la funcion para crear los elementos
     catName(visualCat)
@@ -84,4 +86,28 @@ function createList(items) {
 }
 
 
+// Función para filtrar por búsqueda usando productos reales
+function filtrarPorBusqueda() {
+  const texto = document.getElementById('search-input').value.toLowerCase();
+  let filtrados;
+  if (texto === "") {
+    filtrados = window.productos || [];
+  } else {
+    filtrados = (window.productos || []).filter(producto =>
+      producto.name.toLowerCase().includes(texto) ||
+      producto.description.toLowerCase().includes(texto) ||
+      producto.brand.toLowerCase().includes(texto)
+    );
+  }
+  createList(filtrados);
+}
+
+// Evento input para el buscador
+document.addEventListener('DOMContentLoaded', () => {
+  const input = document.getElementById('search-input');
+  if (input) {
+    input.addEventListener('input', filtrarPorBusqueda);
+  }
+
+});
 
