@@ -69,7 +69,7 @@ function createList(items) {
       <li class="product-card" data-id="${p.id}">
         <img src="${p.image}" alt="${p.name}" onerror="this.src='https://via.placeholder.com/600x400?text=Auto'">
         <div class="info">
-          <h2 class="name">${p.name}</h2>
+          <h2 class="name"><strong>${p.name}</strong></h2>
           <p>${p.description}</p>
           <div class="stars">★★★★☆ <span>(${p.soldCount} reseñas)</span></div>
           <div class="meta">
