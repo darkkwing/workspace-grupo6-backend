@@ -9,8 +9,6 @@ let listEl, catEl, filterEl, filterNav;
 document.addEventListener("DOMContentLoaded", async () => {
   listEl = document.getElementById("list-products");
   catEl = document.getElementById("categories");
-  filterEl = document.getElementById("marcas");  //cambie el id porque se pisaba con el del menu hamburguesa
-  filterNav = document.getElementById("filtersID"); //filtro marcas menu hamburguesa
 
   try {
     //carga del JSON Con fecth
@@ -27,17 +25,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     //estado inicial del products.html, todo visible
     visibleProducts = [...allProducts];
 
+    window.productos = [...allProducts]; // Guarda los productos para la búsqueda
+    
     let visualCat = [{ cat: data.catName }];
     //llamada de la funcion para crear los elementos
     catName(visualCat)
     createList(visibleProducts);
-
-    //muestra la opcion de filtrar marcas cuando es la categoria autos 
-    if (data.catID === 101) {
-    filtersList(visibleProducts);
-     filterEl.classList.remove("categoriaAutos");
-     filterNav.classList.remove("categoriaAutos");
-    };
+    
+     
 
   } catch (error) {
     console.error("Error al cargar los productos:", error);
@@ -58,16 +53,6 @@ function catName(categories) {
   catEl.innerHTML = catHTML;
 }
 
-function filtersList(fList) {
-  const listHTML = fList.map(f => `
-    <option value="${f.brand}">${f.brand}</option>
-  `).join("");
-
-  filterEl.innerHTML = `<option selected value="">Todas las marcas</option>${listHTML}
-  `;
-  filterNav.innerHTML = `<option selected value="">Todas las marcas</option>${listHTML} 
-  `; //agrega las marcas tambien al filtro del menu hamburguesa
-}
 
 //crea el formato del precio para el html
 function formatPrice(currency, costNum) {
@@ -98,7 +83,39 @@ function createList(items) {
   }).join("");//con join unimos los datos en un solo string(texto)
 
   listEl.innerHTML = html; //aqui la variable html, agrega un nuevo elemento en el HTML
+
+    // id del producto para product-info.js
+  document.querySelectorAll(".product-card").forEach(card => {
+    card.addEventListener("click", () => {
+      const id = card.dataset.id;
+      localStorage.setItem("selectedProductID", id);
+      window.location = "product-info.html";
+    });
+  });
 }
 
 
+// Función para filtrar por búsqueda usando productos reales
+function filtrarPorBusqueda() {
+  const texto = document.getElementById('search-input').value.toLowerCase();
+  let filtrados;
+  if (texto === "") {
+    filtrados = window.productos || [];
+  } else {
+    filtrados = (window.productos || []).filter(producto =>
+      producto.name.toLowerCase().includes(texto) ||
+      producto.description.toLowerCase().includes(texto) ||
+      producto.brand.toLowerCase().includes(texto)
+    );
+  }
+  createList(filtrados);
+}
 
+// Evento input para el buscador
+document.addEventListener('DOMContentLoaded', () => {
+  const input = document.getElementById('search-input');
+  if (input) {
+    input.addEventListener('input', filtrarPorBusqueda);
+  }
+
+});
