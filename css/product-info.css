@@ -1,0 +1,99 @@
+.producto-info {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+#product-container {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.producto-imagen img {
+    max-width: 38rem;
+    border-radius: 1.3rem;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+}
+
+.producto-detalles {
+    max-width: 400px;
+}
+
+.nombre {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.precio {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.producto-detalles p {
+    margin: 0.3rem 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #585858;
+}
+
+.btn-agregar {
+    display: flex;
+    align-items: center;
+    padding: 0.7rem 1.8rem;
+    border: 0.1rem rgb(221, 221, 221) solid;
+    border-radius: 9999px !important;
+    font-size: 1rem;
+    font-weight: 600;
+    background: white;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    line-height: normal;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+.btn-agregar:hover {
+    background: #313131;
+    transition: all ease 0.2s;
+}
+
+/* Responsive iPad Mini */
+@media (max-width: 768px) {
+    .producto-imagen img {
+        width: 35rem;
+        border-radius: 1.3rem;
+        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .producto-info {
+        flex-direction: column;
+    }
+
+    .btn-agregar {
+        display: block;
+        margin: 1rem auto;
+        width: 100%;
+    }
+}
+
+/* Responsive iPhone SE */
+@media (max-width: 600px) {
+    .producto-imagen img {
+        max-width: 20rem;
+        border-radius: 1.3rem;
+        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .producto-info {
+        flex-direction: column;
+        width: 20rem;
+    }
+
+    .btn-agregar {
+        display: block;
+        margin: 1rem auto;
+        width: 100%;
+    }
+}

@@ -83,6 +83,15 @@ function createList(items) {
   }).join("");//con join unimos los datos en un solo string(texto)
 
   listEl.innerHTML = html; //aqui la variable html, agrega un nuevo elemento en el HTML
+
+    // id del producto para product-info.js
+  document.querySelectorAll(".product-card").forEach(card => {
+    card.addEventListener("click", () => {
+      const id = card.dataset.id;
+      localStorage.setItem("selectedProductID", id);
+      window.location = "product-info.html";
+    });
+  });
 }
 
 
@@ -109,5 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
     input.addEventListener('input', filtrarPorBusqueda);
   }
 
-});
 
+});
+});

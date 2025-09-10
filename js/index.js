@@ -23,7 +23,10 @@ window.addEventListener("load", function () {     //Espera a que cargue el conte
 
     const user = sessionStorage.getItem("usuario");  //Variable a la que se le asigna el valor guardado
     if (user) {                                     //Consulta si el valor existe
-        document.getElementById("user-info").innerText = user;  //Imprime el valor en el li designado para ello
+        // Buscar todos los elementos cuyo id empiece con "user-info"
+        const els = document.querySelectorAll('[id^="user-info"]');
+        els.forEach(el => {
+            el.innerText = user;   //Imprime el valor en cada uno
+        })
     }
-
 });

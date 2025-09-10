@@ -22,9 +22,10 @@
 /* Inputs estilo Bootstrap */
 .filtros-precio input {
   width: 100%;
-  padding: 6px 12px;
+  padding: 0.7rem 1.8rem;
   font-size: 14px;
   border: 1px solid #ced4da;
+  background-color: #f7f7f7;
   border-radius: 4px;
   box-sizing: border-box;
 }
@@ -34,17 +35,19 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  flex: 0 0 25%; /* equivalente a col-3 */
+  flex: 0 0 25%;
+  /* equivalente a col-3 */
   padding: 0;
 }
 
 .filtros-precio button {
-  padding: 6px 12px;
+  padding: 0.5rem 1.8rem;
   border: 1px solid #ced4da;
-  border-radius: 4px;
-  background-color: #f8f9fa;
+  border-radius: 9999px;
+  background-color: #f7f7f7;
   cursor: pointer;
   flex: 1;
+  font-weight: bold;
 }
 
 /* Hover similar a btn-light */
@@ -67,20 +70,24 @@
 }
 
 /* --- Responsive celular--- */
-@media (max-width: 600px) { 
-    .filters {
-    flex-direction: column;   /* apilar elementos */
+@media (max-width: 600px) {
+  .filters {
+    flex-direction: column;
+    /* apilar elementos */
   }
-  
+
   /* orden de aparición */
   #buscar {
-    order: 1;   /* input de búsqueda arriba */
+    order: 1;
+    /* input de búsqueda arriba */
   }
-  
- .filtros-precio { 
-    order: 2; /* bloque de filtros debajo */ 
-    display: flex; gap: .5rem; 
-}
+
+  .filtros-precio {
+    order: 2;
+    /* bloque de filtros debajo */
+    display: flex;
+    gap: .5rem;
+  }
 
 
 
