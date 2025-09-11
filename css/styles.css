@@ -67,6 +67,11 @@ nav a {
   font-size: 38px;
 }
 
+.centerAlign{
+  text-align: center;
+  font-size: 25px;
+}
+
 footer {
   padding-top: 3rem;
   padding-bottom: 3rem;

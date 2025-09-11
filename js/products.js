@@ -1,6 +1,3 @@
-//constante de fuente de los datos
-const PRODUCTS_LIST_URL = 'https://japceibal.github.io/emercado-api/cats_products/101.json'
-
 let allProducts = []; //contenido del json
 let visibleProducts = []; //lo que se vera
 
@@ -11,28 +8,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   catEl = document.getElementById("categories");
 
   try {
-    //carga del JSON Con fecth
-    let response = await fetch(PRODUCTS_LIST_URL);
-    let data = await response.json();
 
-    //normalizando datos, esto es dejar los datos en un formato mas sencillo y organizado
-    allProducts = data.products.map(p => ({ //con map recorremos el arreglo, y creamos un arreglo nuevo
-      ...p, // los puntos suspensivos son un operador de propagacion
-      brand: p.name.split(" ")[0],//con esta linea se usara la primera palabra como marca, split divide el string en el array
-      costNum: Number(p.cost),// asegura el numero de costo
-    }))
-
+    const { catName: title, products } = await fetchCurrentCategory();
+    allProducts = products;
     //estado inicial del products.html, todo visible
     visibleProducts = [...allProducts];
 
     window.productos = [...allProducts]; // Guarda los productos para la búsqueda
-    
-    let visualCat = [{ cat: data.catName }];
+
     //llamada de la funcion para crear los elementos
-    catName(visualCat)
+    catName([{ cat: title }]);
     createList(visibleProducts);
-    
-     
 
   } catch (error) {
     console.error("Error al cargar los productos:", error);
@@ -43,6 +29,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     </li>
   `;
   }
+
+
 })
 
 
@@ -84,7 +72,7 @@ function createList(items) {
 
   listEl.innerHTML = html; //aqui la variable html, agrega un nuevo elemento en el HTML
 
-    // id del producto para product-info.js
+  // id del producto para product-info.js
   document.querySelectorAll(".product-card").forEach(card => {
     card.addEventListener("click", () => {
       const id = card.dataset.id;
@@ -111,11 +99,10 @@ function filtrarPorBusqueda() {
   createList(filtrados);
 }
 
-// Evento input para el buscador
+//  Evento input para el buscador
 document.addEventListener('DOMContentLoaded', () => {
   const input = document.getElementById('search-input');
   if (input) {
     input.addEventListener('input', filtrarPorBusqueda);
   }
-
-});
+}); 
