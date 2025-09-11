@@ -67,7 +67,49 @@ document.addEventListener("DOMContentLoaded", () => {
       createList(visibleProducts); //mostramos todos los productos visibles actualmente
     });
   };
+
+  
+  // 🔹 Agregar eventos a los botones de orden
+  const sortAscBtn = document.getElementById("sortAsc");
+  const sortDescBtn = document.getElementById("sortDesc");
+  const sortRelBtn = document.getElementById("sortRel");
+
+  if (sortAscBtn) {
+    sortAscBtn.addEventListener("click", () => {
+      visibleProducts.sort(sortByPriceAsc);
+      createList(visibleProducts);
+    });
+  }
+
+  if (sortDescBtn) {
+    sortDescBtn.addEventListener("click", () => {
+      visibleProducts.sort(sortByPriceDesc);
+      createList(visibleProducts);
+    });
+  }
+
+  if (sortRelBtn) {
+    sortRelBtn.addEventListener("click", () => {
+      visibleProducts.sort(sortByRelevance);
+      createList(visibleProducts);
+    });
+  }
+
 });
+
+
+// 🔹 Funciones de ordenamiento 
+function sortByPriceAsc(a, b) {
+  return a.costNum - b.costNum;
+}
+
+function sortByPriceDesc(a, b) {
+  return b.costNum - a.costNum;
+}
+
+function sortByRelevance(a, b) {
+  return b.soldCount - a.soldCount;
+}
 
 
 

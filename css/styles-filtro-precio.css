@@ -89,6 +89,49 @@
     gap: .5rem;
   }
 
+}
 
 
+/* --- Botones de ordenamiento --- */
+.sort-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.sort-buttons button {
+  padding: 4px 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 999px; 
+  cursor: pointer;
+  font-size: 13px;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+
+.sort-buttons button:hover {
+  background-color: #f4f4f4;
+  border-color: #999;
+}
+
+.sort-buttons button:active {
+  background-color: #ddd;
+}
+
+/* --- Responsive: en pantallas chicas que bajen en columna --- */
+@media (max-width: 600px) {
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .sort-buttons {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .sort-buttons button {
+    flex: 1;
+    min-width: 120px;
+  }
 }
