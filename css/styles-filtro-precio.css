@@ -1,137 +1,180 @@
-/* Layout tipo fila */
+/* --- Contenedor general de filtros --- */
+.filters {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+  background-color: #f5f5f5;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* --- Inputs --- */
+.filters input {
+  width: 100%;
+  padding: 0.7rem 1.8rem;
+  font-size: 14px;
+  border: 1px solid #ced4da;
+  background-color: #f7f7f7;
+  border-radius: 9999px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.col-inputs {
+  display: flex;      
+  gap: 5px;           
+}
+
+.col-inputs input {
+  width: 50%;        /* para que ocupen todo el espacio disponible de cada flex item */
+  flex: 1;            
+}
+
+.filters input:hover {
+  background: #e6e4e4;
+  transition: all ease 0.2s;
+}
+
+/* --- Bloque filtros precio --- */
 .filtros-precio {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin: 0;
-  padding: 0;
+  flex-wrap: wrap;
 }
 
-/* Cols genéricos */
-.filtros-precio .col {
+.filtros-precio .row-precio {
   flex: 1;
 }
 
-/* Texto alineado a la derecha */
 .filtros-precio p {
   margin: 8px 0;
   font-weight: 400;
   text-align: right;
 }
 
-/* Inputs estilo Bootstrap */
-.filtros-precio input {
-  width: 100%;
-  padding: 0.7rem 1.8rem;
-  font-size: 14px;
-  border: 1px solid #ced4da;
-  background-color: #f7f7f7;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-/* Botones */
-.filtros-precio .colBotones {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex: 0 0 25%;
-  /* equivalente a col-3 */
-  padding: 0;
-}
-
-.filtros-precio button {
+/* --- Botones generales (precio + sort) --- */
+.filters button {
   padding: 0.5rem 1.8rem;
   border: 1px solid #ced4da;
   border-radius: 9999px;
   background-color: #f7f7f7;
   cursor: pointer;
-  flex: 1;
   font-weight: bold;
+  transition: background 0.2s, border-color 0.2s;
 }
 
-/* Hover similar a btn-light */
-.filtros-precio button:hover {
+.filters button:hover {
   background-color: #e2e6ea;
 }
 
-/* "btn-link" */
-.filtros-precio button.link {
+.filters button:active {
+  background-color: #ddd;
+}
+
+/* --- Botón estilo link --- */
+.filters button.link {
   border: none;
   background: none;
   padding: 0;
   font-size: 14px;
   color: #007bff;
   text-decoration: underline;
+  font-weight: normal;
 }
 
-.filtros-precio button.link:hover {
+.filters button.link:hover {
   color: #0056b3;
 }
-
-/* --- Responsive celular--- */
-@media (max-width: 600px) {
-  .filters {
-    flex-direction: column;
-    /* apilar elementos */
-  }
-
-  /* orden de aparición */
-  #buscar {
-    order: 1;
-    /* input de búsqueda arriba */
-  }
-
-  .filtros-precio {
-    order: 2;
-    /* bloque de filtros debajo */
-    display: flex;
-    gap: .5rem;
-  }
-
-}
-
 
 /* --- Botones de ordenamiento --- */
 .sort-buttons {
   display: flex;
   gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-.sort-buttons button {
-  padding: 4px 10px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 999px; 
-  cursor: pointer;
-  font-size: 13px;
-  transition: background 0.2s, border-color 0.2s;
-}
-
-
-.sort-buttons button:hover {
-  background-color: #f4f4f4;
-  border-color: #999;
-}
-
-.sort-buttons button:active {
-  background-color: #ddd;
-}
-
-/* --- Responsive: en pantallas chicas que bajen en columna --- */
+/* --- Responsive --- */
 @media (max-width: 600px) {
+   /* Contenedor general */
   .filters {
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
+    gap: 0.8rem;
   }
-  
-  .sort-buttons {
+
+  /* Bloque de precio */
+  .filtros-precio {
+    display: flex;
+    flex-direction: column;   /* Apilamos titulo+inputs y botones */
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 360px;
+    order: 1; /* Primero */
+  }
+
+  /* Fila con texto + inputs */
+  .filtros-precio .row-precio {
+    display: flex;
+    align-items: center;
     justify-content: center;
+    gap: 0.4rem;
+    width: 100%;
+  }
+
+  .filtros-precio p {
+    margin: 0;
+    font-weight: bold;
+    flex: 0 0 auto;
+    font-size: 0.875rem;
+  }
+
+  .filtros-precio .col-inputs {
+    display: flex;
+    gap: 0.5rem;
+    flex: 1;
+  }
+
+  .filtros-precio input {
+    flex: 1;
+    padding: 0.25rem 0.5rem;
+    text-align: center;
+    font-size: 0.8125rem; 
+
+  }
+
+  /* Botones abajo y centrados */
+  .filtros-precio .colBotones {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    width: 100%;
+  }
+
+  /* Ordenamiento debajo */
+  .sort-buttons {
+    order: 2;
+    display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 360px;
   }
 
   .sort-buttons button {
     flex: 1;
-    min-width: 120px;
+    min-width: 5rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8125rem;
+  }
+
+  .filtros-precio .colBotones button {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8125rem;
   }
 }
