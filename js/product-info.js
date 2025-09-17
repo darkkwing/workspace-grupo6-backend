@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(response => response.json())
     .then(data => {
       mostrarInfoProducto(data);
+      mostrarRelacionados(data.relatedProducts);
     })
     .catch(error => console.error("Error cargando el producto:", error));
 });
@@ -35,4 +36,37 @@ function mostrarInfoProducto(product) {
       </div>
     </div>
   `;
+}
+
+//funcion para crear y mostarar los relacionados
+function mostrarRelacionados(relatedProducts) {
+  const relatedContainer = document.getElementById("related-container");
+  //si no hay productos relacionados hace esto
+  if (!relatedProducts || relatedProducts.length === 0) {
+    relatedContainer.innerHTML = "<p>No hay productos relacionados</p>";
+    return;
+  }
+  //crea las tarjetas de los relatedProducts
+  let html = `
+    <h3 class="titulo-relacionados">Productos relacionados</h3>
+    <div id="related-products">
+      ${relatedProducts.map(rel => `
+        <div class="related-card" data-id="${rel.id}">
+          <img src="${rel.image}" alt="${rel.name}">
+          <p>${rel.name}</p>
+        </div>
+      `).join("")}
+    </div>
+  `;
+  //inserta las tarjetas creadas en el div destinado a ello
+  relatedContainer.innerHTML = html;
+
+  // hace clickeables los relacionados y redirige al producto clickeado
+  relatedContainer.querySelectorAll(".related-card").forEach(card => {
+    card.addEventListener("click", () => {
+      const id = card.dataset.id;
+      localStorage.setItem("selectedProductID", id);
+      window.location = "product-info.html";
+    });
+  });
 }
