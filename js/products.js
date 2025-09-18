@@ -84,8 +84,9 @@ function createList(items) {
 
 
 // Función para filtrar por búsqueda usando productos reales
-function filtrarPorBusqueda() {
-  const texto = document.getElementById('search-input').value.toLowerCase();
+function filtrarPorBusqueda(e) {
+  const texto = (e && e.target ? e.target.value : document.getElementById('search-input').value).toLowerCase();
+
   let filtrados;
   if (texto === "") {
     filtrados = window.productos || [];
@@ -99,10 +100,15 @@ function filtrarPorBusqueda() {
   createList(filtrados);
 }
 
-//  Evento input para el buscador
+//  Evento input para ambos buscadores
 document.addEventListener('DOMContentLoaded', () => {
   const input = document.getElementById('search-input');
   if (input) {
     input.addEventListener('input', filtrarPorBusqueda);
   }
-}); 
+
+  const inputResponsive = document.getElementById('search-responsive');
+  if (inputResponsive) {
+    inputResponsive.addEventListener('input', filtrarPorBusqueda);
+  }
+});

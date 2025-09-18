@@ -67,7 +67,7 @@ nav a {
   font-size: 38px;
 }
 
-.centerAlign{
+.centerAlign {
   text-align: center;
   font-size: 25px;
 }
@@ -450,6 +450,10 @@ h1 {
     display: none !important;
   }
 
+  .buscador-contenedor {
+    display: none !important;
+  }
+
   .menu {
     position: relative;
     display: block !important;
@@ -527,6 +531,9 @@ h1 {
     display: none !important;
   }
 
+  .buscador-contenedor {
+    display: block !important;
+  }
 
   select #filtersID {
     padding: 0.5rem 2.5rem 0.5rem 0;
@@ -539,7 +546,10 @@ h1 {
   /* Menu hamburgesa */
   .menu {
     position: relative;
-    display: block !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1.2rem;
   }
 
 
@@ -602,6 +612,41 @@ h1 {
     display: inline-block;
     white-space: normal;
     word-break: break-word;
+  }
+
+  /* Buscador responsive */
+  .buscador-contenedor img {
+    width: 1.5rem;
+  }
+
+  .buscador-responsive {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    display: none;
+    transform: translateY(-20px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 1000;
+  }
+
+  .buscador-responsive.active {
+    display: block;
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .buscador-responsive input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
   }
 
   /* ---- Productos ---- */
