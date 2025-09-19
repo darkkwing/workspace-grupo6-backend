@@ -27,7 +27,7 @@
       <input type="search" placeholder="¿Qué estás buscando?" class="buscador" id="search-input">
     </div>
     <!-- Header derecha -->
-     <div class="header-der">
+    <div class="header-der">
       <a class="a-btn" href="categories.html"><button class="izq">Categorias</button></a>
       <a class="a-btn" href="sell.html"><button class="izq">Vender</button></a>
       <a class="a-btn" href="cart.html"><button class="izq">Carrito</button></a>
@@ -35,7 +35,7 @@
         <button class="active dropdown-toggle" type="button" id="cuentaMenu" data-bs-toggle="dropdown"
           aria-expanded="false">
           Cuenta
-        </button> 
+        </button>
         <ul class="dropdown-menu" aria-labelledby="cuentaMenu">
           <li><span class="dropdown-item-text" id="user-info"></span></li>
           <li>
@@ -48,6 +48,12 @@
 
     <!-- Menu hamburgesa -->
     <nav class="menu" style="display: none;">
+      <div class="buscador-contenedor">
+        <img src="img/search.svg" id="buscador-logo">
+        <div class="buscador-responsive">
+          <input type="search" placeholder="¿Qué estás buscando?" id="search-responsive">
+        </div>
+      </div>
       <input type="checkbox" id="menu-toggle">
       <label for="menu-toggle" class="menu-icon">&#9776;</label>
       <ul class="menu-links">
@@ -110,6 +116,7 @@
       </p>
     </div>
   </footer>
+  <script src="js/buscador-responsive.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/index.js"></script>
   <script src="js/init.js"></script>
