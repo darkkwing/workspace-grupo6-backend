@@ -8,24 +8,27 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
   // si hay con el fetch se va a buscar en el .json la información del producto
-
   fetch(`https://japceibal.github.io/emercado-api/products/${productId}.json`)
     .then(response => response.json())
     .then(data => {
       mostrarInfoProducto(data);
       mostrarRelacionados(data.relatedProducts);
     })
+    .then(data => mostrarInfoProducto(data))
     .catch(error => console.error("Error cargando el producto:", error));
 });
+
 // cuando recibe los datos arma un pedacito de HTML y se la coloca en la pagina 
 function mostrarInfoProducto(product) {
   const container = document.getElementById("product-container");
+  const codigoProducto = "prod" + product.id;
+  const images = [1, 2, 3, 4].map(i => `img/${codigoProducto}_${i}.jpg`);
 
+  // render principal
   container.innerHTML = `
     <div class="producto-info">
-      <div class="producto-imagen">
-        <img src="${product.images[0]}" alt="${product.name}">
-      </div>
+      <div id="gallery-root"></div>
+
       <div class="producto-detalles">
         <h2 class="nombre">${product.name}</h2>
         <p><b>Descripción:</b> ${product.description}</p>
@@ -73,3 +76,92 @@ function mostrarRelacionados(relatedProducts) {
       });
   });
 }
+
+
+  const root = document.getElementById("gallery-root");
+  const mq = window.matchMedia("(max-width: 768px)");
+
+  // galeria desktop
+  function galeriaDesktop() {
+    root.innerHTML = `
+      <div class="galeria">
+        <div class="imagenes-izq">
+          ${images.map((src, i) => `
+            <img class="thumb" src="${src}" alt="${product.name} foto ${i + 1}" data-index="${i}">
+          `).join("")}
+        </div>
+        <div class="imagen-medio">
+          <img id="imagenPrincipal" src="${images[0]}" alt="${product.name}">
+        </div>
+      </div>
+    `;
+
+    // listeners para imagenes
+    root.querySelectorAll(".thumb").forEach(thumb => {
+      thumb.addEventListener("click", function () {
+        const principal = document.getElementById("imagenPrincipal");
+        if (principal) principal.src = this.src;
+      });
+    });
+  }
+
+  // galeria responsive
+  function galeriaResponsive() {
+    root.innerHTML = `
+      <div class="galeria-container">
+        <button class="arrow left" id="prevBtn" aria-label="Anterior">&#10094;</button>
+        <div class="galeria-slide">
+          ${images.map(src => `<img src="${src}" alt="${product.name}">`).join("")}
+        </div>
+        <button class="arrow right" id="nextBtn" aria-label="Siguiente">&#10095;</button>
+      </div>
+    `;
+
+    const slide = root.querySelector(".galeria-slide");
+    const imgs = root.querySelectorAll(".galeria-slide img");
+    const prevBtn = root.querySelector("#prevBtn");
+    const nextBtn = root.querySelector("#nextBtn");
+
+    let index = 0;
+    function showSlide(i) {
+      index = ((i % imgs.length) + imgs.length) % imgs.length; // wrap
+      slide.style.transform = `translateX(${-index * 100}%)`;
+    }
+
+    showSlide(0);
+    prevBtn.addEventListener("click", () => showSlide(index - 1));
+    nextBtn.addEventListener("click", () => showSlide(index + 1));
+
+    // tactil
+    let startX = 0;
+    slide.addEventListener("touchstart", (e) => {
+      startX = e.touches[0].clientX;
+    }, { passive: true });
+    slide.addEventListener("touchend", (e) => {
+      const endX = e.changedTouches[0].clientX;
+      const diff = startX - endX;
+      if (diff > 40) showSlide(index + 1);
+      else if (diff < -40) showSlide(index - 1);
+    });
+  }
+
+  function handleModeChange(e) {
+    if (e.matches) galeriaResponsive();
+    else galeriaDesktop();
+  }
+
+  // llamada inicial
+  handleModeChange(mq);
+
+  //
+  if (typeof mq.addEventListener === "function") mq.addEventListener("change", handleModeChange);
+  else if (typeof mq.addListener === "function") mq.addListener(handleModeChange);
+}
+
+// cambiar imagen
+function cambiarImagen(elemento) {
+  const gallery = elemento.closest(".galeria");
+  const mainImg = gallery ? gallery.querySelector(".imagen-medio img") : null;
+  if (mainImg) mainImg.src = elemento.src;
+}
+

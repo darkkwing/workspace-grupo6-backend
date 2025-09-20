@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   
+
   // Agregar eventos a los botones de orden
   const sortAscBtn = document.getElementById("sortAsc");
   const sortDescBtn = document.getElementById("sortDesc");
