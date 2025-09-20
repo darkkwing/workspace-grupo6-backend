@@ -457,6 +457,7 @@ h1 {
   .menu {
     position: relative;
     display: block !important;
+    z-index: 1000;
   }
 
   .menu-icon {
@@ -655,4 +656,5 @@ h1 {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
+
 }
