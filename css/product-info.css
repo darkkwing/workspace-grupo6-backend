@@ -183,3 +183,76 @@
         margin: 1rem auto;
     }
 }
+
+/*Productos relacionados*/
+#related-container {
+    margin-top: 4rem;
+    text-align: center;
+    width: 100%;
+}
+
+.titulo-relacionados {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+#related-products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+/* Tarjeta de producto relacionado */
+.related-card {
+    width: 160px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.related-card img {
+    width: 100%;
+    border-radius: 1rem;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+}
+
+.related-card p {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #585858;
+}
+
+.related-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.related-card p.cost-producto {
+    font-size: 0.75rem;   
+    font-weight: normal;  
+    color: #777;          
+    margin-top: 0.2rem;   
+}
+
+/* Responsive tablet */
+@media (max-width: 768px) {
+    .related-card {
+        width: 130px;
+    }
+    .related-card p {
+        font-size: 0.75rem;
+    }
+}
+
+/*Responsive celular*/
+@media (max-width: 600px) {
+    .related-card {
+        width: 110px;
+    }
+    .related-card p {
+        font-size: 0.7rem;
+    }
+}

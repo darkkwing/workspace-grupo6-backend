@@ -10,9 +10,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // si hay con el fetch se va a buscar en el .json la información del producto
   fetch(`https://japceibal.github.io/emercado-api/products/${productId}.json`)
     .then(response => response.json())
+    .then(data => {
+      mostrarInfoProducto(data);
+      mostrarRelacionados(data.relatedProducts);
+    })
     .then(data => mostrarInfoProducto(data))
     .catch(error => console.error("Error cargando el producto:", error));
 });
+
 // cuando recibe los datos arma un pedacito de HTML y se la coloca en la pagina 
 function mostrarInfoProducto(product) {
   const container = document.getElementById("product-container");
@@ -34,6 +39,44 @@ function mostrarInfoProducto(product) {
       </div>
     </div>
   `;
+}
+
+//funcion para crear y mostarar los relacionados
+function mostrarRelacionados(relatedProducts) {
+  const relatedContainer = document.getElementById("related-container");
+  //si no hay productos relacionados hace esto
+  if (!relatedProducts || relatedProducts.length === 0) {
+    relatedContainer.innerHTML = "<p>No hay productos relacionados</p>";
+    return;
+  }
+
+  relatedContainer.innerHTML = `<h3 class="titulo-relacionados">Productos relacionados</h3><div id="related-products"></div>`;
+  const relatedDiv = document.getElementById("related-products");
+
+  relatedProducts.forEach(rel => {
+    fetch(`https://japceibal.github.io/emercado-api/products/${rel.id}.json`)
+      .then(response => response.json())
+      .then(producto => {
+        const card = document.createElement("div");
+        card.classList.add("related-card");
+        card.dataset.id = producto.id;
+
+        card.innerHTML = `
+          <img src="${producto.images[0]}" alt="${producto.name}">
+          <p>${producto.name}</p>
+          <p class="cost-producto">${producto.currency} ${producto.cost}</p>
+        `;
+
+        card.addEventListener("click", () => {
+          localStorage.setItem("selectedProductID", producto.id);
+          window.location = "product-info.html";
+        });
+
+        relatedDiv.appendChild(card);
+      });
+  });
+}
+
 
   const root = document.getElementById("gallery-root");
   const mq = window.matchMedia("(max-width: 768px)");
@@ -121,3 +164,4 @@ function cambiarImagen(elemento) {
   const mainImg = gallery ? gallery.querySelector(".imagen-medio img") : null;
   if (mainImg) mainImg.src = elemento.src;
 }
+

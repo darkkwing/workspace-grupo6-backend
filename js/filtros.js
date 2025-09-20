@@ -1,29 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  //filtra y muestra productos según la marca
-  function filtrarPorMarca(brand) {
-    if (!brand) {
-      createList(visibleProducts);  //si no hay marca seleccionada muestra todo
-    }else{
-    const filtrado = visibleProducts.filter(p => p.brand === brand); //si hay marca seleccionada filtra los productos visibles con esa marca y los agrega al array filtrados
-    createList(filtrado);   //muestra la lista con los filtrados
-    };
-  };
-
-  //escucha cambios en el select del body
-  if (filterEl) {      //para evitar errores corroboramos que existe la variable
-    filterEl.addEventListener("change", (e) => {   //escuchamos el cambio
-      filtrarPorMarca(e.target.value);             //ejecutamos la funcion usando de parametro el valor ingresado, osea la marca elegida
-    });
-  }
-
-  //escucha cambios en el select del nav (menu hamburguesa)
-  if (filterNav) {
-    filterNav.addEventListener("change", (e) => {    //lo mismo que el if de arriba pero para el menu hamburguesa en mobile
-      filtrarPorMarca(e.target.value);
-    });
-  }
-
  //CODIGO PARA FILTRAR POR PRECIO
   const inputMin = document.getElementById("rangeFilterCountMin");
   const inputMax = document.getElementById("rangeFilterCountMax");
@@ -69,7 +45,8 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   
-  //Agregar eventos a los botones de orden
+
+  // Agregar eventos a los botones de orden
   const sortAscBtn = document.getElementById("sortAsc");
   const sortDescBtn = document.getElementById("sortDesc");
   const sortRelBtn = document.getElementById("sortRel");
@@ -98,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-//Funciones de ordenamiento 
+// Funciones de ordenamiento 
 function sortByPriceAsc(a, b) {
   return a.costNum - b.costNum;
 }
