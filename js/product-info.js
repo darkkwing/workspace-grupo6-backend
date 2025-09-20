@@ -46,27 +46,30 @@ function mostrarRelacionados(relatedProducts) {
     relatedContainer.innerHTML = "<p>No hay productos relacionados</p>";
     return;
   }
-  //crea las tarjetas de los relatedProducts
-  let html = `
-    <h3 class="titulo-relacionados">Productos relacionados</h3>
-    <div id="related-products">
-      ${relatedProducts.map(rel => `
-        <div class="related-card" data-id="${rel.id}">
-          <img src="${rel.image}" alt="${rel.name}">
-          <p>${rel.name}</p>
-        </div>
-      `).join("")}
-    </div>
-  `;
-  //inserta las tarjetas creadas en el div destinado a ello
-  relatedContainer.innerHTML = html;
 
-  // hace clickeables los relacionados y redirige al producto clickeado
-  relatedContainer.querySelectorAll(".related-card").forEach(card => {
-    card.addEventListener("click", () => {
-      const id = card.dataset.id;
-      localStorage.setItem("selectedProductID", id);
-      window.location = "product-info.html";
-    });
+  relatedContainer.innerHTML = `<h3 class="titulo-relacionados">Productos relacionados</h3><div id="related-products"></div>`;
+  const relatedDiv = document.getElementById("related-products");
+
+  relatedProducts.forEach(rel => {
+    fetch(`https://japceibal.github.io/emercado-api/products/${rel.id}.json`)
+      .then(response => response.json())
+      .then(producto => {
+        const card = document.createElement("div");
+        card.classList.add("related-card");
+        card.dataset.id = producto.id;
+
+        card.innerHTML = `
+          <img src="${producto.images[0]}" alt="${producto.name}">
+          <p>${producto.name}</p>
+          <p class="cost-producto">${producto.currency} ${producto.cost}</p>
+        `;
+
+        card.addEventListener("click", () => {
+          localStorage.setItem("selectedProductID", producto.id);
+          window.location = "product-info.html";
+        });
+
+        relatedDiv.appendChild(card);
+      });
   });
 }

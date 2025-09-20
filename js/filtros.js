@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   
-  // 🔹 Agregar eventos a los botones de orden
+  // Agregar eventos a los botones de orden
   const sortAscBtn = document.getElementById("sortAsc");
   const sortDescBtn = document.getElementById("sortDesc");
   const sortRelBtn = document.getElementById("sortRel");
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// 🔹 Funciones de ordenamiento 
+// Funciones de ordenamiento 
 function sortByPriceAsc(a, b) {
   return a.costNum - b.costNum;
 }
