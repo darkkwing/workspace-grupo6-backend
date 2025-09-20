@@ -1,9 +1,3 @@
-.producto-info {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-}
-
 #product-container {
     margin-top: 4rem;
     display: flex;
@@ -11,14 +5,57 @@
     align-items: center;
 }
 
-.producto-imagen img {
-    max-width: 38rem;
+.producto-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    justify-content: center;
+}
+
+/* galeria */
+.galeria {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+/* imagenes izquierda */
+.imagenes-izq {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.imagenes-izq img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 1rem;
+    border: 1px solid #ddd;
+    transition: all 0.2s ease;
+}
+
+.imagenes-izq img:hover {
+    transform: scale(1.01);
+    transition: all ease 0.2s;
+    border: 1px solid #bebebe;
+}
+
+/* imagen principal */
+.imagen-medio img {
+    max-width: 42rem;
+    height: auto;
     border-radius: 1.3rem;
+    border: 1px solid #ddd;
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
 }
 
+/* info */
+
 .producto-detalles {
     max-width: 400px;
+    margin-top: 5rem;
 }
 
 .nombre {
@@ -59,41 +96,90 @@
     transition: all ease 0.2s;
 }
 
-/* Responsive iPad Mini */
-@media (max-width: 768px) {
-    .producto-imagen img {
-        width: 35rem;
-        border-radius: 1.3rem;
-        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-    }
+.gallery-container {
+    display: none;
+}
 
+@media (max-width: 768px) {
     .producto-info {
         flex-direction: column;
+        align-items: center;
+    }
+
+    .producto-detalles {
+        margin-top: 0;
+        width: 40rem;
     }
 
     .btn-agregar {
         display: block;
-        margin: 1rem auto;
         width: 100%;
+        margin: 1rem auto;
+    }
+
+    .galeria {
+        display: none;
+    }
+
+    .galeria-container {
+        position: relative;
+        overflow: hidden;
+        width: 90%;
+        max-width: 100%;
+        margin: 0 auto 1rem;
+        display: block;
+    }
+
+    .galeria-slide {
+        display: flex;
+        transition: transform 0.4s ease-in-out;
+        will-change: transform;
+    }
+
+    .galeria-slide img {
+        width: 100%;
+        flex-shrink: 0;
+        display: block;
+        object-fit: cover;
+        border-radius: 1rem;
+        border: 1px solid #ddd;
+        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .arrow {
+        display: block;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.45);
+        border: none;
+        color: #fff;
+        font-size: 1.6rem;
+        cursor: pointer;
+        padding: 0.45rem 0.6rem;
+        border-radius: 50%;
+        z-index: 10;
+    }
+
+    .arrow.left {
+        left: 10px;
+    }
+
+    .arrow.right {
+        right: 10px;
     }
 }
 
 /* Responsive iPhone SE */
 @media (max-width: 600px) {
-    .producto-imagen img {
-        max-width: 20rem;
-        border-radius: 1.3rem;
-        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-    }
-
-    .producto-info {
-        flex-direction: column;
+    .producto-detalles {
+        margin-top: 0;
         width: 20rem;
     }
 
     .btn-agregar {
         display: block;
-        margin: 1rem auto;
         width: 100%;
+        margin: 1rem auto;
     }
 }
