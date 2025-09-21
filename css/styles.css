@@ -457,7 +457,7 @@ h1 {
   .menu {
     position: relative;
     display: block !important;
-    z-index: 10000;
+    z-index: 1000;
   }
 
   .menu-icon {
@@ -658,4 +658,5 @@ h1 {
   }
 
 }
+
 
