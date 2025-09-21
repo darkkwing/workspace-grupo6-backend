@@ -151,13 +151,14 @@
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        background: rgba(0, 0, 0, 0.45);
-        border: none;
-        color: #fff;
-        font-size: 1.6rem;
-        cursor: pointer;
-        padding: 0.45rem 0.6rem;
-        border-radius: 50%;
+        background: rgba(0, 0, 0, 0);
+        border: solid white 2px;
+        color: white;
+        font-size: 1rem;
+        padding: 0.4rem 0.8rem;
+        border-radius: 60%;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+        test-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
         z-index: 10;
     }
 
