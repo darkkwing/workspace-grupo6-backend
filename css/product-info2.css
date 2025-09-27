@@ -1,0 +1,95 @@
+
+.qualification-box {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 20px;
+  background: #fff;
+  max-width: none;
+  margin: 20px auto;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  width: 75%;
+}
+
+.qualification-title {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  color: #111827;
+}
+
+
+.stars {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  gap: 6px;
+  margin-bottom: 15px;
+}
+
+.stars input {
+  display: none;
+}
+
+.stars label {
+  font-size: 28px;
+  color: #d1d5db;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.stars label::before {
+  content: "★";
+}
+
+.stars input:checked ~ label,
+.stars label:hover,
+.stars label:hover ~ label {
+  color: #facc15; 
+}
+
+
+.comment {
+  width: 100%;
+  min-height: 80px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 10px;
+  resize: vertical;
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+}
+
+
+.qualification-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.qualification-actions button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 999px; 
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn-cancel {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.btn-cancel:hover {
+  background: #e5e7eb;
+}
+
+.btn-submit {
+  background: #000;  
+  color: #fff;
+}
+
+.btn-submit:hover {
+  background: #111;
+  transform: scale(1.03);
+}
+
