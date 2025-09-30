@@ -11,6 +11,7 @@
   <link href="css/styles.css" rel="stylesheet">
   <link rel="stylesheet" href="./css/product-info.css">
   <link rel="stylesheet" href="./css/product-info2.css">
+  <link rel="stylesheet" href="css/comentarios.css">
 </head>
 
 <body>
@@ -71,43 +72,48 @@
     <!-- Producto -->
     <div id="product-container"></div>
 
-  <div id="related-container">
-    <!-- relatedProducts -->
-  </div>
+    <div id="related-container">
+      <!-- relatedProducts -->
+    </div>
 
-  <section class="qualification-box">
-  <h3 class="qualification-title">Deja tu calificación</h3>
+    <section class="qualification-box">
+      <h3 class="qualification-title">Deja tu calificación</h3>
 
-  <div class="stars">
-    <input type="radio" id="star5" name="qualification" value="5">
-    <label for="star5" title="5 estrellas"></label>
+      <div class="stars">
+        <input type="radio" id="star5" name="qualification" value="5">
+        <label for="star5" title="5 estrellas"></label>
 
-    <input type="radio" id="star4" name="qualification" value="4">
-    <label for="star4" title="4 estrellas"></label>
+        <input type="radio" id="star4" name="qualification" value="4">
+        <label for="star4" title="4 estrellas"></label>
 
-    <input type="radio" id="star3" name="qualification" value="3">
-    <label for="star3" title="3 estrellas"></label>
+        <input type="radio" id="star3" name="qualification" value="3">
+        <label for="star3" title="3 estrellas"></label>
 
-    <input type="radio" id="star2" name="qualification" value="2">
-    <label for="star2" title="2 estrellas"></label>
+        <input type="radio" id="star2" name="qualification" value="2">
+        <label for="star2" title="2 estrellas"></label>
 
-    <input type="radio" id="star1" name="qualification" value="1">
-    <label for="star1" title="1 estrella"></label>
-  </div>
+        <input type="radio" id="star1" name="qualification" value="1">
+        <label for="star1" title="1 estrella"></label>
+      </div>
 
-  <!-- Comentario -->
-  <textarea class="comment" placeholder="Escribe tu opinión sobre el producto..."></textarea>
+      <!-- Comentario -->
+      <textarea class="comment" placeholder="Escribe tu opinión sobre el producto..."></textarea>
 
-  <!-- Botones -->
-  <div class="qualification-actions">
-    <button class="btn-cancel">Cancelar</button>
-    <button class="btn-submit">Guardar</button>
-  </div>
-</section>
+      <!-- Botones -->
+      <div class="qualification-actions">
+        <button class="btn-cancel">Cancelar</button>
+        <button class="btn-submit">Guardar</button>
+      </div>
+    </section>
 
-  
+    <!-- Reseñas -->
+    <section id="reviews-section">
+      <div id="comentarios-container"></div>
+    </section>
+
   </main>
-  
+
+
   <script src="js/buscador-responsive.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
