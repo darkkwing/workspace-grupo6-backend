@@ -38,7 +38,7 @@ function mostrarInfoProducto(product) {
       </div>
     </div>
   `;
-  
+
   const root = document.getElementById("gallery-root");
   const mq = window.matchMedia("(max-width: 768px)");
 
@@ -119,12 +119,12 @@ function mostrarInfoProducto(product) {
   else if (typeof mq.addListener === "function") mq.addListener(handleModeChange);
 
 
-// cambiar imagen
-function cambiarImagen(elemento) {
-  const gallery = elemento.closest(".galeria");
-  const mainImg = gallery ? gallery.querySelector(".imagen-medio img") : null;
-  if (mainImg) mainImg.src = elemento.src;
-}
+  // cambiar imagen
+  function cambiarImagen(elemento) {
+    const gallery = elemento.closest(".galeria");
+    const mainImg = gallery ? gallery.querySelector(".imagen-medio img") : null;
+    if (mainImg) mainImg.src = elemento.src;
+  }
 
 }
 
@@ -164,5 +164,53 @@ function mostrarRelacionados(relatedProducts) {
   });
 }
 
+// Comentarios
+document.addEventListener("DOMContentLoaded", function () {
+  let productId = localStorage.getItem("selectedProductID");
+  const commentsURL = `https://japceibal.github.io/emercado-api/products_comments/${productId}.json`;
+  fetch(commentsURL)
+    .then(response => response.json())
+    .then(comments => {
+      mostrarComentarios(comments);
+    })
+    .catch(error => console.error("Error cargando comentarios:", error));
+});
 
-  
+function mostrarComentarios(comments) {
+  const container = document.getElementById("comentarios-container");
+  if (!container) return;
+
+  let htmlContent = "";
+  comments.forEach(comment => {
+    const score = parseInt(comment.score) || 0;
+    const stars = createStarsHtml(score);
+
+    htmlContent += `
+      <div class="comentario">
+        <div class="comentario-header">
+          <div class="comentario-user">
+            <div class="user-icon"><img src="img/person-circle.svg"></div>
+            <div>
+              <p class="comentario-usuario">${comment.user}</p>
+              <p class="comentario-fecha">${comment.dateTime}</p>
+            </div>
+          </div>
+          <div class="comentario-stars">
+            ${stars}
+          </div>
+        </div>
+        <p class="comentario-texto">${comment.description}</p>
+      </div>
+    `;
+  });
+  container.innerHTML = htmlContent;
+}
+
+function createStarsHtml(score) {
+  let s = "";
+  for (let i = 1; i <= 5; i++) {
+    if (i <= score) s += '<span class="star filled">★</span>';
+    else s += '<span class="star">★</span>';
+  }
+  return `<div class="comment-stars">${s}</div>`;
+}
