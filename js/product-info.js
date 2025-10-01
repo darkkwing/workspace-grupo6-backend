@@ -164,27 +164,36 @@ function mostrarRelacionados(relatedProducts) {
   });
 }
 
-// Comentarios
+// mostrar los comentarios cuando termina de cargar la pagina
 document.addEventListener("DOMContentLoaded", function () {
+  // busca el id del producto seleccionado en el localstorage
   let productId = localStorage.getItem("selectedProductID");
+  // busca los comentarios en el json
   const commentsURL = `https://japceibal.github.io/emercado-api/products_comments/${productId}.json`;
+  // pedir los comentarios
   fetch(commentsURL)
-    .then(response => response.json())
+    .then(response => response.json()) 
     .then(comments => {
+      // llama la funcion que muestra los comentarios
       mostrarComentarios(comments);
     })
     .catch(error => console.error("Error cargando comentarios:", error));
 });
 
+// funcion que muestra los comentarios
 function mostrarComentarios(comments) {
+  // busca el contenedor donde van los comentarios
   const container = document.getElementById("comentarios-container");
   if (!container) return;
-
   let htmlContent = "";
-  comments.forEach(comment => {
-    const score = parseInt(comment.score) || 0;
-    const stars = createStarsHtml(score);
 
+  // recorre los comentarios recibidos
+  comments.forEach(comment => {
+    // puntuacion del comentario
+    const score = parseInt(comment.score) || 0;
+    // crear estrellas segun puntuacion
+    const stars = createStarsHtml(score);
+    // bloque html del comentario
     htmlContent += `
       <div class="comentario">
         <div class="comentario-header">
@@ -203,14 +212,19 @@ function mostrarComentarios(comments) {
       </div>
     `;
   });
+  // insertar comentarios en el html
   container.innerHTML = htmlContent;
 }
 
+// esta funcion dibuja las estrellas y marca cuantas estan llenas
 function createStarsHtml(score) {
   let s = "";
   for (let i = 1; i <= 5; i++) {
-    if (i <= score) s += '<span class="star filled">★</span>';
-    else s += '<span class="star">★</span>';
+    if (i <= score) {
+      s += '<span class="star filled">★</span>';
+    } else {
+      s += '<span class="star">★</span>';
+    }
   }
   return `<div class="comment-stars">${s}</div>`;
 }
