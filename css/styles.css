@@ -224,6 +224,7 @@ h1 {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   top: 0;
   z-index: 1050;
+  position: sticky;
 }
 
 /* Header Izquierda */
@@ -234,7 +235,7 @@ h1 {
 }
 
 .header-izq img {
-  height: 40px;
+  height: 4rem;
   display: block;
   margin: 0;
   line-height: normal;
@@ -444,6 +445,22 @@ h1 {
   max-width: 320px;
 }
 
+/* Footer */
+footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 15px;
+}
+
+footer a,
+footer p {
+  color: gray;
+  text-align: center;
+}
+
+footer a:hover {
+  color: black;
+  transition: 0.5s all ease;
+}
 
 @media (max-width: 768px) {
   .header-der {
@@ -508,7 +525,7 @@ h1 {
   }
 
   .header-izq img {
-    height: 2rem;
+    height: 3rem;
   }
 
   .header-izq h1 {
@@ -602,7 +619,7 @@ h1 {
   }
 
   .header-izq img {
-    height: 1.5rem;
+    height: 3rem;
   }
 
   .header-izq h1 {
@@ -658,5 +675,3 @@ h1 {
   }
 
 }
-
-

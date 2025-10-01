@@ -5,7 +5,7 @@ body {
     display: flex;
     flex-direction: column;
     margin: 0;
-} 
+}
 
 /* Header */
 
@@ -17,14 +17,8 @@ header {
 }
 
 #LogoJaP {
-    width: 16rem;
+    width: 26rem;
     height: auto;
-}
-
-header h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-top: 1rem;
 }
 
 /* Main */
@@ -108,11 +102,9 @@ footer {
         justify-content: center;
         margin: auto;
     }
-    .header h1 {
-        font-size: 3.5rem;
-    }
+
     #LogoJaP {
-        width: 18rem;
+        width: 30rem;
         height: auto;
     }
 }
@@ -124,6 +116,11 @@ footer {
         flex-direction: column;
         align-items: center;
         gap: 1rem;
+    }
+
+    #LogoJaP {
+        width: 18rem;
+        height: auto;
     }
 
     main {
@@ -148,20 +145,4 @@ footer {
         padding: 0.5rem 0;
     }
 
-
-    #LogoJaP {
-        display: none !important;
-    }
-    
-    #LogoJaPFooter {
-        display: block !important;
-        width: 8rem;
-        height: auto;
-        margin: 0 auto;
-    }
-
-    #TextoFooter {
-        display: none !important;
-    }
 }
-
