@@ -226,5 +226,5 @@ function createStarsHtml(score) {
       s += '<span class="star">★</span>';
     }
   }
-  return `<div class="comment-stars">${s}</div>`;
+  return `<div class="comentario-stars">${s}</div>`;
 }
