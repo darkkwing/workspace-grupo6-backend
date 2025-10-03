@@ -38,7 +38,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const estrellasHTML = generarEstrellas(valor.value);
 
     // nombre y fecha
-    let nombre = sessionStorage.getItem("usuario");
+    let email = sessionStorage.getItem("usuario");
+    let nombre = email.split("@")[0];
     let fecha = new Date().toISOString().slice(0, 19).replace("T", " ");
 
     // arma comentario
