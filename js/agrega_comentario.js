@@ -17,8 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
   function generarEstrellas(score) {
     let html = "";
     for (let i = 1; i <= 5; i++) {
-      if (i <= score) html += '<span class="star filled">★</span>';
-      else html += '<span class="star">★</span>';
+      if (i <= score) {
+        html += '<span class="star filled">★</span>';
+      } else {
+        html += '<span class="star">★</span>';
+      }
     }
     return html;
   }
@@ -28,11 +31,11 @@ document.addEventListener("DOMContentLoaded", () => {
     container.innerHTML = "";
     comments.forEach(c => {
       let stars = generarEstrellas(parseInt(c.score || 0)); //calculo las estrellas
-      let nombre = c.user; //nombre del usuario
+      let nombre = c.user || "Tú"; //nombre del usuario
       let fecha = c.dateTime || new Date().toISOString().slice(0,19).replace("T"," "); //fecha actual
       let desc = c.description || ""; //descripcion del comentario
 
-      //agrego el comentario al contenedor
+      //formato del comentario
       container.insertAdjacentHTML("beforeend", `
         <div class="comentario">
           <div class="comentario-header">
@@ -51,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  //traigo los comentarios del json oficial, esta pedacito costo hacerlo andar
+  //traigo los comentarios del json oficial, este pedacito costo hacerlo andar
   fetch(commentsURL)
     .then(r => r.json())
     .then(c => {
@@ -62,15 +65,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   submitBtn.addEventListener("click", () => {
-    let desc = textarea.value.trim(); //saco espacios
-    if (!desc) return; //si no hay nada no hago nada
+    let desc = textarea.value.trim();
+    if (!desc) return;
     let valor = document.querySelector('input[name="qualification"]:checked');
     if (!valor) { 
       alert("Por favor selecciona una calificación"); 
       return; 
     }
 
-    let email = localStorage.getItem("usuario"); //agarro el usuario logueado
+    let email = sessionStorage.getItem("usuario"); //agarro el usuario logueado
     let nombre = email.split("@")[0]; //saco el nombre del email
     let fecha = new Date().toISOString().slice(0,19).replace("T"," "); //fecha actual
     let score = parseInt(valor.value); //valor de la estrella
