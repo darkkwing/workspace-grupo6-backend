@@ -7,10 +7,10 @@ document.addEventListener("DOMContentLoaded", () => { // Sirve para que no se ej
         e.preventDefault(); // Sirve para que la pagina no se actualice cuando apretamos el boton. Si no la pagina se actualizaria y no te redirigiria a "index.html".
 
         if (email.value.trim() && password.value.trim()) { // Si los dos campos tienen texto, se redirige al archivo "index.html".
-          localStorage.setItem("logueado", "true"); //Objeto que guarda los datos de inicio de sesión
+          sessionStorage.setItem("logueado", "true"); //Objeto que guarda los datos de inicio de sesión
 
           const username = email.value;           //Se crea una variable donde se almacena el valor del input email
-          localStorage.setItem("usuario", username);   //Objeto que guarda los datos de la variable
+          sessionStorage.setItem("usuario", username);   //Objeto que guarda los datos de la variable
 
           window.location.href = "index.html"; // Determina a que archivo se redirige si ambos campos tienen texto
         } else { // Si alguno de los dos campos esta vacio se muestra una alerta al usuario.
