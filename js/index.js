@@ -15,13 +15,13 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 window.addEventListener("load", function () {     //Espera a que cargue el contenido de la ventana
-    const loguearse = localStorage.getItem("logueado");  //Carga la info de inicio de sesión a la variable "loguearse"
+    const loguearse = sessionStorage.getItem("logueado");  //Carga la info de inicio de sesión a la variable "loguearse"
 
     if (loguearse !== "true") {               //Condición: si no hay info de inicio de sesión
         window.location.href = "login.html";   //Redirige al login para ingresar
     }
 
-    const user = localStorage.getItem("usuario");  //Variable a la que se le asigna el valor guardado
+    const user = sessionStorage.getItem("usuario");  //Variable a la que se le asigna el valor guardado
     if (user) {                                     //Consulta si el valor existe
         // Buscar todos los elementos cuyo id empiece con "user-info"
         const els = document.querySelectorAll('[id^="user-info"]');
