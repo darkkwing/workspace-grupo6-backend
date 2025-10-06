@@ -1,19 +1,124 @@
+/* ----------- mas vendido carta ----------- */
+.featured-card {
+    position: relative;
+    background: linear-gradient(90deg, #2B2B2B 70%, #FFFFFF 100%);
+    color: #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    width: 100%;
+    height: 203px;
+}
+
+.featured-card:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
+    transition: transform 200ms;
+    color: #fff;
+}
+
+/* texto */
+
+.featured-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.featured-price {
+    font-size: 1.8rem;
+    font-weight: 550;
+    color: #fff;
+}
+
+/* imagen */
+.featured-img {
+    height: 12.688em;
+    width: auto;
+}
+
+.featured-card:hover {
+    transform: scale(1.02);
+    transition: transform 200ms;
+}
+
+@media (max-width: 600px) {
+    
+}
+
+
+.custom-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: #FFFFFF;
+    border: 1px #E9ECEF;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.custom-card h3 {
+    margin: 16px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #212529;
+}
+
+.custom-card .card-body {
+    padding: 0 16px 18px 16px;
+    flex: 1 1 auto;
+}
+
+.custom-card .card-text {
+    color: #6C757D;
+    line-height: 1.45;
+    min-height: 44px;
+}
+
+
+.custom-card:hover,
+.custom-card:focus-within {
+    transform: scale(1.02);
+    transition: transform 200ms;
+}
+
+.custom-card.cursor-active {
+    cursor: pointer;
+}
+
+
+@media (max-width: 600px) {
+    .custom-card .card-img-top {
+        height: 14em;
+        width: auto;
+    }
+
+    .custom-card h3 {
+        font-size: 1.125rem;
+    }
+
+    .custom-card .card-body {
+        padding-bottom: 16px;
+    }
+}
+
+
 .btn.btn-light.btn-lg.btn-block {
-  background: #F09103;
-  color: #fff !important;
-  font-weight: 600;
-  border: none;
-  border-radius: 12px;
-  text-align: center;
-  text-transform: none;
-  padding: 14px 0;
+    background: #F09103;
+    color: #fff !important;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    text-align: center;
+    text-transform: none;
+    padding: 14px 0;
 }
 
 .btn.btn-light.btn-lg.btn-block:hover {
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-  transform: scale(1.02);
-  transition: transform 200ms;
-  color: #fff;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
+    transition: transform 200ms;
+    color: #fff;
 }
-
-
