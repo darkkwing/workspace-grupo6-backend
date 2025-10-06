@@ -1,0 +1,19 @@
+.btn.btn-light.btn-lg.btn-block {
+  background: #F09103;
+  color: #fff !important;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  text-align: center;
+  text-transform: none;
+  padding: 14px 0;
+}
+
+.btn.btn-light.btn-lg.btn-block:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
+  transition: transform 200ms;
+  color: #fff;
+}
+
+
