@@ -1,124 +1,154 @@
-/* ----------- mas vendido carta ----------- */
-.featured-card {
-    position: relative;
-    background: linear-gradient(90deg, #2B2B2B 70%, #FFFFFF 100%);
-    color: #fff;
-    border-radius: 18px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    overflow: hidden;
-    width: 100%;
-    height: 203px;
+/* hero carrousel */
+.hero-frame {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-.featured-card:hover {
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-    transform: scale(1.02);
-    transition: transform 200ms;
-    color: #fff;
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* texto */
-
-.featured-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: #fff;
+/* etiquetas naranjas */
+.hero-badge {
+  position: absolute;
+  left: 48px;
+  background: #F09103;
+  color: #111;
+  padding: 8px 14px;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+  max-width: 75%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.featured-price {
-    font-size: 1.8rem;
-    font-weight: 550;
-    color: #fff;
+.hero-name {
+  top: 55%;
+  font-size: 1rem;
 }
 
-/* imagen */
-.featured-img {
-    height: 12.688em;
-    width: auto;
+.hero-price {
+  bottom: 22px;
+  font-size: 1.4rem;
+  font-weight: 800;
 }
 
-.featured-card:hover {
-    transform: scale(1.02);
-    transition: transform 200ms;
+/* dots del carrusel */
+#top-carousel .carousel-indicators [data-bs-target] {
+  width: 24px;
+  height: 4px;
+  background-color: #ffffff;
 }
 
-@media (max-width: 600px) {
-    
+#top-carousel .carousel-indicators .active {
+  background-color: #F09103;
 }
 
+/* flechas laterales */
+#top-carousel .carousel-control-prev-icon,
+#top-carousel .carousel-control-next-icon {
+  filter: drop-shadow(0 1px 3px rgba(240, 145, 3, 1));
+}
 
+/* responsive hero */
+@media (max-width: 768px) {
+  .hero-frame {
+    height: 210px;
+  }
+
+  .hero-badge {
+    left: 16px;
+    max-width: 82%;
+  }
+
+  .hero-name {
+    top: 55%;
+    font-size: 0.95rem;
+  }
+
+  .hero-price {
+    bottom: 14px;
+    font-size: 1.2rem;
+  }
+}
+
+/* cards catregorias */
 .custom-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    background: #FFFFFF;
-    border: 1px #E9ECEF;
-    border-radius: 16px;
-    overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: #FFFFFF;
+  border: 1px solid #E9ECEF;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 200ms ease, box-shadow 200ms ease;
 }
-
-.custom-card h3 {
-    margin: 16px;
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #212529;
-}
-
-.custom-card .card-body {
-    padding: 0 16px 18px 16px;
-    flex: 1 1 auto;
-}
-
-.custom-card .card-text {
-    color: #6C757D;
-    line-height: 1.45;
-    min-height: 44px;
-}
-
 
 .custom-card:hover,
 .custom-card:focus-within {
-    transform: scale(1.02);
-    transition: transform 200ms;
+  transform: scale(1.02);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
-.custom-card.cursor-active {
-    cursor: pointer;
+.custom-card h3 {
+  margin: 16px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #212529;
 }
 
+.custom-card .card-body {
+  padding: 0 16px 18px 16px;
+  flex: 1 1 auto;
+}
 
+.custom-card .card-text {
+  color: #6C757D;
+  line-height: 1.45;
+  min-height: 44px;
+}
+
+/* Responsive Cards */
 @media (max-width: 600px) {
-    .custom-card .card-img-top {
-        height: 14em;
-        width: auto;
-    }
+  .custom-card .card-img-top {
+    height: 14em;
+    width: auto;
+  }
 
-    .custom-card h3 {
-        font-size: 1.125rem;
-    }
+  .custom-card h3 {
+    font-size: 1.125rem;
+  }
 
-    .custom-card .card-body {
-        padding-bottom: 16px;
-    }
+  .custom-card .card-body {
+    padding-bottom: 16px;
+  }
 }
 
-
+/* para categorias */
 .btn.btn-light.btn-lg.btn-block {
-    background: #F09103;
-    color: #fff !important;
-    font-weight: 600;
-    border: none;
-    border-radius: 12px;
-    text-align: center;
-    text-transform: none;
-    padding: 14px 0;
+  background: #F09103;
+  color: #fff !important;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  text-align: center;
+  text-transform: none;
+  padding: 14px 0;
+  transition: transform 200ms, box-shadow 200ms;
 }
 
 .btn.btn-light.btn-lg.btn-block:hover {
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-    transform: scale(1.02);
-    transition: transform 200ms;
-    color: #fff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
+  color: #fff;
 }

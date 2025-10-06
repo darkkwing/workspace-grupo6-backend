@@ -61,42 +61,22 @@
 
   <main>
 
-    <!-- hero carrusel -->
-<section id="top-products" class="container-fluid px-0 my-4" aria-label="Más vendidos">
-
-  <div id="top-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000" data-bs-pause="hover" data-bs-keyboard="true">
-    <!-- dots se crean por js-->
-    <div class="carousel-indicators" id="top-carousel-indicators"></div>
-
-    <!-- slides se crean por js -->
-    <div class="carousel-inner" id="top-carousel-inner">
-
-         <!--mas vendidos  -->
-    <section class="container my-4">
-      <div class="featured-card d-flex align-items-center justify-content-between px-4">
-        <div class="featured-info">
-          <h5 class="featured-title">Play Station 5</h5>
-          <p class="featured-price"> UYU 59999 </p>
-        </div>
-        <img src="img/prod50743_3.jpg" alt="ps5" class="featured-img" />
-      </div>
-    </section>
-    <!--  mas vendidos-->
-
+<section id="top-products" class="my-4" aria-label="Más vendidos">
+  <div class="container">
+    <div id="top-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000" data-bs-pause="hover" data-bs-keyboard="true">
+      <div class="carousel-indicators" id="top-carousel-indicators"></div>
+      <div class="carousel-inner" id="top-carousel-inner"></div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#top-carousel" data-bs-slide="prev" aria-label="Anterior">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#top-carousel" data-bs-slide="next" aria-label="Siguiente">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      </button>
     </div>
-
-    <!-- flechas laterales -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#top-carousel" data-bs-slide="prev" aria-label="Anterior">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#top-carousel" data-bs-slide="next" aria-label="Siguiente">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    </button>
   </div>
 </section>
-<!-- hero Carrusel -->
 
-  
+
     <div class="album py-5 bg-light">
       <div class="container">
         <div class="row">
@@ -150,8 +130,9 @@
   </footer>
 
   <script src="js/buscador-responsive.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/catalogService.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/index.js"></script>
-  <script src="js/init.js"></script>
 </body>
 </html>
