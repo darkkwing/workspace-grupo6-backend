@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       cat.products.map(p => ({ ...p, sourceCatId: cat.catId }))
     );
 
-    const TOP_N = 5;
+    const TOP_N = 5;//aca se cambia cuantos productos se pueden ver
     const topProducts = allProducts
       .filter(p => Number.isFinite(p.soldCount))
       .sort((a, b) => b.soldCount - a.soldCount)
