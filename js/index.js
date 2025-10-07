@@ -78,7 +78,7 @@ function renderCarrousel(topProducts) {
     }
     indFrag.appendChild(dot);
 
-    // ---- slide (estilo Figma: imagen + etiquetas naranjas encima)
+    // slides
     const active = i === 0 ? "active" : "";
 
     const isUSD = (p.currency || "").toUpperCase() === "USD";
@@ -98,7 +98,7 @@ function renderCarrousel(topProducts) {
 
   carIndicators.appendChild(indFrag);
 
-  // arranca instancia de Bootstrap Carousel
+  // arranca instancia de Carousel
   const topCarouselEl = document.getElementById("top-carousel");
   if (topCarouselEl && window.bootstrap && bootstrap.Carousel) {
     const instance = bootstrap.Carousel.getOrCreateInstance(topCarouselEl);
