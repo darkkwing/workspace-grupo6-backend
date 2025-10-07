@@ -1,71 +1,29 @@
-.jumbotron,
-.card-body,
-.container,
-.site-header {
-  font-family: 'Verdana', serif !important;
+/* Aplicar Jost a todo el sitio */
+html, body, button, input, select, textarea,
+h1, h2, h3, h4, h5, h6,
+a, p, span, div, li, ul, ol, table, th, td,
+label, strong, small {
+  font-family: "Jost", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif !important;
+  letter-spacing: 0.2px;
 }
 
-.jumbotron .display-4 {
-  font-weight: bold;
+/* Títulos */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
 }
 
-nav a {
-  text-decoration: none;
+/* Botones */
+button, .btn {
+  font-weight: 600;
+  text-transform: none;
 }
 
-.bd-placeholder-img {
-  font-size: 1.125rem;
-  text-anchor: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+/* Inputs */
+input, textarea, select {
+  font-weight: 500;
 }
 
-@media (min-width: 768px) {
-  .bd-placeholder-img-lg {
-    font-size: 3.5rem;
-  }
-}
-
-.jumbotron {
-  height: 50vh;
-  padding: 5em inherit;
-  margin-bottom: 0;
-  background-color: #53C0FB;
-  background: url('../img/cover_back.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: black;
-  font-weight: bold;
-}
-
-@media (min-width: 768px) {
-  .jumbotron {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-  }
-}
-
-.jumbotron p:last-child {
-  margin-bottom: 0;
-}
-
-.jumbotron-heading {
-  font-weight: 300;
-}
-
-.jumbotron .container {
-  max-width: 40rem;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 10px;
-  text-shadow: 1px 1px 2px grey;
-}
-
-.jumbotron .lead {
-  font-size: 38px;
-}
 
 .centerAlign {
   text-align: center;
@@ -194,25 +152,6 @@ a.custom-card:hover {
   color: orange;
 }
 
-/* Nuestro CSS*/
-
-body {
-  font-family: Arial, sans-serif;
-  background: #fff;
-  margin: 0;
-  padding: 0;
-}
-
-/* Header */
-h1 {
-  text-align: center;
-  padding: 20px;
-  background: white;
-  color: black;
-  margin: 0;
-  font-size: 24px;
-  font-weight: bold;
-}
 
 .header {
   display: flex;
