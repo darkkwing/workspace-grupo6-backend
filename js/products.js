@@ -112,3 +112,5 @@ document.addEventListener('DOMContentLoaded', () => {
     inputResponsive.addEventListener('input', filtrarPorBusqueda);
   }
 });
+
+

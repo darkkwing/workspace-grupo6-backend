@@ -20,8 +20,9 @@
       </a>
     </div>
 
-    <div class="header-medio">
+    <div class="header-medio search-wrapper" role="search" id="searchForm">
       <input type="search" placeholder="¿Qué estás buscando?" class="buscador" id="search-input" />
+      <div id="search-results" class="resultados-container"></div>
     </div>
 
     <div class="header-der">
@@ -46,6 +47,7 @@
         <img src="img/search.svg" id="buscador-logo" />
         <div class="buscador-responsive">
           <input type="search" placeholder="¿Qué estás buscando?" id="search-responsive" />
+          <div id="search-results-responsive" class="search-results-container"></div>
         </div>
       </div>
       <input type="checkbox" id="menu-toggle" />
@@ -134,5 +136,7 @@
   <script src="js/catalogService.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/index.js"></script>
+  <script src="js/buscador-desplegable.js"></script>
+  
 </body>
 </html>
