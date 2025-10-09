@@ -17,8 +17,11 @@ header {
 }
 
 #LogoJaP {
-    width: 26rem;
+    width: 30rem;
     height: auto;
+    display: flex;
+    justify-content: center;
+    margin: auto;
 }
 
 /* Main */
@@ -32,7 +35,7 @@ main {
 
 .login-card {
     background: #fff;
-    border-radius: 1rem;
+    border-radius: 3rem;
     box-shadow: 0.5rem 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.13);
     padding: 2rem;
     min-width: 20rem;
@@ -53,7 +56,7 @@ input[type="password"] {
     width: 100%;
     padding: 0.5rem 0;
     border: 0.1rem solid #bbb;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     background: #fff;
     font-family: 'Jost', sans-serif;
     font-size: 1em;
@@ -66,7 +69,7 @@ input[type="password"] {
 
 input[type="email"]:focus,
 input[type="password"]:focus {
-    border: 0.12rem solid #222;
+    border: 1rem solid #222;
     color: #222;
 }
 
@@ -81,7 +84,7 @@ button[type="submit"] {
     font-weight: 700;
     letter-spacing: 0.1rem;
     border: none;
-    border-radius: 0.3rem;
+    border-radius: 1rem;
     box-shadow: 0.1rem 0.2rem 0.3rem 0 rgba(0, 0, 0, 0.15);
     cursor: pointer;
 }
