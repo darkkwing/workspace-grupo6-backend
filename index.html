@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <title>eMercado - Todo lo que busques está aquí</title>
   <link href="img/groupe-six-icon.png" rel="icon" />
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet" />
   <link href="css/styles.css" rel="stylesheet" />
   <link href="css/index.css" rel="stylesheet" />
+  <link href="css/darkmode.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -30,12 +33,20 @@
       <a class="a-btn" href="sell.html"><button class="izq">Vender</button></a>
       <a class="a-btn" href="cart.html"><button class="izq">Carrito</button></a>
       <div class="dropdown">
-        <button class="active dropdown-toggle" type="button" id="cuentaMenu" data-bs-toggle="dropdown" aria-expanded="false">
+        <button class="active dropdown-toggle" type="button" id="cuentaMenu" data-bs-toggle="dropdown"
+          aria-expanded="false">
           Cuenta
         </button>
         <ul class="dropdown-menu" aria-labelledby="cuentaMenu">
           <li><span class="dropdown-item-text" id="user-info"></span></li>
-          <li><hr class="dropdown-divider" /></li>
+          <li>
+            <hr class="dropdown-divider" />
+          </li>
+          <!--boton modo oscuro-->
+          <li class="switch" id="themeSwitch" role="button" aria-label="Cambiar tema">
+            <i class="bx bx-sun"></i>
+            <i class="bx bx-moon"></i>
+          </li>
           <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
         </ul>
       </div>
@@ -63,20 +74,23 @@
 
   <main>
 
-<section id="top-products" class="my-4" aria-label="Más vendidos">
-  <div class="container">
-    <div id="top-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000" data-bs-pause="hover" data-bs-keyboard="true">
-      <div class="carousel-indicators" id="top-carousel-indicators"></div>
-      <div class="carousel-inner" id="top-carousel-inner"></div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#top-carousel" data-bs-slide="prev" aria-label="Anterior">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#top-carousel" data-bs-slide="next" aria-label="Siguiente">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      </button>
-    </div>
-  </div>
-</section>
+    <section id="top-products" class="my-4" aria-label="Más vendidos">
+      <div class="container">
+        <div id="top-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000"
+          data-bs-pause="hover" data-bs-keyboard="true">
+          <div class="carousel-indicators" id="top-carousel-indicators"></div>
+          <div class="carousel-inner" id="top-carousel-inner"></div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#top-carousel" data-bs-slide="prev"
+            aria-label="Anterior">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#top-carousel" data-bs-slide="next"
+            aria-label="Siguiente">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </section>
 
 
     <div class="album py-5 bg-light">
@@ -85,7 +99,7 @@
           <div class="col-md-4">
             <div class="card mb-4 shadow-sm custom-card cursor-active" id="autos">
               <img class="bd-placeholder-img card-img-top" src="img/cars_index.jpg"
-                   alt="Imgagen representativa de la categoría 'Autos'">
+                alt="Imgagen representativa de la categoría 'Autos'">
               <h3 class="m-3">Autos</h3>
               <div class="card-body">
                 <p class="card-text">Los mejores precios en autos 0 kilómetro, de alta y media gama.</p>
@@ -96,7 +110,7 @@
           <div class="col-md-4">
             <div class="card mb-4 shadow-sm custom-card cursor-active" id="juguetes">
               <img class="bd-placeholder-img card-img-top" src="img/toys_index.jpg"
-                   alt="Imgagen representativa de la categoría 'Juguetes'">
+                alt="Imgagen representativa de la categoría 'Juguetes'">
               <h3 class="m-3">Juguetes</h3>
               <div class="card-body">
                 <p class="card-text">Encuentra aquí los mejores precios para niños/as de cualquier edad.</p>
@@ -107,7 +121,7 @@
           <div class="col-md-4">
             <div class="card mb-4 shadow-sm custom-card cursor-active" id="muebles">
               <img class="bd-placeholder-img card-img-top" src="img/furniture_index.jpg"
-                   alt="Imgagen representativa de la categoría 'Muebles'">
+                alt="Imgagen representativa de la categoría 'Muebles'">
               <h3 class="m-3">Muebles</h3>
               <div class="card-body">
                 <p class="card-text">Muebles antiguos, nuevos y para ser armados por uno mismo.</p>
@@ -137,6 +151,8 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/index.js"></script>
   <script src="js/buscador-desplegable.js"></script>
-  
+  <script src="js/darkmode.js"></script>
+
 </body>
+
 </html>

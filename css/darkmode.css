@@ -1,0 +1,99 @@
+
+:root {
+  --gs-main: #F09103;      /* naranja principal */
+  --gs-bg: #121212;        /* fondo principal */
+  --gs-surface: #1b1b1b;   /* superficies */
+  --gs-surface-2: #222;    /* tarjetas */
+  --gs-text: #eaeaea;      /* texto principal */
+  --gs-muted: #bdbdbd;     /* texto secundario */
+  --gs-border: #2c2c2c;    /* bordes oscuros */
+}
+
+/* switch*/
+.switch {
+  width: 7.5em;
+  height: 1.875em;
+  padding: 0 0.375em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  border-radius: 6.25em;
+  cursor: pointer;
+  overflow: hidden;
+  background: var(--gs-main);   
+  gap: 4em;
+  transition: background .3s ease, border-color .3s ease;
+  border: none;
+}
+
+/* Íconos */
+.switch i {
+  font-size: 1rem;
+  line-height: 1;
+  transition: color .3s ease;
+}
+
+.switch i.bx-sun {
+  color: #000000; 
+}
+.switch i.bx-moon {
+  color: #000000; 
+}
+
+.switch::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 1.5em;
+  width: 1.5em;
+  border-radius: 50%;
+  background: #2b2b2b; 
+  left: 0.188em;
+  transition: left .3s ease, background .3s ease, border-color .3s ease;
+}
+
+/* darkmode activo*/
+.switch.active {
+  background: #ffffff; 
+  border-color: #ffffff;
+}
+
+.switch.active::before {
+  left: 88px;
+  background: #2e2e2e; 
+}
+
+.switch.active i.bx-sun {
+  color: #F09103; 
+}
+
+.switch.active i.bx-moon {
+  color: var(--gs-main); 
+}
+
+/* centra el boton */
+.dropdown-menu .switch {
+  margin: 8px auto 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.switch:hover,
+.switch:focus {
+  background: var(--gs-main) !important;  
+  border-color: #333 !important;
+  filter: none !important;
+  opacity: 1 !important;
+  box-shadow: none !important;
+}
+
+.switch.active:hover,
+.switch.active:focus {
+  background: #ffffff !important;
+  border-color: #ffffff !important;
+  box-shadow: none !important;
+}
+
