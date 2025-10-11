@@ -200,7 +200,7 @@ textarea {
 }
 
 .btn-primary {
-    background-color: #ffa500;
+    background-color: #f09103;
     color: #fff;
     border: none;
     border-radius: 1.5625rem;
@@ -212,8 +212,9 @@ textarea {
 }
 
 .btn-primary:hover {
-    background-color: #e69500;
+    background-color: #df9100;
     transition: all ease 0.2s;
+    transform: scale(1.01);
 }
 
 hr {
