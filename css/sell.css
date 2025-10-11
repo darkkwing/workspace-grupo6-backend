@@ -1,0 +1,241 @@
+main { 
+    display: flex;
+    justify-content: center;
+    padding: 2.5rem 1.25rem;
+}
+
+.container {
+    max-width: 46.875rem;
+    width: 100%;
+}
+
+.text-center h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.text-center p {
+    color: #555;
+    margin-bottom: 1.5625rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5625rem;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 1.5625rem;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    background-color: #fff;
+    transition: border-color 0.2s ease;
+    outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #000;
+}
+
+textarea {
+    min-height: 6.25rem;
+    resize: vertical;
+}
+
+#file-upload {
+    border: 0.125rem dashed #ccc;
+    border-radius: 1.5625rem;
+    padding: 2.5rem 0;
+    text-align: center;
+    color: #999;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+#file-upload:hover {
+    border-color: #000;
+}
+
+.triple-input {
+    display: flex;
+    gap: 0.9375rem;
+    flex-wrap: wrap;
+}
+
+.triple-input .input-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.triple-input label {
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin-bottom: 0.375rem;
+}
+
+.triple-input input,
+.triple-input select {
+    border-radius: 1.5625rem !important;
+    border: 1px solid #ccc;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #fff;
+    background-position: right 0.75rem center;
+    background-repeat: no-repeat;
+}
+
+.triple-input input:focus,
+.triple-input select:focus {
+    border-color: #000;
+}
+
+.radio-section {
+    display: block !important;
+    margin-top: 0.75rem;
+}
+
+.radio-section p {
+    margin: 0 0 0.625rem 0;
+    font-weight: 600;
+    color: #111;
+    font-size: 1rem;
+}
+
+.radio-section>label {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 1.75rem;
+    padding: 0.625rem 3rem;
+    margin-right: 0.625rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    background: #ffffff;
+    font-weight: 600;
+    transition: background .12s ease, border-color .12s ease, transform .08s ease;
+    white-space: nowrap;
+}
+
+.radio-section>label:last-of-type {
+    margin-right: 0;
+}
+
+.radio-section>label input[type="radio"] {
+    margin: 0;
+    width: 1rem;
+    height: 1rem;
+    accent-color: #000;
+}
+
+.radio-section>label:hover {
+    transform: scale(1.01);
+}
+
+.radio-section>label:has(input[type="radio"]:checked) {
+    border-color: #000;
+}
+
+.radio-section>label.active {
+    border-color: #000;
+    background: #F6F6F6;
+    box-shadow: 0 0.375rem 1.125rem rgba(0, 0, 0, 0.06);
+}
+
+.btn-link {
+    background: #000;
+    color: #fff !important;
+    border-radius: 1.5625rem;
+    padding: 0.75rem 0;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    text-align: center;
+    transition: opacity 0.2s ease;
+    text-decoration: none;
+}
+
+.btn-link:hover {
+    background: #313131;
+    transition: all ease 0.2s;
+}
+
+.cost-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+}
+
+.cost-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.625rem 0;
+}
+
+#cost-item2 {
+    border-bottom: 1px solid black;
+}
+
+.cost-item:last-child {
+    border-bottom: none;
+}
+
+.cost-item.total {
+    font-weight: 600;
+}
+
+.btn-primary {
+    background-color: #ffa500;
+    color: #fff;
+    border: none;
+    border-radius: 1.5625rem;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.875rem 0;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: #e69500;
+    transition: all ease 0.2s;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #eee;
+}
+
+/* Mantienen los px para los breakpoints */
+@media (max-width: 768px) {
+    .triple-input {
+        flex-direction: column;
+    }
+
+    .radio-options {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 600px) {
+    .radio-section>label {
+        display: flex !important;
+        width: 100%;
+        margin-right: 0;
+    }
+}
