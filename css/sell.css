@@ -222,7 +222,6 @@ hr {
     border-top: 1px solid #eee;
 }
 
-/* Mantienen los px para los breakpoints */
 @media (max-width: 768px) {
     .triple-input {
         flex-direction: column;

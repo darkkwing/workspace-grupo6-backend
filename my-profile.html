@@ -4,71 +4,117 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>eMercado - Todo lo que busques está aquí</title>
+  <title>Perfil | GROUPE SIX</title>
   <link href="img/groupe-six-icon.png" rel="icon">
+  <!-- CSS -->
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
+  <link href="css/perfil.css" rel="stylesheet">
+  <link href="css/footer.css" rel="stylesheet">
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-    <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-izq">
+      <a href="index.html">
+        <img src="img/groupe-six.png" alt="groupe six" class="logo" />
+      </a>
+    </div>
+
+    <div class="header-medio search-wrapper" role="search" id="searchForm">
+      <input type="search" placeholder="¿Qué estás buscando?" class="buscador" id="search-input" />
+      <div id="search-results" class="resultados-container"></div>
+    </div>
+
+    <div class="header-der">
+      <a class="a-btn" href="categories.html"><button class="izq">Categorias</button></a>
+      <a class="a-btn" href="sell.html"><button class="izq">Vender</button></a>
+      <a class="a-btn" href="cart.html"><button class="izq">Carrito <img src="img/cart4.svg" alt=""></button></a>
+      <div class="dropdown">
+        <button class="active dropdown-toggle" type="button" id="cuentaMenu" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Cuenta
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="cuentaMenu">
+          <li><a href="my-profile.html" class="dropdown-item" class="dropdown-item-text" id="user-info"></a></li>
+          <li>
+            <hr class="dropdown-divider" />
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
+          <!--boton modo oscuro-->
+          <li class="switch" id="themeSwitch" role="button" aria-label="Cambiar tema">
+            <i class="bx bx-sun"></i>
+            <i class="bx bx-moon"></i>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-          <li class="nav-item">
-          </li>
+          <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
         </ul>
       </div>
     </div>
-  </nav>
-  <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+
+    <!-- Menú hamburguesa (mobile) -->
+    <nav class="menu" style="display: none;">
+      <div class="buscador-contenedor">
+        <img src="img/search.svg" id="buscador-logo" />
+        <div class="buscador-responsive">
+          <input type="search" placeholder="¿Qué estás buscando?" id="search-responsive" />
+          <div id="search-results-responsive" class="search-results-container"></div>
+        </div>
       </div>
-    </div>
+      <input type="checkbox" id="menu-toggle" />
+      <label for="menu-toggle" class="menu-icon">&#9776;</label>
+      <ul class="menu-links">
+        <li><a href="my-profile.html" class="dropdown-item-text" id="user-info"></a></li>
+        <li><a href="cart.html">Carrito<img src="img/cart4.svg" alt=""></a></li>
+        <li><a href="categories.html">Categorias</a></li>
+        <li><a href="sell.html">Vender</a></li>
+        <li class="switch" id="themeSwitchMobile" role="button" aria-label="Cambiar tema">
+          <i class="bx bx-sun" aria-hidden="true"></i>
+          <i class="bx bx-moon" aria-hidden="true"></i>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Contenido -->
+  <main>
+    <section class="perfil-container">
+      <h1>Perfil</h1>
+      <div class="perfil-contenido">
+        <div class="perfil-foto">
+          <img id="fotoPerfil" src="img/person-circle.svg" alt="Foto de perfil" />
+          <input type="file" id="inputFoto" accept="image/*" />
+        </div>
+
+        <div class="perfil-info">
+          <label>Nombre</label>
+          <input type="text" id="nombre" value="Nombre" disabled />
+          <label>Apellido</label>
+          <input type="text" id="apellido" value="Apellido" disabled />
+          <label>Email</label>
+          <input type="email" id="email" readonly />
+          <label>Teléfono de Contacto</label>
+          <input type="tel" id="telefono" value="Teléfono" disabled />
+          <button id="btnEditar">Editar</button>
+        </div>
+      </div>
+    </section>
   </main>
-  <footer class="text-muted">
-    <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
-    </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Este sitio forma parte de
+      <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+    </p>
   </footer>
+
+  <!-- Scripts -->
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/my-profile.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/buscador-desplegable.js"></script>
+  <script src="js/darkmode.js"></script>
 </body>
 
 </html>
