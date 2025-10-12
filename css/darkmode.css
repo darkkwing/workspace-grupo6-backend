@@ -315,7 +315,7 @@ body.dark .footer a:hover {
   color: var(--gs-main);
 }
 
-/* ---------- Login ---------- */
+/*login*/
 body.dark .login-card {
   background: var(--gs-surface-2);
   color: var(--gs-text);
