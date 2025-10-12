@@ -4,182 +4,150 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>eMercado - Todo lo que busques está aquí</title>
+  <title>Vender | GROUPE SIX</title>
   <link href="img/groupe-six-icon.png" rel="icon">
+  <!-- CSS -->
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/dropzone.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-  <link href="css/darkmodebtn.css" rel="stylesheet" />
-  <link href="css/darkmode.css" rel="stylesheet" />
+  <link href="css/sell.css" rel="stylesheet">
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-    <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-izq">
+      <a href="index.html">
+        <img src="img/groupe-six.png" alt="groupe six" class="logo" />
+      </a>
+    </div>
+
+    <div class="header-medio search-wrapper" role="search" id="searchForm">
+      <input type="search" placeholder="¿Qué estás buscando?" class="buscador" id="search-input" />
+      <div id="search-results" class="resultados-container"></div>
+    </div>
+
+    <div class="header-der">
+      <a class="a-btn" href="categories.html"><button class="izq">Categorias</button></a>
+      <a class="a-btn" href="sell.html"><button class="izq">Vender</button></a>
+      <a class="a-btn" href="cart.html"><button class="izq">Carrito</button></a>
+      <div class="dropdown">
+        <button class="active dropdown-toggle" type="button" id="cuentaMenu" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Cuenta
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="cuentaMenu">
+          <li><span class="dropdown-item-text" id="user-info"></span></li>
+          <li>
+            <hr class="dropdown-divider" />
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="sell.html">Vender</a>
-          </li>
-          <li class="nav-item">
-          </li>
+          <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
         </ul>
       </div>
     </div>
-  </nav>
-  <div class="container">
-    <div class="text-center p-4">
-      <h2>Vender</h2>
-      <p class="lead">Ingresa los datos del artículo a vender.</p>
-    </div>
-    <div class="row justify-content-md-center">
-      <div class="col-md-8 order-md-1">
-        <h4 class="mb-3">Información del producto</h4>
-        <form class="needs-validation" id="sell-info">
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label for="productName">Nombre</label>
-              <input type="text" class="form-control" id="productName" value="" name="productName">
-              <div class="invalid-feedback">
-                Ingresa un nombre
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-8 order-md-1">
-              <label>Imágenes</label>
-              <div class="needsclick dz-clickable" id="file-upload">
-                <div class="dz-message needsclick">
-                  Arrastra tus fotos aquí<br>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12 mb-3">
-              <label for="productDescription">Descripción</label>
-              <textarea name="productDescription" class="form-control" id="productDescription"></textarea>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3 mb-3">
-              <label for="productCostInput">Costo</label>
-              <input type="number" name="productCostInput" class="form-control" id="productCostInput" placeholder=""
-                required="" value="0" min="0">
-              <div class="invalid-feedback">
-                El costo debe ser mayor que 0.
-              </div>
-            </div>
-            <div class="col-md-4 mb-3">
-              <label for="productCurrency">Moneda</label>
-              <select name="productCurrency" class="form-select custom-select d-block w-100" id="productCurrency"
-                required>
-                <option value="" hidden selected>Seleccionar moneda</option>
-                <option>Pesos Uruguayos (UYU)</option>
-                <option>Dólares (USD)</option>
-              </select>
-              <div class="invalid-feedback">
-                Ingresa una categoría válida.
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-7 mb-3">
-              <label for="productCategory">Categoría</label>
-              <select name="productCategory" class="custom-select form-select d-block w-100" id="productCategory">
-                <option value="">Elija la categoría...</option>
-                <option>Autos</option>
-                <option>Juguetes</option>
-                <option>Muebles</option>
-                <option>Herramientas</option>
-                <option>Computadoras</option>
-                <option>Vestimenta</option>
-              </select>
-              <div class="invalid-feedback">
-                Por favor ingresa una categoría válida.
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3 mb-3">
-              <label for="productCountInput">Cantidad en stock</label>
-              <input type="number" name="productCountInput" class="form-control" id="productCountInput" required
-                value="1" min="0">
-              <div class="invalid-feedback">
-                La cantidad es requerida.
-              </div>
-            </div>
-          </div>
-          <hr class="mb-4">
-          <h5 class="mb-3">Tipo de publicación</h5>
-          <div class="d-block my-3">
-            <div class="custom-control custom-radio">
-              <input id="goldradio" name="publicationType" type="radio" class="custom-control-input" checked=""
-                required="">
-              <label class="custom-control-label" for="goldradio">Gold (13%)</label>
-            </div>
-            <div class="custom-control custom-radio">
-              <input id="premiumradio" name="publicationType" type="radio" class="custom-control-input" required="">
-              <label class="custom-control-label" for="premiumradio">Premium (7%)</label>
-            </div>
-            <div class="custom-control custom-radio">
-              <input id="standardradio" name="publicationType" type="radio" class="custom-control-input" required="">
-              <label class="custom-control-label" for="standardradio">Estándar (3%)</label>
-            </div>
-            <div class="row">
-              <button type="button" class="m-1 btn btn-link" data-bs-toggle="modal"
-                data-bs-target="#contidionsModal">Ver
-                condiciones</button>
-            </div>
-          </div>
-          <hr class="mb-4">
-          <h4 class="mb-3">Costos</h4>
-          <ul class="list-group mb-3">
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-              <div>
-                <h6 class="my-0">Precio</h6>
-                <small class="text-muted">Unitario del producto</small>
-              </div>
-              <span class="text-muted" id="productCostText">-</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-              <div>
-                <h6 class="my-0">Porcentaje</h6>
-                <small class="text-muted">Según el tipo de publicación</small>
-              </div>
-              <span class="text-muted" id="comissionText">-</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between">
-              <span>Total ($)</span>
-              <strong id="totalCostText">-</strong>
-            </li>
-          </ul>
-          <hr class="mb-4">
-          <button class="btn btn-primary btn-lg" type="submit">Vender</button>
-        </form>
+
+    <!-- Menú hamburguesa (mobile) -->
+    <nav class="menu" style="display: none;">
+      <div class="buscador-contenedor">
+        <img src="img/search.svg" id="buscador-logo" />
+        <div class="buscador-responsive">
+          <input type="search" placeholder="¿Qué estás buscando?" id="search-responsive" />
+          <div id="search-results-responsive" class="search-results-container"></div>
+        </div>
       </div>
-    </div>
-  </div>
-  <footer class="text-muted">
+      <input type="checkbox" id="menu-toggle" />
+      <label for="menu-toggle" class="menu-icon">&#9776;</label>
+      <ul class="menu-links">
+        <li><span class="dropdown-item-text" id="user-info"></span></li>
+        <li><a href="cart.html">Carrito</a></li>
+        <li><a href="categories.html">Categorias</a></li>
+        <li><a href="sell.html">Vender</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Contenido -->
+  <main>
     <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
-      </p>
+      <div class="text-center">
+        <h2>Vender</h2>
+        <p>Publica en minutos, vende sin límites.</p>
+      </div>
+
+      <form id="sell-info" novalidate>
+        <input type="text" id="productName" name="productName" placeholder="Nombre">
+
+        <div id="file-upload">
+          <div class="dz-message">Subí tus fotos y deja que tu producto hable por sí solo.</div>
+        </div>
+
+        <textarea id="productDescription" name="productDescription"
+          placeholder="Escribí aquí tu descripción con claridad."></textarea>
+
+        <div class="triple-input">
+          <div class="input-group">
+            <label for="productCostInput">Precio</label>
+            <input type="number" id="productCostInput" name="productCostInput" min="0" value="0">
+          </div>
+
+          <div class="input-group">
+            <label for="productCurrency">Moneda</label>
+            <select id="productCurrency" name="productCurrency">
+              <option value="" hidden selected>Selecciona aquí la moneda</option>
+              <option>Pesos Uruguayos (UYU)</option>
+              <option>Dólares (USD)</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="productCountInput">Stock</label>
+            <input type="number" id="productCountInput" name="productCountInput" min="0" value="1">
+          </div>
+        </div>
+
+        <div class="radio-section">
+          <p>Tipo de publicación</p>
+          <label><input type="radio" id="goldradio" name="publicationType" checked> Gold (13%)</label>
+          <label><input type="radio" id="premiumradio" name="publicationType"> Premium (7%)</label>
+          <label><input type="radio" id="standardradio" name="publicationType"> Estándar (3%)</label>
+        </div>
+
+        <button type="button" class="btn-link" id="view-conditions">Ver condiciones</button>
+
+        <div class="cost-section">
+          <p><strong>Costos</strong></p>
+          <div class="cost-item">
+            <div>
+              <p class="cost-title"><b>Precio</b></p>
+              <small>Unitario del producto</small>
+            </div>
+            <span id="productCostText">-</span>
+          </div>
+
+          <div class="cost-item" id="cost-item2">
+            <div>
+              <p class="cost-title"><b>Porcentaje</b></p>
+              <small>Según el tipo de publicación</small>
+            </div>
+            <span id="comissionText">-</span>
+          </div>
+
+          <div class="cost-item total">
+            <p>Total ($)</p>
+            <strong id="totalCostText">-</strong>
+          </div>
+        </div>
+        <button class="btn-primary" type="submit">Vender</button>
+      </form>
     </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Este sitio forma parte de
+      <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+    </p>
   </footer>
 
   <div class="alert alert-primary-dismissible fade" id="alertResult" role="alert">
@@ -227,11 +195,12 @@
       <div></div>
     </div>
   </div>
+  <!-- Scripts -->
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/dropzone.js"></script>
   <script src="js/init.js"></script>
   <script src="js/sell.js"></script>
-  <script src="js/darkmode.js"></script>
+  <script src="js/index.js"></script>
 </body>
 
 </html>
