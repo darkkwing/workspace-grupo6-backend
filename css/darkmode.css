@@ -23,12 +23,17 @@ body.dark {
 
 /* ---------- header / nav / dropdown */
 body.dark .header,
-body.dark .menu,
-body.dark .dropdown-menu {
-  background: var(--gs-surface);
+body.dark .menu{
   color: var(--gs-text);
   border-color: var(--gs-border);
 }
+
+body.dark .dropdown-menu {
+  background-color: var(--gs-surface);
+  color: var(--gs-text);
+  border-color: var(--gs-border);
+}
+
 
 body.dark .dropdown-divider {
   border-top-color: var(--gs-border);
@@ -115,19 +120,27 @@ body.dark .resultado-item:hover {
 /* partes claras de boostrap*/
 body.dark .bg-light,
 body.dark .album {
-  background: var(--gs-surface) !important;
+  background: var(--gs-bg) !important;
 }
 
 /* cards, y otros*/
 body.dark .card,
 body.dark .custom-card,
 body.dark .qualification-box,
-body.dark .comentario,
-body.dark .related-card {
+body.dark .comentario {
   background: var(--gs-surface-2);
   color: var(--gs-text);
   border: 1px solid var(--gs-border);
   box-shadow: 0 2px 6px rgba(0, 0, 0, .35);
+}
+
+body.dark .related-card {
+  color: var(--gs-text);
+}
+
+body.dark .related-card:hover{
+  background: var(--gs-surface-2);
+  color: var(--gs-text);
 }
 
 body.dark .card .card-text,
@@ -148,29 +161,38 @@ body.dark .titulo-relacionados {
 
 
 /* botones generales*/
-body.dark .btn,
 body.dark .btn-light,
-body.dark .btn-cancel,
-body.dark .btn-submit,
-body.dark .btn-agregar {
+body.dark .btn-cancel {
   background: var(--gs-surface-2);
   color: var(--gs-text);
   border: 1px solid var(--gs-border);
 }
+body.dark .btn,
+body.dark .btn-submit,
+body.dark .btn-agregar {
+  background: var(--gs-main);
+  color: var(--gs-text);
+  border: 1px solid var(--gs-border);
+}
+
+
+body.dark .btn-light:hover,
+body.dark .btn-cancel:hover {
+  background: #2a2a2a;
+  color: var(--gs-main);
+}
 
 body.dark .btn:hover,
-body.dark .btn-light:hover,
-body.dark .btn-cancel:hover,
 body.dark .btn-submit:hover,
 body.dark .btn-agregar:hover {
-  background: #2a2a2a;
+  background: var(--gs-text);
   color: var(--gs-main);
 }
 
 
 /*filtros y ordenamiento*/
 body.dark .filters {
-  background: var(--gs-surface);
+  background: var(--gs-bg);
 }
 
 body.dark .filters input {
@@ -187,6 +209,12 @@ body.dark .filters button {
   background: var(--gs-surface-2);
   color: var(--gs-text);
   border: 1px solid var(--gs-border);
+}
+
+body.dark .filters button.link {
+  color: var(--gs-main);
+  background: transparent;
+  border: none;
 }
 
 body.dark .filters button:hover {
@@ -232,10 +260,24 @@ body.dark input[type="textarea"]::placeholder{
   color:var(--gs-surface-2);
 }
 
+body.dark textarea.comment {
+  background: var(--gs-surface-2) !important;
+  color: var(--gs-text) !important;
+  border: 1px solid var(--gs-border) !important;
+  border-radius: 8px;
+  caret-color: var(--gs-text);
+}
+
+/* placeholder */
+body.dark textarea.comment::placeholder {
+  color: var(--gs-muted) !important;
+}
+
+
 
 /* categories*/
 body.dark #cat-list-container .list-group-item {
-  background: var(--gs-surface-2);
+  background: var(--gs-bg);
   color: var(--gs-text);
 }
 
@@ -266,4 +308,29 @@ body.dark .footer {
 
 body.dark .footer a:hover {
   color: var(--gs-main);
+}
+
+/* ---------- Login ---------- */
+body.dark .login-card {
+  background: var(--gs-surface-2);
+  color: var(--gs-text);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .55);
+}
+
+
+body.dark input[type="email"],
+body.dark input[type="password"] {
+  background: var(--gs-surface);
+  color: var(--gs-text);
+  border: 1px solid var(--gs-border);
+}
+
+body.dark input[type="email"]::placeholder,
+body.dark input[type="password"]::placeholder {
+  color: var(--gs-muted);
+}
+
+body.dark button[type="submit"] {
+  color: #fff;
+  border: none;
 }

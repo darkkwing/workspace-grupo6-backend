@@ -12,11 +12,14 @@
   <link href="css/dropzone.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/sell.css" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link href="css/darkmodebtn.css" rel="stylesheet" />
+  <link href="css/darkmode.css" rel="stylesheet" />
 </head>
 
 <body>
-  <!-- Header -->
-  <header class="header">
+<!-- Header izquierda -->
+    <header class="header">
     <div class="header-izq">
       <a href="index.html">
         <img src="img/groupe-six.png" alt="groupe six" class="logo" />
@@ -42,6 +45,11 @@
           <li>
             <hr class="dropdown-divider" />
           </li>
+          <!--boton modo oscuro-->
+          <li class="switch" id="themeSwitch" role="button" aria-label="Cambiar tema">
+            <i class="bx bx-sun"></i>
+            <i class="bx bx-moon"></i>
+          </li>
           <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
         </ul>
       </div>
@@ -63,9 +71,14 @@
         <li><a href="cart.html">Carrito</a></li>
         <li><a href="categories.html">Categorias</a></li>
         <li><a href="sell.html">Vender</a></li>
+        <li class="switch" id="themeSwitchMobile" role="button" aria-label="Cambiar tema">
+          <i class="bx bx-sun" aria-hidden="true"></i>
+          <i class="bx bx-moon" aria-hidden="true"></i>
+        </li>
       </ul>
     </nav>
   </header>
+
 
   <!-- Contenido -->
   <main>
@@ -201,6 +214,7 @@
   <script src="js/init.js"></script>
   <script src="js/sell.js"></script>
   <script src="js/index.js"></script>
+  <script src="js/darkmode.js"></script>
 </body>
 
 </html>
