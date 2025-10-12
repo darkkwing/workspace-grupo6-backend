@@ -152,3 +152,7 @@
   transform: scale(1.02);
   color: #fff;
 }
+
+.bg-light{
+  background: none !important;
+}

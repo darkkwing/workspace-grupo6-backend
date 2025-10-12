@@ -440,7 +440,7 @@ a.custom-card:hover {
 
 /* Footer */
 footer {
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  background-color: #fafafa;
   padding: 15px;
 }
 

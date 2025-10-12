@@ -23,7 +23,7 @@ body.dark {
 
 /* ---------- header / nav / dropdown */
 body.dark .header,
-body.dark .menu{
+body.dark .menu {
   color: var(--gs-text);
   border-color: var(--gs-border);
 }
@@ -73,6 +73,11 @@ body.dark .header-der button {
   color: var(--gs-text);
   border: 1px solid var(--gs-border);
 }
+
+body.dark .header-der img {
+  filter: invert();
+}
+
 
 body.dark .header-der button:hover {
   background: #2a2a2a;
@@ -138,7 +143,7 @@ body.dark .related-card {
   color: var(--gs-text);
 }
 
-body.dark .related-card:hover{
+body.dark .related-card:hover {
   background: var(--gs-surface-2);
   color: var(--gs-text);
 }
@@ -167,6 +172,7 @@ body.dark .btn-cancel {
   color: var(--gs-text);
   border: 1px solid var(--gs-border);
 }
+
 body.dark .btn,
 body.dark .btn-submit,
 body.dark .btn-agregar {
@@ -221,7 +227,7 @@ body.dark .filters button:hover {
   background: #2a2a2a;
 }
 
-body.dark #categories{
+body.dark #categories {
   color: var(--gs-text);
 }
 
@@ -245,7 +251,7 @@ body.dark .arrow {
 }
 
 /*cards productos*/
-body.dark .info{
+body.dark .info {
   background: var(--gs-surface-2);
   color: var(--gs-text);
   border: 1px solid var(--gs-border);
@@ -256,8 +262,8 @@ body.dark .comentario-fecha {
   color: var(--gs-muted);
 }
 
-body.dark input[type="textarea"]::placeholder{
-  color:var(--gs-surface-2);
+body.dark input[type="textarea"]::placeholder {
+  color: var(--gs-surface-2);
 }
 
 body.dark textarea.comment {
@@ -303,7 +309,6 @@ body.dark a:hover {
 body.dark .footer {
   background: var(--gs-surface);
   color: var(--gs-muted);
-  border-top: 1px solid var(--gs-border);
 }
 
 body.dark .footer a:hover {
@@ -333,4 +338,57 @@ body.dark input[type="password"]::placeholder {
 body.dark button[type="submit"] {
   color: #fff;
   border: none;
+}
+
+/*sell.html*/
+body.dark .text-center p {
+  color: var(--gs-text);
+}
+
+body.dark .radio-section>label {
+  background: var(--gs-surface);
+}
+
+body.dark input[type="text"],
+body.dark #file-upload,
+body.dark textarea#productDescription,
+body.dark input#productCostInput,
+body.dark select#productCurrency,
+body.dark input#productCountInput {
+  background: var(--gs-surface-2) !important;
+  color: var(--gs-text) !important;
+}
+
+@media (max-width: 600px) {
+  body.dark .dropdown-item-text {
+    color: var(--gs-text);
+  }
+
+  body.dark .menu-links li img {
+    filter: invert();
+  }
+
+  body.dark .buscador-contenedor img {
+    filter: invert();
+  }
+
+
+
+}
+
+@media (max-width: 768px) {
+  body.dark .dropdown-item-text {
+    color: var(--gs-text);
+  }
+
+  body.dark .menu-links li img {
+    filter: invert();
+  }
+
+   body.dark .buscador-contenedor img {
+    filter: invert();
+  }
+
+
+
 }
