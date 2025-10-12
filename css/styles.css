@@ -439,20 +439,39 @@ a.custom-card:hover {
 }
 
 /* Footer */
-footer {
-  background-color: #fafafa;
-  padding: 15px;
+
+html {
+  height: 100%;
 }
 
-footer a,
-footer p {
-  color: gray;
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
   text-align: center;
+  padding: 0.9375rem 0;
+  color: #333;
+  border-top: 0.063rem solid #c7c7c7;
+  width: 100%;
+  margin-top: auto;
+}
+
+footer a {
+  color: #333;
+  text-decoration: none;
 }
 
 footer a:hover {
-  color: black;
-  transition: 0.5s all ease;
+  color: #333;
+  text-decoration: underline;
 }
 
 @media (max-width: 768px) {
