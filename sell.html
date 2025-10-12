@@ -10,6 +10,9 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/dropzone.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link href="css/darkmodebtn.css" rel="stylesheet" />
+  <link href="css/darkmode.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -73,15 +76,16 @@
           <div class="row">
             <div class="col-md-3 mb-3">
               <label for="productCostInput">Costo</label>
-              <input type="number" name="productCostInput" class="form-control" id="productCostInput" placeholder="" required="" value="0"
-                min="0">
+              <input type="number" name="productCostInput" class="form-control" id="productCostInput" placeholder=""
+                required="" value="0" min="0">
               <div class="invalid-feedback">
                 El costo debe ser mayor que 0.
               </div>
             </div>
             <div class="col-md-4 mb-3">
               <label for="productCurrency">Moneda</label>
-              <select name="productCurrency" class="form-select custom-select d-block w-100" id="productCurrency" required>
+              <select name="productCurrency" class="form-select custom-select d-block w-100" id="productCurrency"
+                required>
                 <option value="" hidden selected>Seleccionar moneda</option>
                 <option>Pesos Uruguayos (UYU)</option>
                 <option>Dólares (USD)</option>
@@ -111,8 +115,8 @@
           <div class="row">
             <div class="col-md-3 mb-3">
               <label for="productCountInput">Cantidad en stock</label>
-              <input type="number" name="productCountInput" class="form-control" id="productCountInput"  required value="1"
-                min="0">
+              <input type="number" name="productCountInput" class="form-control" id="productCountInput" required
+                value="1" min="0">
               <div class="invalid-feedback">
                 La cantidad es requerida.
               </div>
@@ -173,7 +177,8 @@
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
     </div>
   </footer>
 
@@ -226,6 +231,7 @@
   <script src="js/dropzone.js"></script>
   <script src="js/init.js"></script>
   <script src="js/sell.js"></script>
+  <script src="js/darkmode.js"></script>
 </body>
 
 </html>

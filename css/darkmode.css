@@ -1,99 +1,269 @@
-
 :root {
-  --gs-main: #F09103;      /* naranja principal */
-  --gs-bg: #121212;        /* fondo principal */
-  --gs-surface: #1b1b1b;   /* superficies */
-  --gs-surface-2: #222;    /* tarjetas */
-  --gs-text: #eaeaea;      /* texto principal */
-  --gs-muted: #bdbdbd;     /* texto secundario */
-  --gs-border: #2c2c2c;    /* bordes oscuros */
+  --gs-main: #F09103;
+  /* acento de marca */
+  --gs-accent: var(--gs-main);
+  --gs-bg: #121212;
+  /* fondo global */
+  --gs-surface: #1b1b1b;
+  /* superficies (header/menus/footers) */
+  --gs-surface-2: #222;
+  /* tarjetas/inputs/botones */
+  --gs-text: #eaeaea;
+  /* texto principal */
+  --gs-muted: #bdbdbd;
+  /* texto secundario */
+  --gs-border: #2c2c2c;
+  /* bordes */
 }
 
-/* switch*/
-.switch {
-  width: 7.5em;
-  height: 1.875em;
-  padding: 0 0.375em;
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  border-radius: 6.25em;
-  cursor: pointer;
-  overflow: hidden;
-  background: var(--gs-main);   
-  gap: 4em;
-  transition: background .3s ease, border-color .3s ease;
-  border: none;
+body.dark {
+  background: var(--gs-bg);
+  color: var(--gs-text);
 }
 
-/* Íconos */
-.switch i {
-  font-size: 1rem;
-  line-height: 1;
-  transition: color .3s ease;
+/* ---------- header / nav / dropdown */
+body.dark .header,
+body.dark .menu,
+body.dark .dropdown-menu {
+  background: var(--gs-surface);
+  color: var(--gs-text);
+  border-color: var(--gs-border);
 }
 
-.switch i.bx-sun {
-  color: #000000; 
-}
-.switch i.bx-moon {
-  color: #000000; 
+body.dark .dropdown-divider {
+  border-top-color: var(--gs-border);
 }
 
-.switch::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 1.5em;
-  width: 1.5em;
-  border-radius: 50%;
-  background: #2b2b2b; 
-  left: 0.188em;
-  transition: left .3s ease, background .3s ease, border-color .3s ease;
+body.dark .dropdown-menu a {
+  color: var(--gs-text);
 }
 
-/* darkmode activo*/
-.switch.active {
-  background: #ffffff; 
-  border-color: #ffffff;
+body.dark .dropdown-menu a:hover {
+  background: var(--gs-surface-2);
+  color: var(--gs-main);
 }
 
-.switch.active::before {
-  left: 88px;
-  background: #2e2e2e; 
+/* burguerbtn*/
+body.dark .menu-links {
+  background: var(--gs-surface);
+  border: 1px solid var(--gs-border);
 }
 
-.switch.active i.bx-sun {
-  color: #F09103; 
+body.dark .menu-links li {
+  border-bottom: 1px solid var(--gs-border);
 }
 
-.switch.active i.bx-moon {
-  color: var(--gs-main); 
+body.dark .menu-links li a,
+body.dark .dropdown-menu .dropdown-item-text {
+  color: var(--gs-text);
 }
 
-/* centra el boton */
-.dropdown-menu .switch {
-  margin: 8px auto 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+body.dark .menu-links li a:hover {
+  background: #2a2a2a;
 }
 
-.switch:hover,
-.switch:focus {
-  background: var(--gs-main) !important;  
-  border-color: #333 !important;
-  filter: none !important;
-  opacity: 1 !important;
-  box-shadow: none !important;
+/*botones en el header */
+body.dark .header-der button {
+  background: var(--gs-surface-2);
+  color: var(--gs-text);
+  border: 1px solid var(--gs-border);
 }
 
-.switch.active:hover,
-.switch.active:focus {
-  background: #ffffff !important;
-  border-color: #ffffff !important;
-  box-shadow: none !important;
+body.dark .header-der button:hover {
+  background: #2a2a2a;
+  color: var(--gs-main);
 }
 
+/* busqueda y resultados */
+body.dark .buscador,
+body.dark #search-input,
+body.dark #search-responsive {
+  background: var(--gs-surface-2);
+  color: var(--gs-text);
+  border: 1px solid var(--gs-border);
+}
+
+body.dark .buscador::placeholder,
+body.dark #search-input::placeholder,
+body.dark #search-responsive::placeholder {
+  color: var(--gs-muted);
+}
+
+body.dark #search-results,
+body.dark #search-results-responsive {
+  background: var(--gs-surface);
+  border: 1px solid var(--gs-border);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, .4);
+}
+
+body.dark .resultado-item {
+  border-bottom: 1px solid var(--gs-border);
+}
+
+body.dark .resultado-item p {
+  color: var(--gs-muted);
+}
+
+body.dark .resultado-item .price {
+  color: var(--gs-text);
+}
+
+body.dark .resultado-item:hover {
+  background: #2a2a2a;
+}
+
+/* partes claras de boostrap*/
+body.dark .bg-light,
+body.dark .album {
+  background: var(--gs-surface) !important;
+}
+
+/* cards, y otros*/
+body.dark .card,
+body.dark .custom-card,
+body.dark .qualification-box,
+body.dark .comentario,
+body.dark .related-card {
+  background: var(--gs-surface-2);
+  color: var(--gs-text);
+  border: 1px solid var(--gs-border);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .35);
+}
+
+body.dark .card .card-text,
+body.dark .custom-card .card-text,
+body.dark .comentario-texto {
+  color: var(--gs-muted);
+}
+
+body.dark .custom-card:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, .55);
+}
+
+body.dark h3.m-3,
+body.dark h3.qualification-title,
+body.dark .titulo-relacionados {
+  color: var(--gs-text);
+}
+
+
+/* botones generales*/
+body.dark .btn,
+body.dark .btn-light,
+body.dark .btn-cancel,
+body.dark .btn-submit,
+body.dark .btn-agregar {
+  background: var(--gs-surface-2);
+  color: var(--gs-text);
+  border: 1px solid var(--gs-border);
+}
+
+body.dark .btn:hover,
+body.dark .btn-light:hover,
+body.dark .btn-cancel:hover,
+body.dark .btn-submit:hover,
+body.dark .btn-agregar:hover {
+  background: #2a2a2a;
+  color: var(--gs-main);
+}
+
+
+/*filtros y ordenamiento*/
+body.dark .filters {
+  background: var(--gs-surface);
+}
+
+body.dark .filters input {
+  background: var(--gs-surface-2);
+  color: var(--gs-text);
+  border: 1px solid var(--gs-border);
+}
+
+body.dark .filters input::placeholder {
+  color: var(--gs-muted);
+}
+
+body.dark .filters button {
+  background: var(--gs-surface-2);
+  color: var(--gs-text);
+  border: 1px solid var(--gs-border);
+}
+
+body.dark .filters button:hover {
+  background: #2a2a2a;
+}
+
+body.dark #categories{
+  color: var(--gs-text);
+}
+
+/* productos */
+body.dark .producto-detalles p,
+body.dark .related-card p {
+  color: var(--gs-muted);
+}
+
+body.dark .imagen-medio img,
+body.dark .galeria-slide img,
+body.dark .related-card img {
+  border: 1px solid var(--gs-border);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .55);
+}
+
+body.dark .arrow {
+  border-color: #fff;
+  color: #fff;
+  text-shadow: 0 0 6px rgba(0, 0, 0, .8);
+}
+
+/*cards productos*/
+body.dark .info{
+  background: var(--gs-surface-2);
+  color: var(--gs-text);
+  border: 1px solid var(--gs-border);
+}
+
+/* comentarios */
+body.dark .comentario-fecha {
+  color: var(--gs-muted);
+}
+
+body.dark input[type="textarea"]::placeholder{
+  color:var(--gs-surface-2);
+}
+
+
+/* categories*/
+body.dark #cat-list-container .list-group-item {
+  background: var(--gs-surface-2);
+  color: var(--gs-text);
+}
+
+body.dark #cat-list-container .list-group-item-action:hover {
+  background: #2a2a2a;
+  transform: scale(1.02);
+}
+
+body.dark #cat-list-container .img-thumbnail {
+  border-color: var(--gs-border) !important;
+}
+
+
+/* footer*/
+body.dark a {
+  color: var(--gs-accent);
+}
+
+body.dark a:hover {
+  color: #ffbe33;
+}
+
+body.dark .footer {
+  background: var(--gs-surface);
+  color: var(--gs-muted);
+  border-top: 1px solid var(--gs-border);
+}
+
+body.dark .footer a:hover {
+  color: var(--gs-main);
+}

@@ -1,20 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const switchEl = document.getElementById('themeSwitch');
+  let switches = [
+    document.getElementById('themeSwitch'),
+    document.getElementById('themeSwitchMobile'),
+  ].filter(Boolean);
 
-  // guarda la prefrencia
-  if (localStorage.getItem('theme') === 'dark') {
-    document.body.classList.add('dark');
-    switchEl?.classList.add('active');
-  }
+  let logo = document.querySelector('.logo');
 
-  //cambio de tema
-   switchEl.addEventListener('click', (e) => {
+  const setLogoForTheme = (isDark) => {
+    if (!logo) return;
+    logo.src = isDark
+      ? 'img/groupe-six-blanco.png'   // logo claro para dark mode
+      : 'img/groupe-six.png';          // logo normal para light mode
+  };
+
+  let saved = localStorage.getItem('theme') === 'dark';
+  document.body.classList.toggle('dark', saved);
+  switches.forEach(sw => sw?.classList.toggle('active', saved));
+  setLogoForTheme(saved);
+
+ let toggleTheme = () => {
+   let nowDark = !document.body.classList.contains('dark');
+    document.body.classList.toggle('dark', nowDark);
+    localStorage.setItem('theme', nowDark ? 'dark' : 'light');
+    switches.forEach(sw => sw?.classList.toggle('active', nowDark));
+    setLogoForTheme(nowDark);
+  };
+
+  switches.forEach(sw => sw?.addEventListener('click', (e) => {
+    e.preventDefault();
     e.stopPropagation();
-    document.body.classList.toggle('dark');
-    switchEl.classList.toggle('active');
-    localStorage.setItem(
-      'theme',
-      document.body.classList.contains('dark') ? 'dark' : 'light'
-    );
-  });
+    toggleTheme();
+  }));
 });

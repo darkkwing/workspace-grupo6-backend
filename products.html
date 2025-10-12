@@ -9,6 +9,9 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="./css/styles.css">
   <link rel="stylesheet" href="./css/styles-filtro-precio.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link href="css/darkmodebtn.css" rel="stylesheet" />
+  <link href="css/darkmode.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -16,15 +19,15 @@
   <header class="header">
     <div class="header-izq">
       <a href="index.html">
-        <img src="img/groupe-six.png" alt="groupe six" class="logo">
+        <img src="img/groupe-six.png" alt="groupe six" class="logo" />
       </a>
     </div>
-    <!-- Header medio -->
-    <div class="header-medio">
-      <input type="search" placeholder="¿Qué estás buscando?" class="buscador" id="search-input">
-      <div id="search-results-responsive" class="search-results-container"></div>
+
+    <div class="header-medio search-wrapper" role="search" id="searchForm">
+      <input type="search" placeholder="¿Qué estás buscando?" class="buscador" id="search-input" />
+      <div id="search-results" class="resultados-container"></div>
     </div>
-    <!-- Header derecha -->
+
     <div class="header-der">
       <a class="a-btn" href="categories.html"><button class="izq">Categorias</button></a>
       <a class="a-btn" href="sell.html"><button class="izq">Vender</button></a>
@@ -37,28 +40,38 @@
         <ul class="dropdown-menu" aria-labelledby="cuentaMenu">
           <li><span class="dropdown-item-text" id="user-info"></span></li>
           <li>
-            <hr class="dropdown-divider">
+            <hr class="dropdown-divider" />
+          </li>
+          <!--boton modo oscuro-->
+          <li class="switch" id="themeSwitch" role="button" aria-label="Cambiar tema">
+            <i class="bx bx-sun"></i>
+            <i class="bx bx-moon"></i>
           </li>
           <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
         </ul>
       </div>
     </div>
 
-    <!-- Menu hamburgesa -->
+    <!-- Menú hamburguesa (mobile) -->
     <nav class="menu" style="display: none;">
       <div class="buscador-contenedor">
-        <img src="img/search.svg" id="buscador-logo">
+        <img src="img/search.svg" id="buscador-logo" />
         <div class="buscador-responsive">
-          <input type="search" placeholder="¿Qué estás buscando?" id="search-responsive">
+          <input type="search" placeholder="¿Qué estás buscando?" id="search-responsive" />
+          <div id="search-results-responsive" class="search-results-container"></div>
         </div>
       </div>
-      <input type="checkbox" id="menu-toggle">
+      <input type="checkbox" id="menu-toggle" />
       <label for="menu-toggle" class="menu-icon">&#9776;</label>
       <ul class="menu-links">
         <li><span class="dropdown-item-text" id="user-info"></span></li>
         <li><a href="cart.html">Carrito</a></li>
         <li><a href="categories.html">Categorias</a></li>
         <li><a href="sell.html">Vender</a></li>
+        <li class="switch" id="themeSwitchMobile" role="button" aria-label="Cambiar tema">
+          <i class="bx bx-sun" aria-hidden="true"></i>
+          <i class="bx bx-moon" aria-hidden="true"></i>
+        </li>
       </ul>
     </nav>
   </header>
@@ -114,6 +127,7 @@
   <script src="./js/products.js"></script>
   <script src="js/filtros.js"></script>
   <script src="js/buscador-responsive.js"></script>
+  <script src="js/darkmode.js"></script>
 </body>
 
 </html>

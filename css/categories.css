@@ -1,6 +1,6 @@
 #cat-list-container .list-group-item {
   border: none !important;
-  border-top-left-radius: 1.25rem;
+  border-radius: 1.25rem;
   padding: 1rem 1rem;
 }
 

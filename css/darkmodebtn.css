@@ -1,0 +1,137 @@
+/* ===== Switch base ===== */
+.switch {
+  width: 7.5em;
+  height: 1.875em;
+  padding: 0 0.375em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  border-radius: 6.25em;
+  cursor: pointer;
+  overflow: hidden;
+  background: #F09103;
+  gap: 4em;
+  transition: background .3s ease, border-color .3s ease, box-shadow .2s ease;
+  border: none;
+}
+
+/* Iconos */
+.switch i {
+  font-size: 1rem;
+  line-height: 1;
+  transition: color .3s ease;
+}
+
+.switch i.bx-sun { color: #000000; }
+.switch i.bx-moon { color: #000000; }
+
+/* Knob */
+.switch::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 1.5em;
+  width: 1.5em;
+  border-radius: 50%;
+  background: #2b2b2b;
+  left: 0.188em;
+  transition: left .3s ease, background .3s ease, border-color .3s ease;
+}
+
+/* Estado activo (dark) */
+.switch.active {
+  background: #ffffff;
+  border-color: #ffffff;
+}
+
+.switch.active::before {
+  left: 5.5em;
+  background: #2e2e2e;
+}
+
+.switch.active i.bx-sun { color: #F09103; }
+.switch.active i.bx-moon { color: #F09103; }
+
+/* Hover/Focus */
+.switch:hover,
+.switch:focus {
+  background: #F09103 !important;
+  border-color: #333 !important;
+  filter: none !important;
+  opacity: 1 !important;
+  box-shadow: none !important;
+}
+
+.switch.active:hover,
+.switch.active:focus {
+  background: #ffffff !important;
+  border-color: #ffffff !important;
+  box-shadow: none !important;
+}
+
+/* Accesibilidad: focus visible */
+.switch:focus-visible {
+  outline: 2px solid #333;
+  outline-offset: 2px;
+}
+
+/* ===== Contextos ===== */
+
+/* Centrar dentro del dropdown (desktop) */
+.dropdown-menu .switch {
+  margin: 0.5em auto 0.625em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Mostrar correcto dentro del menú hamburguesa (mobile) */
+.menu .switch {
+  margin: 0.5em auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  /* asegurar “clickeabilidad” y que no quede tapado */
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 660px) {
+  /* Reducir tamaño general del switch en pantallas chicas */
+  .switch {
+    width: 5.5em;
+    height: 1.5em;
+    gap: 2.5em;
+    padding: 0 0.25em;
+  }
+
+  .switch::before {
+    width: 1.25em;
+    height: 1.25em;
+    left: 0.125em;
+  }
+
+  .switch.active::before {
+    left: 3.75em; /* ajustado según nuevo ancho */
+  }
+
+  .switch i {
+    font-size: 0.9rem;
+  }
+
+  .dropdown-menu .switch {
+    margin: 0.4em auto;
+  }
+
+  /* En el menú mobile, asegurar que herede las medidas y se centre */
+  .menu .switch {
+    width: 5.5em;     /* redundante pero explícito para mobile */
+    height: 1.5em;
+    gap: 2.5em;
+    padding: 0 0.25em;
+    margin: 0.5em auto;
+  }
+}
