@@ -75,7 +75,7 @@ body.dark .header-der button {
 }
 
 body.dark .header-der img {
-  filter: invert();
+  filter: invert(75%);
 }
 
 
@@ -335,9 +335,22 @@ body.dark input[type="password"]::placeholder {
   color: var(--gs-muted);
 }
 
+body.dark input[type="email"]:active {
+  background-color: var(--gs-surface) !important;
+}
+
 body.dark button[type="submit"] {
   color: #fff;
   border: none;
+}
+
+body.dark input[type="email"]:not(:placeholder-shown) {
+  background: var(--gs-surface-2);
+}
+
+body.dark input[type="email"]:-webkit-autofill {
+  -webkit-text-fill-color: var(--gs-text) !important;
+  -webkit-box-shadow: 0 0 0 1000px var(--gs-surface) inset !important;
 }
 
 /*sell.html*/
@@ -359,6 +372,37 @@ body.dark input#productCountInput {
   color: var(--gs-text) !important;
 }
 
+/*perfil*/
+body.dark .perfil-container h1,
+body.dark .perfil-info input {
+  color: var(--gs-text);
+}
+
+body.dark input#telefono {
+  background: var(--gs-surface);
+  color: var(--gs-text);
+  border: 1px solid var(--gs-border);
+}
+
+body.dark input#telefono:not(:placeholder-shown) {
+  background: var(--gs-surface-2);
+}
+
+body.dark input#telefono:-webkit-autofill {
+  -webkit-text-fill-color: var(--gs-text) !important;
+  -webkit-box-shadow: 0 0 0 1000px var(--gs-surface-2) inset !important;
+  border: 1px solid var(--gs-main) !important;
+}
+
+/* solo en dark */
+body.dark #fotoPerfil{
+  display:block;
+  background: var(--gs-muted); 
+  border-radius: 50%;
+  padding: 18px;             
+  box-sizing: content-box;
+}
+
 @media (max-width: 600px) {
   body.dark .dropdown-item-text {
     color: var(--gs-text);
@@ -372,8 +416,9 @@ body.dark input#productCountInput {
     filter: invert();
   }
 
-
-
+  body.dark .buscador-responsive {
+    background: none;
+  }
 }
 
 @media (max-width: 768px) {
@@ -385,10 +430,8 @@ body.dark input#productCountInput {
     filter: invert();
   }
 
-   body.dark .buscador-contenedor img {
+  body.dark .buscador-contenedor img {
     filter: invert();
   }
-
-
 
 }
