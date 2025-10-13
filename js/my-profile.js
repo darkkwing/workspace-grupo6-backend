@@ -49,33 +49,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnEditar = document.getElementById('btnEditar');
     const inputs = document.querySelectorAll('.perfil-info input');
 
-    
-    btnEditar.addEventListener("click", () => {
-    const isEditing = btnEditar.textContent === "Guardar";
+    let editando = false;
 
-    if (isEditing) {
-      //  Guardar cambios dentro del objeto del usuario
+  btnEditar.addEventListener("click", () => {
+    editando = !editando; // alternar entre editar y guardar
+
+    if (editando) {
+      //  Modo edición activado
+      btnEditar.textContent = "Guardar";
+      inputs.forEach((input) => {
+        if (input.id !== "email") {
+          input.disabled = false;
+        }
+      });
+    } else {
+      //  Guardar cambios
       ["nombre", "apellido", "telefono"].forEach((campo) => {
         const el = document.getElementById(campo);
         if (el) datosUsuario[campo] = el.value.trim();
-    });
+      });
 
-         // Guardar el objeto completo del usuario
-        if (usuario) {
-            localStorage.setItem(usuario, JSON.stringify(datosUsuario));
-        }
-    }
-
-    // Alternar entre edición y solo lectura
-    inputs.forEach((input) => {
-      if (input.id === "email") {
-        input.disabled = true;
-      } else {
-        input.disabled = isEditing ? true : false;
+      // Guardar el objeto completo del usuario
+      if (usuario) {
+        localStorage.setItem(usuario, JSON.stringify(datosUsuario));
       }
-    });
 
-    btnEditar.textContent = isEditing ? "Editar" : "Guardar";
+      // Volver a deshabilitar inputs
+      inputs.forEach((input) => {
+        input.disabled = true;
+      });
+
+      btnEditar.textContent = "Editar";
+    }
   });
 });
 
