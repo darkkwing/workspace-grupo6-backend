@@ -14,6 +14,14 @@
   <link rel="stylesheet" href="css/login.css" />
   <link rel="stylesheet" href="css/darkmode.css">
   <title>Login | GROUPE SIX</title>
+  <script>
+    window.onload = function() {
+      if (!sessionStorage.getItem('refreshedLogin')) {
+        sessionStorage.setItem('refreshedLogin', 'true');
+        location.reload();
+      }
+    };
+  </script>
 </head>
 
 <body>
