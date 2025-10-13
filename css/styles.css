@@ -244,6 +244,20 @@ a.custom-card:hover {
 }
 
 /* Cuenta */
+
+#cuentaMenu {
+  padding: 0;
+}
+
+#cuentaMenu:hover {
+  opacity: 0.9;
+}
+
+#cuentaMenu img {
+  height: 3rem;
+  width: 3rem;
+}
+
 .dropdown .dropdown-toggle {
   border-radius: 9999px !important;
 }
@@ -251,6 +265,10 @@ a.custom-card:hover {
 .dropdown-menu {
   border-radius: 12px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-toggle::after {
+  display: none !important;
 }
 
 /* Buscador */
