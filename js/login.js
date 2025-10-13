@@ -13,6 +13,16 @@ document.addEventListener("DOMContentLoaded", () => { // Sirve para que no se ej
             const username = email.value;           //Se crea una variable donde se almacena el valor del input email
             sessionStorage.setItem("usuario", username);   //Objeto que guarda los datos de la variable
 
+            
+            // Si el usuario no existe en localStorage, lo creamos
+            if (!localStorage.getItem(username)) {
+            const datosUsuario = {
+                email: username,
+                imagenPerfil: null // aún no tiene imagen
+            };
+            localStorage.setItem(username, JSON.stringify(datosUsuario));
+            }
+            
             window.location.href = "index.html"; // Determina a que archivo se redirige si ambos campos tienen texto
         } else { // Si alguno de los dos campos esta vacio se muestra una alerta al usuario.
             alert("Ingresa tu correo electrónico y contraseña."); // Alerta.
