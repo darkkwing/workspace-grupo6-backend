@@ -1,4 +1,5 @@
 // cambiar foto
+const usuario = sessionStorage.getItem("usuario"); // usuario actual
 const foto = document.getElementById('fotoPerfil');
 const inputFoto = document.getElementById('inputFoto');
 const imagenPorDefecto = 'img/img_perfil.png';
