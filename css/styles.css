@@ -507,11 +507,22 @@ footer a:hover {
     z-index: 1000;
   }
 
+  /* Menu hamburgesa */
+  .menu {
+    position: relative;
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1.2rem;
+  }
+
   .menu-icon {
     font-size: 2rem;
     cursor: pointer;
     display: block;
     user-select: none;
+    position: relative;
+    z-index: 1003;
   }
 
   #menu-toggle {
@@ -522,36 +533,70 @@ footer a:hover {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: none;
+    position: fixed;
+    top: 0;
+    right: -260px;
+    width: 260px;
+    height: 100vh;
+    background: #ffffff;
+    display: flex;
     flex-direction: column;
-    background: #f8f8f8;
-    position: absolute;
-    top: 50px;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.25);
+    transition: right 0.3s ease;
+    z-index: 1002;
+    overflow-y: auto;
+  }
+
+  #menu-toggle:checked+.menu-icon+.menu-links {
     right: 0;
-    min-width: 180px;
-    width: auto;
-    max-width: 90vw;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 6px;
+  }
+
+  .menu::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+  }
+
+  #menu-toggle:checked~.menu::before {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .menu-links {
+    padding-top: 4rem;
   }
 
   .menu-links li {
-    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #eee;
   }
 
   .menu-links li a {
     display: block;
-    padding: 12px;
+    text-align: right;
+    padding: 14px 20px;
     text-decoration: none;
     color: #333;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background 0.2s ease;
   }
 
   .menu-links li a:hover {
-    background: #ddd;
+    background: #f0f0f0;
   }
 
-  #menu-toggle:checked+.menu-icon+.menu-links {
-    display: flex;
+  [id^="user-info"] {
+    display: inline-block;
+    white-space: normal;
+    word-break: break-word;
   }
 
   .header-izq img {
@@ -559,13 +604,7 @@ footer a:hover {
   }
 
   .header-izq h1 {
-    font-size: 1.3rem;
-  }
-
-  [id^="user-info"] {
-    display: inline-block;
-    white-space: normal;
-    word-break: break-word;
+    font-size: 1rem;
   }
 }
 
@@ -600,12 +639,13 @@ footer a:hover {
     gap: 1.2rem;
   }
 
-
   .menu-icon {
     font-size: 2rem;
     cursor: pointer;
     display: block;
     user-select: none;
+    position: relative;
+    z-index: 1003;
   }
 
   #menu-toggle {
@@ -616,36 +656,70 @@ footer a:hover {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: none;
+    position: fixed;
+    top: 0;
+    right: -260px;
+    width: 260px;
+    height: 100vh;
+    background: #ffffff;
+    display: flex;
     flex-direction: column;
-    background: #f8f8f8;
-    position: absolute;
-    top: 50px;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.25);
+    transition: right 0.3s ease;
+    z-index: 1002;
+    overflow-y: auto;
+  }
+
+  #menu-toggle:checked+.menu-icon+.menu-links {
     right: 0;
-    min-width: 180px;
-    width: auto;
-    max-width: 90vw;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 6px;
+  }
+
+  .menu::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+  }
+
+  #menu-toggle:checked~.menu::before {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .menu-links {
+    padding-top: 4rem;
   }
 
   .menu-links li {
-    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #eee;
   }
 
   .menu-links li a {
     display: block;
-    padding: 12px;
+    text-align: right;
+    padding: 14px 20px;
     text-decoration: none;
     color: #333;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background 0.2s ease;
   }
 
   .menu-links li a:hover {
-    background: #ddd;
+    background: #f0f0f0;
   }
 
-  #menu-toggle:checked+.menu-icon+.menu-links {
-    display: flex;
+  [id^="user-info"] {
+    display: inline-block;
+    white-space: normal;
+    word-break: break-word;
   }
 
   .header-izq img {
@@ -654,12 +728,6 @@ footer a:hover {
 
   .header-izq h1 {
     font-size: 1rem;
-  }
-
-  [id^="user-info"] {
-    display: inline-block;
-    white-space: normal;
-    word-break: break-word;
   }
 
   /* Buscador responsive */
@@ -706,7 +774,6 @@ footer a:hover {
 
 
 }
-
 
 /* Foto perfil en el heder*/
 
