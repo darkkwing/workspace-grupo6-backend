@@ -74,9 +74,6 @@ body.dark .header-der button {
   border: 1px solid var(--gs-border);
 }
 
-body.dark .header-der img {
-  filter: invert(75%);
-}
 
 
 body.dark .header-der button:hover {
@@ -408,14 +405,6 @@ body.dark #fotoPerfil{
     color: var(--gs-text);
   }
 
-  body.dark .menu-links li img {
-    filter: invert();
-  }
-
-  body.dark .buscador-contenedor img {
-    filter: invert();
-  }
-
   body.dark .buscador-responsive {
     background: none;
   }
@@ -426,12 +415,5 @@ body.dark #fotoPerfil{
     color: var(--gs-text);
   }
 
-  body.dark .menu-links li img {
-    filter: invert();
-  }
-
-  body.dark .buscador-contenedor img {
-    filter: invert();
-  }
 
 }

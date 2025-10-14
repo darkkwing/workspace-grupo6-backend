@@ -9,6 +9,7 @@
   <!-- CSS -->
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/perfil.css" rel="stylesheet">
   <link href="css/footer.css" rel="stylesheet">
@@ -19,7 +20,7 @@
 
 <body>
  <!-- Header -->
-  <header class="header">
+   <header class="header">
     <div class="header-izq">
       <a href="index.html">
         <img src="img/groupe-six.png" alt="groupe six" class="logo" />
@@ -34,7 +35,7 @@
     <div class="header-der">
       <a class="a-btn" href="categories.html"><button class="izq">Categorias</button></a>
       <a class="a-btn" href="sell.html"><button class="izq">Vender</button></a>
-      <a class="a-btn" href="cart.html"><button class="izq">Carrito <img src="img/cart4.svg" alt=""></button></a>
+      <a class="a-btn" href="cart.html"><button class="izq">Carrito <i class="bi bi-cart4"></i></button></a>
       <div class="dropdown">
         <button class="dropdown-toggle perfil-btn" type="button" id="cuentaMenu" data-bs-toggle="dropdown"
           aria-expanded="false">
@@ -60,8 +61,8 @@
 
     <!-- Menú hamburguesa (mobile) -->
     <nav class="menu" style="display: none;">
-      <div class="buscador-contenedor">
-        <img src="img/search.svg" id="buscador-logo" />
+      <div class="buscador-contenedor" id="buscador-logo">
+        <i class="bi bi-search"></i>
         <div class="buscador-responsive">
           <input type="search" placeholder="¿Qué estás buscando?" id="search-responsive" />
           <div id="search-results-responsive" class="search-results-container"></div>
@@ -71,7 +72,7 @@
       <label for="menu-toggle" class="menu-icon">&#9776;</label>
       <ul class="menu-links">
         <li><a href="my-profile.html" class="dropdown-item-text" id="user-info"></a></li>
-        <li><a href="cart.html">Carrito<img src="img/cart4.svg" alt=""></a></li>
+        <li><a href="cart.html">Carrito<i class="bi bi-cart4"></i></a></li>
         <li><a href="categories.html">Categorias</a></li>
         <li><a href="sell.html">Vender</a></li>
         <li class="switch" id="themeSwitchMobile" role="button" aria-label="Cambiar tema">
