@@ -119,7 +119,7 @@
   }
 
   .switch.active::before {
-    left: 3.75em;
+    left: 4em;
   }
 
   .switch i {
@@ -132,12 +132,11 @@
 
 
   .menu .switch {
-    margin: auto auto;
+    margin: auto 7em;
   }
 }
 
-@media (max-width: 768px) {
-
+@media (min-width: 661px) and (max-width: 768px) {
   .menu .switch {
     margin: auto 6em;
   }
