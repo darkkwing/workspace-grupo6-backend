@@ -1,4 +1,3 @@
-/* ===== Switch base ===== */
 .switch {
   width: 7.5em;
   height: 1.875em;
@@ -23,8 +22,13 @@
   transition: color .3s ease;
 }
 
-.switch i.bx-sun { color: #000000; }
-.switch i.bx-moon { color: #000000; }
+.switch i.bx-sun {
+  color: #000000;
+}
+
+.switch i.bx-moon {
+  color: #000000;
+}
 
 /* Knob */
 .switch::before {
@@ -51,8 +55,13 @@
   background: #2e2e2e;
 }
 
-.switch.active i.bx-sun { color: #F09103; }
-.switch.active i.bx-moon { color: #F09103; }
+.switch.active i.bx-sun {
+  color: #F09103;
+}
+
+.switch.active i.bx-moon {
+  color: #F09103;
+}
 
 /* Hover/Focus */
 .switch:hover,
@@ -77,9 +86,6 @@
   outline-offset: 2px;
 }
 
-/* ===== Contextos ===== */
-
-/* Centrar dentro del dropdown (desktop) */
 .dropdown-menu .switch {
   margin: 0.5em auto 0.625em;
   display: flex;
@@ -87,35 +93,33 @@
   align-items: center;
 }
 
-/* Mostrar correcto dentro del menú hamburguesa (mobile) */
 .menu .switch {
   margin: 0.5em auto;
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
-  /* asegurar “clickeabilidad” y que no quede tapado */
+
   position: relative;
   z-index: 2;
 }
 
-/* ===== Responsive ===== */
 @media (max-width: 660px) {
-  /* Reducir tamaño general del switch en pantallas chicas */
+
   .switch {
     width: 5.5em;
     height: 1.5em;
-    gap: 2.5em;
+    gap: 2.6em;
     padding: 0 0.25em;
   }
 
   .switch::before {
     width: 1.25em;
     height: 1.25em;
-    left: 0.125em;
+    left: 0.135em;
   }
 
   .switch.active::before {
-    left: 3.75em; /* ajustado según nuevo ancho */
+    left: 3.75em;
   }
 
   .switch i {
@@ -126,12 +130,15 @@
     margin: 0.4em auto;
   }
 
-  /* En el menú mobile, asegurar que herede las medidas y se centre */
+
   .menu .switch {
-    width: 5.5em;     /* redundante pero explícito para mobile */
-    height: 1.5em;
-    gap: 2.5em;
-    padding: 0 0.25em;
-    margin: 0.5em auto;
+    margin: auto auto;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .menu .switch {
+    margin: auto 6em;
   }
 }

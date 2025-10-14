@@ -579,7 +579,15 @@ footer a:hover {
   }
 
   #menu-toggle:checked+.menu-icon+.menu-links {
-    right: 0;
+    border-radius: 12px;
+    position: absolute;
+    inset: 0px auto auto 0px;
+    transform: translate(-200px, 52px);
+    height: 19em;
+    width: 14em;
+    align-items: normal;
+    margin-left: 0.5em;
+
   }
 
   .menu::before {
@@ -599,14 +607,6 @@ footer a:hover {
   #menu-toggle:checked~.menu::before {
     opacity: 1;
     visibility: visible;
-  }
-
-  .menu-links {
-    padding-top: 4rem;
-  }
-
-  .menu-links li {
-    border-top: 1px solid #eee;
   }
 
   .menu-links li a {
@@ -637,6 +637,7 @@ footer a:hover {
   .header-izq h1 {
     font-size: 1rem;
   }
+
 }
 
 /* Responsive Telefono */
@@ -702,7 +703,14 @@ footer a:hover {
   }
 
   #menu-toggle:checked+.menu-icon+.menu-links {
-    right: 0;
+    border-radius: 12px;
+    position: absolute;
+    inset: 0px auto auto 0px;
+    transform: translate(-160px, 52px);
+    height: 23em;
+    width: 14em;
+    align-items: normal;
+    margin-left: 0.5em;
   }
 
   .menu::before {
@@ -724,13 +732,6 @@ footer a:hover {
     visibility: visible;
   }
 
-  .menu-links {
-    padding-top: 4rem;
-  }
-
-  .menu-links li {
-    border-top: 1px solid #eee;
-  }
 
   .menu-links li a {
     display: block;

@@ -54,10 +54,6 @@ body.dark .menu-links {
   border: 1px solid var(--gs-border);
 }
 
-body.dark .menu-links li {
-  border-bottom: 1px solid var(--gs-border);
-}
-
 body.dark .menu-links li a,
 body.dark .dropdown-menu .dropdown-item-text {
   color: var(--gs-text);
