@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const usuario = sessionStorage.getItem("usuario");
   const userImg = document.getElementById("user-profile-img"); // imagen en el header
   const userInfo = document.getElementById("user-info");
-  const imagenPorDefecto = "img/img_perfil.png";
+  const imagenPorDefecto = "img/person-circle.svg";
 
   if (userImg) { // solo si existe el header
     if (usuario) {
