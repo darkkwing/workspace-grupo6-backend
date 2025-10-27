@@ -34,11 +34,46 @@ function mostrarInfoProducto(product) {
         <p><b>Categoría:</b> ${product.category}</p>
         <h2 class="precio">${product.currency} ${product.cost}</h2>
         <p><b>Vendidos:</b> ${product.soldCount}</p>
-        <button class="btn-agregar">Agregar</button>
+        <button id= "btn-comprar" class="btn-agregar">Comprar</button>
       </div>
     </div>
   `;
 
+  //funcionalidad boton comprar
+  const botonComprar = document.getElementById("btn-comprar");  //trae el boton
+  //escucha el click y guarda los datos del producto
+  botonComprar.addEventListener("click", () => {
+    const nombre = product.name;
+    const costo = product.cost;
+    const moneda = product.currency;
+    const imagen = product.images?.[0] || "";
+    const cantidad = 1;
+    const subtotal = costo * cantidad;
+
+    const productoSeleccionado = {
+      nombre,
+      costo,
+      moneda,
+      cantidad,
+      imagen,
+      subtotal
+    };
+    //verifica si existe en el local y sino crea el array para guaradr los productos a los que le den comprar
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    const existente = carrito.find(p => p.nombre === productoSeleccionado.nombre);
+    //si existe el producto en el local agrega uno e incrementa el subtotal
+    if (existente) {
+      existente.cantidad += cantidad;
+      existente.subtotal = existente.costo * existente.cantidad;
+    } else {
+      carrito.push(productoSeleccionado); //si no existe agrega el producto al array
+    }
+
+    localStorage.setItem("carrito", JSON.stringify(carrito)); //guarda el carrito actualizado en local
+    window.location.href = "cart.html"; //redirige a la pagina del carrito
+  });
+
+  //galeria
   const root = document.getElementById("gallery-root");
   const mq = window.matchMedia("(max-width: 768px)");
 
@@ -172,7 +207,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const commentsURL = `https://japceibal.github.io/emercado-api/products_comments/${productId}.json`;
   // pedir los comentarios
   fetch(commentsURL)
-    .then(response => response.json()) 
+    .then(response => response.json())
     .then(comments => {
       // llama la funcion que muestra los comentarios
       mostrarComentarios(comments);
