@@ -139,3 +139,44 @@
   border-color: #e29609;
   box-shadow: 0 0 4px rgba(233, 155, 11, 0.466);
 }
+
+/* el anchor con clase cart-badge es el contenedor relativo */
+.a-btn.cart-badge { position: relative; }
+
+
+.a-btn.cart-badge[data-count]::after,
+.cart-badge[data-count]::after {
+  content: attr(data-count);
+  position: absolute;
+  top: -0.375rem;
+  right: -0.375rem;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  line-height: 1.25rem;
+  padding: 0 0.016px;
+  border-radius: 9999px;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: #f59e0b;   
+  color: #111;          
+  pointer-events: none;
+}
+
+
+@media (max-width: 660px) {
+.a-btn.cart-badge[data-count]::after,
+.cart-badge[data-count]::after{
+  top: 4.063rem;
+  right: 5.625rem;
+}
+
+}
+
+@media (min-width: 661px) and (max-width: 768px) {
+  .a-btn.cart-badge[data-count]::after,
+.cart-badge[data-count]::after{
+   top: 4.063rem;
+  right: 5.625rem;
+}
+}

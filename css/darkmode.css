@@ -398,7 +398,6 @@ body.dark #fotoPerfil{
 }
 
 /* cart.html*/
-
 body.dark .cart-item{
 background-color: var(--gs-surface);
 border: var(--gs-surface-2);
@@ -413,7 +412,6 @@ body.dark .cart-item input[type="number"]{
   border: var(--gs-border);
   color: var(--gs-text);
 }
-
 
 body.dark .cart-summary{
   background-color: var(--gs-surface);

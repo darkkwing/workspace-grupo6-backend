@@ -829,3 +829,12 @@ footer a:hover {
 .perfil-btn:focus {
   outline: none;
 }
+.header-der a:nth-child(3) button {
+  gap: 0.4rem;
+  padding: 0.7rem 0.9rem;
+  border: 0.1rem rgb(221, 221, 221) solid;
+  border-radius: 9999px !important;
+  background-color: #f7f7f7;
+  margin-left: 8px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}

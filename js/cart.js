@@ -47,19 +47,22 @@ document.addEventListener("DOMContentLoaded", () => {
     // Detecta cambios en las cantidades
     let inputs = document.querySelectorAll(".cantidad-input");
     inputs.forEach((input) => {
-    input.addEventListener("input", (e) => {
-    let index = e.target.dataset.index;
-    let nuevaCantidad = parseInt(e.target.value) || 1;
-    carrito[index].cantidad = nuevaCantidad;
-    carrito[index].subtotal = carrito[index].costo * nuevaCantidad;
+      input.addEventListener("input", (e) => {
+        let index = e.target.dataset.index;
+        let nuevaCantidad = parseInt(e.target.value) || 1;
+        carrito[index].cantidad = nuevaCantidad;
+        carrito[index].subtotal = carrito[index].costo * nuevaCantidad;
 
-    // Guarda cambios en localStorage
-    localStorage.setItem("carrito", JSON.stringify(carrito));
+        // Guarda cambios en localStorage
+        localStorage.setItem("carrito", JSON.stringify(carrito));
 
-    // Vuelve a renderizar para actualizar todo
-    renderCart();
-  });
-});
+        // actualiza el badge
+        badgeCart();
+
+        // Vuelve a renderizar para actualizar todo
+        renderCart();
+      });
+    });
   }
 
   // Finaliza compra
@@ -73,7 +76,28 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.removeItem("carrito");
     carrito = [];
     renderCart();
+    badgeCart();
   });
 
+  function badgeCart() {
+    let totalUnit = carrito.reduce((acc, p) => acc + (p.cantidad || 1), 0);
+
+    let badgeDesk = document.getElementById("cartBadgeDesktop");
+    let badgeMob = document.getElementById("cartBadgeMobile"); 
+
+    [badgeDesk, badgeMob].forEach(badge => {
+      if (!badge) return;
+
+      const n = totalUnit > 99 ? "99+" : String(totalUnit);
+
+      if (totalUnit > 0) {
+        badge.setAttribute("data-count", n); 
+      } else {
+        badge.removeAttribute("data-count");
+      }
+    });
+  }
+
   renderCart();
+  badgeCart();
 });
