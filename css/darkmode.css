@@ -408,6 +408,13 @@ body.dark .cart-item-info p{
   color: var(--gs-text);
 }
 
+body.dark .cart-item input[type="number"]{
+  background-color: var(--gs-surface-2);
+  border: var(--gs-border);
+  color: var(--gs-text);
+}
+
+
 body.dark .cart-summary{
   background-color: var(--gs-surface);
 }
