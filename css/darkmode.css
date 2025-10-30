@@ -168,7 +168,8 @@ body.dark .btn-cancel {
 
 body.dark .btn,
 body.dark .btn-submit,
-body.dark .btn-agregar {
+body.dark .btn-agregar,
+body.dark .btn-comprar {
   background: var(--gs-main);
   color: var(--gs-text);
   border: 1px solid var(--gs-border);
@@ -396,6 +397,21 @@ body.dark #fotoPerfil{
   box-sizing: content-box;
 }
 
+/* cart.html*/
+
+body.dark .cart-item{
+background-color: var(--gs-surface);
+border: var(--gs-surface-2);
+}
+
+body.dark .cart-item-info p{
+  color: var(--gs-text);
+}
+
+body.dark .cart-summary{
+  background-color: var(--gs-surface);
+}
+
 @media (max-width: 600px) {
   body.dark .dropdown-item-text {
     color: var(--gs-text);
@@ -410,6 +426,5 @@ body.dark #fotoPerfil{
   body.dark .dropdown-item-text {
     color: var(--gs-text);
   }
-
-
 }
+
