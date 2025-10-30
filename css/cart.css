@@ -1,0 +1,125 @@
+.cart-product:hover {
+  background-color: #f8f9fa;
+  transition: background-color 0.3s ease;
+}
+
+.cart-total {
+  font-size: 1.2rem;
+  border-color: #ddd;
+}
+
+#empty-cart-message {
+  font-size: 1.1rem;
+  margin-top: 50px;
+}
+
+
+.cart-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--color-fondo-claro, #fff);
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.cart-item img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.cart-item-info {
+  flex-grow: 1;
+  margin-left: 15px;
+}
+
+.cart-item-info h4 {
+  font-weight: 700;
+  margin: 0;
+}
+
+.cart-item-info p {
+  margin: 4px 0;
+  color: #555;
+}
+
+.cart-item .price {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.cart-summary {
+  background: var(--color-fondo-claro, #f8f8f8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  height: fit-content;
+}
+
+.cart-summary h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.summary-detail p {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0;
+}
+
+.summary-detail .total {
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+.btn-comprar {
+  width: 100%;
+  background-color: var(--color-principal, black);
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 30px;
+  font-size: 1rem;
+  margin-top: 20px;
+  transition: background 0.3s;
+}
+
+.btn-comprar:hover {
+  background-color: var(--color-principal-oscuro, rgb(185, 123, 7));
+}
+
+@media (max-width: 900px) {
+  .cart-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.btn-eliminar {
+  background: none;
+  border: none;
+  color: #e77509;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.btn-eliminar:hover {
+  color: #ce8908;
+}
+
