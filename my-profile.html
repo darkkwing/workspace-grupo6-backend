@@ -20,40 +20,29 @@
 
 <body>
  <!-- Header -->
-  <header class="header">
+   <header class="header">
     <div class="header-izq">
-      <a href="index.html">
-        <img src="img/groupe-six.png" alt="groupe six" class="logo" />
-      </a>
+      <a href="index.html"><img src="img/groupe-six.png" alt="groupe six" class="logo" /></a>
     </div>
 
-    <div class="header-medio search-wrapper" role="search" id="searchForm">
+    <div class="header-medio search-wrapper" role="search">
       <input type="search" placeholder="¿Qué estás buscando?" class="buscador" id="search-input" />
       <div id="search-results" class="resultados-container"></div>
     </div>
 
     <div class="header-der">
-      <a class="a-btn" href="categories.html"><button class="izq">Categorias</button></a>
+      <a class="a-btn" href="categories.html"><button class="izq">Categorías</button></a>
       <a class="a-btn" href="sell.html"><button class="izq">Vender</button></a>
-      <a class="a-btn" href="cart.html"><button class="izq">Carrito <i class="bi bi-cart4"></i></button></a>
+      <a id="cartBadgeDesktop" class="a-btn cart-badge" href="cart.html"><button class="izq btn-carrito"><i class="bi bi-cart4"></i></button></a>
       <div class="dropdown">
-        <button class="dropdown-toggle perfil-btn" type="button" id="cuentaMenu" data-bs-toggle="dropdown"
-          aria-expanded="false">
+        <button class="dropdown-toggle perfil-btn" type="button" id="cuentaMenu" data-bs-toggle="dropdown" aria-expanded="false">
           <img src="img/person-circle.svg" alt="Foto de perfil" class="foto-perfil" id="user-profile-img">
         </button>
         <ul class="dropdown-menu" aria-labelledby="cuentaMenu">
-          <li><a href="my-profile.html" class="dropdown-item" class="dropdown-item-text" id="user-info"></a></li>
-          <li>
-            <hr class="dropdown-divider" />
-          </li>
-          <!--boton modo oscuro-->
-          <li class="switch" id="themeSwitch" role="button" aria-label="Cambiar tema">
-            <i class="bx bx-sun"></i>
-            <i class="bx bx-moon"></i>
-          </li>
-          <li>
-            <hr class="dropdown-divider" />
-          </li>
+          <li><a href="my-profile.html" class="dropdown-item" id="user-info"></a></li>
+          <li><hr class="dropdown-divider" /></li>
+          <li class="switch" id="themeSwitch" role="button"><i class="bx bx-sun"></i><i class="bx bx-moon"></i></li>
+          <li><hr class="dropdown-divider" /></li>
           <li><a class="dropdown-item" href="#" id="logoutBtn">Cerrar sesión</a></li>
         </ul>
       </div>
@@ -72,8 +61,7 @@
       <label for="menu-toggle" class="menu-icon">&#9776;</label>
       <ul class="menu-links">
         <li><a href="my-profile.html" class="dropdown-item-text" id="user-info"></a></li>
-        <li><a href="cart.html">Carrito<i class="bi bi-cart4"></i></a></li>
-        <li><a href="categories.html">Categorias</a></li>
+        <li><a  id="cartBadgeMobile" class="cart-badge" href="cart.html">Carrito<i class="bi bi-cart4"></i></a></li>
         <li><a href="sell.html">Vender</a></li>
         <li class="switch" id="themeSwitchMobile" role="button" aria-label="Cambiar tema">
           <i class="bx bx-sun" aria-hidden="true"></i>
@@ -82,6 +70,7 @@
         <li><a class="dropdown-item" href="#" id="logoutBtnMobile">Cerrar sesión</a></li>
       </ul>
     </nav>
+
   </header>
   <!-- Contenido -->
   <main>
