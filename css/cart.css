@@ -142,8 +142,6 @@
 
 /* el anchor con clase cart-badge es el contenedor relativo */
 .a-btn.cart-badge { position: relative; }
-
-
 .a-btn.cart-badge[data-count]::after,
 .cart-badge[data-count]::after {
   content: attr(data-count);

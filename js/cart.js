@@ -5,8 +5,30 @@ document.addEventListener("DOMContentLoaded", () => {
   let subtotalGeneral = document.getElementById("subtotal");
   let totalGeneral = document.getElementById("total");
   
-  // Obtiene carrito del localStorage
+  // obtiene carrito del localStorage
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+  //funcion para mostrar el badge
+  function badgeCartRender() {
+    let totalUnit = carrito.reduce((acc, p) => acc + (p.cantidad || 1), 0);
+    let badgeDesk = document.getElementById("cartBadgeDesktop");
+    let badgeMob = document.getElementById("cartBadgeMobile"); 
+    [badgeDesk, badgeMob].forEach(badge => {
+      if (!badge) return;
+      const n = totalUnit > 99 ? "99+" : String(totalUnit);
+      if (totalUnit > 0) {
+        badge.setAttribute("data-count", n); 
+      } else {
+        badge.removeAttribute("data-count");
+      }
+    });
+  }
+
+  if (!cartContainer) {
+    badgeCartRender();
+    window.addEventListener("storage", (e) => { if (e.key === "carrito") badgeCartRender(); });
+    return;
+  }
 
   // Muestra el carrito
   function renderCart() {
@@ -15,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (carrito.length === 0) {
       emptyCartMessage.style.display = "block";
       document.getElementById("cart-summary").style.display = "none";
+      badgeCartRender();
       return;
     } else {
       emptyCartMessage.style.display = "none";
@@ -57,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("carrito", JSON.stringify(carrito));
 
         // actualiza el badge
-        badgeCart();
+        badgeCartRender();
 
         // Vuelve a renderizar para actualizar todo
         renderCart();
@@ -76,28 +99,18 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.removeItem("carrito");
     carrito = [];
     renderCart();
-    badgeCart();
+    badgeCartRender();
   });
 
-  function badgeCart() {
-    let totalUnit = carrito.reduce((acc, p) => acc + (p.cantidad || 1), 0);
-
-    let badgeDesk = document.getElementById("cartBadgeDesktop");
-    let badgeMob = document.getElementById("cartBadgeMobile"); 
-
-    [badgeDesk, badgeMob].forEach(badge => {
-      if (!badge) return;
-
-      const n = totalUnit > 99 ? "99+" : String(totalUnit);
-
-      if (totalUnit > 0) {
-        badge.setAttribute("data-count", n); 
-      } else {
-        badge.removeAttribute("data-count");
-      }
-    });
-  }
-
   renderCart();
-  badgeCart();
+  badgeCartRender();
+
+//para que funcione en las otros html
+  window.addEventListener("storage", (e) => {
+    if (e.key === "carrito") {
+      carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+      renderCart();
+      badgeCartRender();
+    }
+  });
 });
