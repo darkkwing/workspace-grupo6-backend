@@ -2,11 +2,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const cartContainer = document.getElementById("cart-container");
   const emptyCartMessage = document.getElementById("empty-cart-message");
   const checkoutBtn = document.getElementById("checkout-btn");
-
-  // Obtener carrito del localStorage
+  let subtotalGeneral = document.getElementById("subtotal");
+  let totalGeneral = document.getElementById("total");
+  
+  // Obtiene carrito del localStorage
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-  // Mostrar el carrito
+  // Muestra el carrito
   function renderCart() {
     cartContainer.innerHTML = "";
 
@@ -28,16 +30,39 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="cart-item-info">
           <h4>${producto.nombre}</h4>
           <p>Precio: ${producto.moneda} ${producto.costo}</p>
-          <p>Cantidad: ${producto.cantidad}</p>
-          <p>Subtotal: ${producto.moneda} ${producto.subtotal}</p>
+          <label>Cantidad:
+          <input type="number" min="1" value="${producto.cantidad}" class="cantidad-input" data-index="${carrito.indexOf(producto)}"></label>
+          <p>Subtotal: <span class="subtotal-text">${producto.moneda} ${producto.costo * producto.cantidad}</span></p>
         </div>
       `;
 
       cartContainer.appendChild(item);
     });
+  
+    // Actualizar resumen general
+    let total = carrito.reduce((acc, p) => acc + (p.costo * p.cantidad), 0);
+    subtotalGeneral.textContent = `$${total}`;
+    totalGeneral.textContent = `$${total}`;
+
+    // Detecta cambios en las cantidades
+    let inputs = document.querySelectorAll(".cantidad-input");
+    inputs.forEach((input) => {
+    input.addEventListener("input", (e) => {
+    let index = e.target.dataset.index;
+    let nuevaCantidad = parseInt(e.target.value) || 1;
+    carrito[index].cantidad = nuevaCantidad;
+    carrito[index].subtotal = carrito[index].costo * nuevaCantidad;
+
+    // Guarda cambios en localStorage
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+
+    // Vuelve a renderizar para actualizar todo
+    renderCart();
+  });
+});
   }
 
-  // Finalizar compra
+  // Finaliza compra
   checkoutBtn.addEventListener("click", () => {
     if (carrito.length === 0) {
       alert("Tu carrito está vacío.");
