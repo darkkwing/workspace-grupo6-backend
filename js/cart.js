@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <p>Precio: ${producto.moneda} ${producto.costo}</p>
           <label>Cantidad:
           <input type="number" min="1" value="${producto.cantidad}" class="cantidad-input" data-index="${carrito.indexOf(producto)}"></label>
-          <p>Subtotal: <span class="subtotal-text">${producto.moneda} ${producto.costo * producto.cantidad}</span></p>
+          <p>Subtotal: <span class="subtotal-text">${producto.moneda} ${(producto.costo * producto.cantidad).toFixed(2)}</span></p>
         </div>
       `;
 
@@ -137,8 +137,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderCart();
   badgeCartRender();
+  
+  // Añadir listeners a los radio buttons de envío
+  document.addEventListener("change", (e) => {
+    if (e.target.name === "shipping") {
+      actualizarCostos();
+    }
+  });
 
-//para que funcione en las otros html
+  //para que funcione en las otros html
   window.addEventListener("storage", (e) => {
     if (e.key === "carrito") {
       carrito = JSON.parse(localStorage.getItem("carrito")) || [];
