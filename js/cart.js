@@ -30,6 +30,41 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
+  // Calcula y actualiza los costos
+  function actualizarCostos() {
+    // Calcular subtotal
+    let subtotal = carrito.reduce((acc, p) => acc + (p.costo * p.cantidad), 0);
+    
+    // Obtener tipo de envío seleccionado
+    let tipoEnvio = document.querySelector('input[name="shipping"]:checked');
+    let porcentajeEnvio = 0;
+    
+    if (tipoEnvio) {
+      switch(tipoEnvio.value) {
+        case 'premium':
+          porcentajeEnvio = 0.15;
+          break;
+        case 'express':
+          porcentajeEnvio = 0.07;
+          break;
+        case 'standard':
+          porcentajeEnvio = 0.05;
+          break;
+      }
+    }
+    
+    // Calcular costo de envío
+    let costoEnvio = subtotal * porcentajeEnvio;
+    
+    // Calcular total
+    let total = subtotal + costoEnvio;
+    
+    // Actualizar la interfaz
+    subtotalGeneral.textContent = `$${subtotal.toFixed(2)}`;
+    document.getElementById("shipping").textContent = `$${costoEnvio.toFixed(2)}`;
+    totalGeneral.textContent = `$${total.toFixed(2)}`;
+  }
+
   // Muestra el carrito
   function renderCart() {
     cartContainer.innerHTML = "";
@@ -62,10 +97,8 @@ document.addEventListener("DOMContentLoaded", () => {
       cartContainer.appendChild(item);
     });
   
-    // Actualizar resumen general
-    let total = carrito.reduce((acc, p) => acc + (p.costo * p.cantidad), 0);
-    subtotalGeneral.textContent = `$${total}`;
-    totalGeneral.textContent = `$${total}`;
+    // Actualizar costos
+    actualizarCostos();
 
     // Detecta cambios en las cantidades
     let inputs = document.querySelectorAll(".cantidad-input");
