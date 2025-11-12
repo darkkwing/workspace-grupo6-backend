@@ -309,3 +309,44 @@
 .btn-comprar:hover {
   background: #111;
 }
+
+.btn-eliminar {
+  background-color: transparent;
+  border: none;
+  color: #555;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.btn-eliminar:hover {
+  color: #a71d2a;
+}
+
+/*reubicacion de los elementos de cada producto*/
+
+.cart-item-info {
+  position: relative; /*clave para poder ubicar cosas dentro*/
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 4px;
+  padding-right: 10%; /*deja espacio a la derecha*/
+}
+
+/*subtotal superior derecha*/
+.cart-item-info p:nth-of-type(2) {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+}
+
+/*eliminar inferior derecha*/
+.cart-item-info .btn-eliminar {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 0;
+  font-size: 1em; 
+}
+
