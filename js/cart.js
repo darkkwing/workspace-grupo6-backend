@@ -137,20 +137,98 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Finaliza compra
-  checkoutBtn.addEventListener("click", () => {
-    if (carrito.length === 0) {
-      alert("Tu carrito está vacío.");
-      return;
-    }
+ // Finaliza compra
+checkoutBtn.addEventListener("click", () => {
+  if (carrito.length === 0) {
+    alert("Tu carrito está vacío.");
+    return;
+  }
 
-    alert("Gracias por tu compra 🛒");
-    localStorage.removeItem("carrito");
-    carrito = [];
-    renderCart();
-    badgeCartRender();
+  // traemos los valores de los formularios
+  let shippingType = document.querySelector('input[name="shipping"]:checked');
+  let paymentMethod = document.querySelector('input[name="payment"]:checked');
+  
+  // traemos los inputs de dirección
+  let direccionInputs = document.querySelectorAll('#shippingAddress input');
+  
+  // traemos todos los inputs de pago
+  let paymentInputs = document.querySelectorAll('#paymentMethod input[type="text"]');
+
+  // acá validamos que la dirección no esté vacía
+  let direccionValida = true;
+  direccionInputs.forEach(input => {
+    if (input.value.trim() === '') {
+      direccionValida = false;
+    }
   });
 
+  if (!direccionValida) {
+    alert("Eu, completá la dirección de envío.");
+    return;
+  }
+
+  // validamos que se haya elegido forma de envío
+  if (!shippingType) {
+    alert("Dale, elegí cómo querés que te llegue el producto.");
+    return;
+  }
+
+  // validamos que todos los productos tengan cantidad mayor a 0
+  let cantidadesValidas = true;
+  carrito.forEach(producto => {
+    if (!producto.cantidad || producto.cantidad <= 0) {
+      cantidadesValidas = false;
+    }
+  });
+
+  if (!cantidadesValidas) {
+    alert("Los productos deben tener cantidad mayor a 0.");
+    return;
+  }
+
+  // validamos que se haya seleccionado forma de pago
+  if (!paymentMethod) {
+    alert("Elegí la forma de pago, movete.");
+    return;
+  }
+
+  // acá validamos que los campos de pago no estén vacíos
+  let pagoValido = true;
+  const metodoPago = paymentMethod.value;
+  
+  // si es tarjeta de crédito, validamos esos campos
+  if (metodoPago === 'credit') {
+    let creditCardInputs = document.querySelectorAll('#paymentMethod input[placeholder*="tarjeta"], #paymentMethod input[placeholder*="Vencimiento"], #paymentMethod input[placeholder*="CVV"]');
+    creditCardInputs.forEach(input => {
+      if (input.value.trim() === '') {
+        pagoValido = false;
+      }
+    });
+  }
+  // si es transferencia, validamos esos campos
+  else if (metodoPago === 'transfer') {
+    let transferInputs = document.querySelectorAll('#paymentMethod input[placeholder="Nombre"], #paymentMethod input[placeholder="Institución"], #paymentMethod input[placeholder="Número de cuenta"]');
+    transferInputs.forEach(input => {
+      if (input.value.trim() === '') {
+        pagoValido = false;
+      }
+    });
+  }
+
+  if (!pagoValido) {
+    alert("Completá todos los datos de pago, boludo.");
+    return;
+  }
+
+  // si llegamos acá, todo está bien y manda el mensaje de éxito
+  alert("¡Uyyyy! Tu compra se procesó correctamente! 🎉 \n\nTe vamos a enviar un email con los detalles.");
+  
+  // limpiamos el carrito
+  localStorage.removeItem("carrito");
+  carrito = [];
+  renderCart();
+});
+  
   renderCart();
   badgeCartRender();
 
