@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const checkoutBtn = document.getElementById("checkout-btn");
   let subtotalGeneral = document.getElementById("subtotal");
   let totalGeneral = document.getElementById("total");
-  
+
   // obtiene carrito del localStorage
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
@@ -12,12 +12,12 @@ document.addEventListener("DOMContentLoaded", () => {
   function badgeCartRender() {
     let totalUnit = carrito.reduce((acc, p) => acc + (p.cantidad || 1), 0);
     let badgeDesk = document.getElementById("cartBadgeDesktop");
-    let badgeMob = document.getElementById("cartBadgeMobile"); 
+    let badgeMob = document.getElementById("cartBadgeMobile");
     [badgeDesk, badgeMob].forEach(badge => {
       if (!badge) return;
       const n = totalUnit > 99 ? "99+" : String(totalUnit);
       if (totalUnit > 0) {
-        badge.setAttribute("data-count", n); 
+        badge.setAttribute("data-count", n);
       } else {
         badge.removeAttribute("data-count");
       }
@@ -34,13 +34,13 @@ document.addEventListener("DOMContentLoaded", () => {
   function actualizarCostos() {
     // Calcular subtotal
     let subtotal = carrito.reduce((acc, p) => acc + (p.costo * p.cantidad), 0);
-    
+
     // Obtener tipo de envío seleccionado
     let tipoEnvio = document.querySelector('input[name="shipping"]:checked');
     let porcentajeEnvio = 0;
-    
+
     if (tipoEnvio) {
-      switch(tipoEnvio.value) {
+      switch (tipoEnvio.value) {
         case 'premium':
           porcentajeEnvio = 0.15;
           break;
@@ -52,13 +52,13 @@ document.addEventListener("DOMContentLoaded", () => {
           break;
       }
     }
-    
+
     // Calcular costo de envío
     let costoEnvio = subtotal * porcentajeEnvio;
-    
+
     // Calcular total
     let total = subtotal + costoEnvio;
-    
+
     // Actualizar la interfaz
     subtotalGeneral.textContent = `$${subtotal.toFixed(2)}`;
     document.getElementById("shipping").textContent = `$${costoEnvio.toFixed(2)}`;
@@ -90,13 +90,16 @@ document.addEventListener("DOMContentLoaded", () => {
           <p>Precio: ${producto.moneda} ${producto.costo}</p>
           <label>Cantidad:
           <input type="number" min="1" value="${producto.cantidad}" class="cantidad-input" data-index="${carrito.indexOf(producto)}"></label>
-          <p>Subtotal: <span class="subtotal-text">${producto.moneda} ${(producto.costo * producto.cantidad).toFixed(2)}</span></p>
+          <p><span class="subtotal-text">${producto.moneda} ${(producto.costo * producto.cantidad).toFixed(2)}</span></p>
+          <button class="btn-eliminar" data-index="${carrito.indexOf(producto)}">
+            <i class="bi bi-trash"></i>
+          </button>
         </div>
       `;
 
       cartContainer.appendChild(item);
     });
-  
+
     // Actualizar costos
     actualizarCostos();
 
@@ -119,6 +122,19 @@ document.addEventListener("DOMContentLoaded", () => {
         renderCart();
       });
     });
+
+    //botones de eliminar producto 
+    let botonesEliminar = document.querySelectorAll(".btn-eliminar"); //trae todos los botones para escucharlos
+    botonesEliminar.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const index = e.currentTarget.dataset.index;
+        carrito.splice(index, 1); //elimina el producto
+        localStorage.setItem("carrito", JSON.stringify(carrito)); //actualiza el local
+        renderCart(); //vuelve a renderizar todo
+        badgeCartRender(); //actualiza el badge
+        actualizarCostos(); //recalcula totales
+      });
+    });
   }
 
   // Finaliza compra
@@ -137,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderCart();
   badgeCartRender();
-  
+
   // Añadir listeners a los radio buttons de envío
   document.addEventListener("change", (e) => {
     if (e.target.name === "shipping") {

@@ -82,6 +82,10 @@
   <main class="container my-5">
     <h2 class="text-center mb-5">Tu carrito</h2>
 
+    <div id="empty-cart-message" class="text-center text-muted" style="display: none;">
+      <p>No hay ningún producto en tu carrito.</p>
+    </div>
+
     <div class="cart-layout">
       <!-- Lista de productos -->
       <section id="cart-container" class="cart-items"></section>
@@ -166,10 +170,6 @@
             <p class="total"><b>Total</b> <span id="total" class="total">$0</span></p>
             <button id="checkout-btn" class="btn-comprar">Continuar compra</button>
           </div>
-        </div>
-
-        <div id="empty-cart-message" class="text-center text-muted" style="display: none;">
-          <p>No hay ningún producto en tu carrito.</p>
         </div>
   </main>
 
