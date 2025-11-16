@@ -32,8 +32,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Calcula y actualiza los costos
   function actualizarCostos() {
-    // Calcular subtotal
-    let subtotal = carrito.reduce((acc, p) => acc + (p.costo * p.cantidad), 0);
+    // Obtenemos la moneda actual desde currency.js
+   const monedaActual = typeof getCurrentCurrency === "function" ? getCurrentCurrency() : "USD";
+    // Calculamos el subtotal en la moneda elegida
+    let subtotal = carrito.reduce((acc, p) => {
+
+    const costoConvertido = typeof convertCurrency === "function" ? convertCurrency(p.costo, p.moneda, monedaActual) : p.costo;
+
+    return acc + (costoConvertido * p.cantidad);
+  }, 0);
 
     // Obtener tipo de envío seleccionado
     let tipoEnvio = document.querySelector('input[name="shipping"]:checked');
@@ -59,10 +66,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // Calcular total
     let total = subtotal + costoEnvio;
 
-    // Actualizar la interfaz
-    subtotalGeneral.textContent = `$${subtotal.toFixed(2)}`;
-    document.getElementById("shipping").textContent = `$${costoEnvio.toFixed(2)}`;
-    totalGeneral.textContent = `$${total.toFixed(2)}`;
+    let simbolo = monedaActual === "USD" ? "USD " : "UYU ";
+
+   subtotalGeneral.textContent = `${simbolo}${subtotal.toFixed(2)}`;
+  document.getElementById("shipping").textContent = `${simbolo}${costoEnvio.toFixed(2)}`;
+  totalGeneral.textContent = `${simbolo}${total.toFixed(2)}`;
   }
 
   // Muestra el carrito
@@ -247,4 +255,8 @@ checkoutBtn.addEventListener("click", () => {
       badgeCartRender();
     }
   });
+
+  document.addEventListener("currencyChange", () => {
+  actualizarCostos();
+});
 });

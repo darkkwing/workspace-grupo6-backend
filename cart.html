@@ -15,6 +15,7 @@
   <link href="css/darkmodebtn.css" rel="stylesheet" />
   <link href="css/darkmode.css" rel="stylesheet" />
   <link href="css/cart.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/currencyswitch.css">
 </head>
 
 <body>
@@ -164,6 +165,13 @@
             </span>
           </button>
           <div id="orderCosts" class="collapse show summary-content">
+            <p class="subtotal"><b>Moneda:</b>
+          <button class="currency-switch" id="currencySwitch">
+            <span class="usd-label">USD</span>
+            <span class="uyu-label">UYU</span>
+          </button>
+          </p>
+
             <p class="subtotal"><b>Subtotal</b> <span id="subtotal">$0</span></p>
             <p class="subtotal"><b>Envío</b> <span id="shipping">$0</span></p>
             <hr>
@@ -187,6 +195,7 @@
   <script src="js/darkmode.js"></script>
   <script src="js/Cerrar_sesión.js"></script>
   <script src="js/perfil_heder.js"></script>
+  <script src="js/currency.js"></script>
   <script src="js/cart.js"></script>
 </body>
 

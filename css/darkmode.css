@@ -447,6 +447,20 @@ body.dark button.summary-toggle.collapsed {
   border-color: var(--gs-surface-2);
 }
 
+body.dark .currency-switch.active .usd-label,
+body.dark .currency-switch .uyu-label {
+    color: var(--gs-text);
+}
+
+body.dark .currency-switch::before {
+  background: var(--gs-text);
+}
+
+
+body.dark .currency-switch.active .uyu-label{
+  color: var(--gs-main);
+}
+
 @media (max-width: 600px) {
   body.dark .dropdown-item-text {
     color: var(--gs-text);
