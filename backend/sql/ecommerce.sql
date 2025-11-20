@@ -1,5 +1,5 @@
 
--- Creación de tablas para el proyecto eMercado
+-- Creación de tablas groupeSix
 
 -- Tabla de Categorías
 CREATE TABLE categoria (
