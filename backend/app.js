@@ -4,14 +4,21 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// para que el post /login pueda lea el json
+app.use(express.json());
+
 // es pa que el frontend (incluso desde file://) puea pedir los JSON
 app.use((req, res, next) => {
 	res.header('Access-Control-Allow-Origin', '*');
-	res.header('Access-Control-Allow-Methods', 'GET,OPTIONS');
-	res.header('Access-Control-Allow-Headers', 'Content-Type');
+	res.header('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
+	res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 	if (req.method === 'OPTIONS') return res.sendStatus(200);
 	next();
 });
+
+// rutas del login
+const authRoutes = require('./routes/auth');
+app.use('/login', authRoutes);
 
 // sirve los JSONs en /emercado-api/*
 app.use('/emercado-api', express.static(path.join(__dirname, 'json', 'emercado-api-main')));

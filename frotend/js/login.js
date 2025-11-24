@@ -4,28 +4,55 @@ document.addEventListener("DOMContentLoaded", () => { // Sirve para que no se ej
     const password = document.getElementById("password"); // Sirve para seleccionar el elemento con el id "password" en la pagina.
     let registerBtn = document.getElementById("register-btn");
 
-    form.addEventListener("submit", (e) => { // Sirve para que cuando se aprete el boton se ejecute el codigo.
+    form.addEventListener("submit", async (e) => { // Sirve para que cuando se aprete el boton se ejecute el codigo.
         e.preventDefault(); // Sirve para que la pagina no se actualice cuando apretamos el boton. Si no la pagina se actualizaria y no te redirigiria a "index.html".
 
-        if (email.value.trim() && password.value.trim()) { // Si los dos campos tienen texto, se redirige al archivo "index.html".
-            sessionStorage.setItem("logueado", "true"); //Objeto que guarda los datos de inicio de sesión
+        const emailValue = email.value.trim();
+        const passwordValue = password.value.trim();
 
-            const username = email.value;           //Se crea una variable donde se almacena el valor del input email
-            sessionStorage.setItem("usuario", username);   //Objeto que guarda los datos de la variable
+        if (!emailValue || !passwordValue) {
+            alert("Ingresa tu correo electrónico y contraseña.");
+            return;
+        }
 
-            
-            // Si el usuario no existe en localStorage, lo creamos
-            if (!localStorage.getItem(username)) {
-            const datosUsuario = {
-                email: username,
-                imagenPerfil: null // aún no tiene imagen
-            };
-            localStorage.setItem(username, JSON.stringify(datosUsuario));
+        try {
+            // hacre post al backend
+            const response = await fetch("http://localhost:3000/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email: emailValue,
+                    password: passwordValue
+                })
+            });
+
+            const data = await response.json();
+
+            // si la api devuelve error
+            if (!response.ok) {
+                alert(data.error || "Credenciales incorrectas");
+                return;
             }
-            
+
+            // guarda el token en el session
+            sessionStorage.setItem("token", data.token);
+
+            // crea entrada en local si no existe
+            if (!localStorage.getItem(emailValue)) {
+                const datosUsuario = {
+                    email: emailValue,
+                    imagenPerfil: null
+                };
+                localStorage.setItem(emailValue, JSON.stringify(datosUsuario));
+            }
+
             window.location.href = "index.html"; // Determina a que archivo se redirige si ambos campos tienen texto
-        } else { // Si alguno de los dos campos esta vacio se muestra una alerta al usuario.
-            alert("Ingresa tu correo electrónico y contraseña."); // Alerta.
+
+        } catch (err) {
+            alert("Error al conectar con el servidor.");
+            console.error(err);
         }
     });
 
