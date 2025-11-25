@@ -3,9 +3,9 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 const fs = require("fs");
 const path = require("path");
+const authMiddleware = require("../middleware/authMiddleware");
 
 const USERS_PATH = path.join(__dirname, "../data/users.json");
-
 // calve
 const SECRET_KEY = "el_groupe_six_es_el_mejor";
 
@@ -31,6 +31,13 @@ router.post("/", (req, res) => {
         { expiresIn: "2h" }
     );
     return res.json({ token });
+});
+
+router.get("/", authMiddleware, (req, res) => {
+  res.json({
+    message: "Ruta protegida",
+    user: req.user
+  });
 });
 
 module.exports = router;

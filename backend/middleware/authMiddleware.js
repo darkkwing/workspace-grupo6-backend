@@ -1,8 +1,8 @@
 const jwt = require("jsonwebtoken");
 
-const SECRET_KEY = "el_groupe_six_es_el_mejor";  // Misma clave que usamos en  el archivo auth.js
+const SECRET_KEY = "el_groupe_six_es_el_mejor";
 
-const authMiddleware = (req, res, next) => {
+function authMiddleware(req, res, next) {
   const authHeader = req.headers["authorization"];
 
   if (!authHeader) {
@@ -25,6 +25,6 @@ const authMiddleware = (req, res, next) => {
     req.user = decodedUser;
     next();
   });
-};
+}
 
-module.exports = { authMiddleware };
+module.exports = authMiddleware;

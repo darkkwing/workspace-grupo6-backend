@@ -1,10 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Sirve para que no se ejecute el resto del script a menos que el DOM haya terminado de cargar.
-  if (!sessionStorage.getItem("refreshedLogin")) {
-    sessionStorage.setItem("refreshedLogin", "true");
-    location.reload();
-    return;
-  }
+if (!sessionStorage.getItem("refreshedLogin")) {
+  sessionStorage.setItem("refreshedLogin", "true");
+  setTimeout(() => location.reload(), 10);
+  return;
+}
+
 
   const form = document.querySelector("form"); // Sirve para seleccionar el primer "form" que haya en la pagina.
   const email = document.getElementById("email"); // Sirve para seleccionar el elemento con el id "email" en la pagina.
