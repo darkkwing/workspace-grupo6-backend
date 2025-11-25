@@ -3,5 +3,10 @@
         "id": 1,
         "email": "groupe-six@gmail.com",
         "password": "123456"
+    },
+    {
+        "id": 2,
+        "email": "user@gmail.com",
+        "password": "user"
     }
 ]
