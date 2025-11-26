@@ -53,7 +53,7 @@ function normalizeSelectCat(catId, raw) {
         id: String(p.id),
         name: String(p.name),
         description: String(p.description),
-        costNum: Number(p.cost),
+        costNum: Number(p.costNum),
         currency: p.currency || "",
         soldCount: Number(p.soldCount),
         image: p.image,
