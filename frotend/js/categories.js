@@ -90,33 +90,45 @@ function sortAndShowCategories(sortCriteria, categoriesArray){
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(CATEGORIES_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
-            currentCategoriesArray = resultObj.data
-            showCategoriesList()
-            //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
+
+            currentCategoriesArray = resultObj.data.map(cat => ({
+                id: cat.id_categoria,
+                name: cat.nombre,
+                description: cat.descripcion,
+                imgSrc: cat.img_src,
+                productCount: 0
+            }));
+
+            showCategoriesList();
         }
     });
 
-    document.getElementById("sortAsc").addEventListener("click", function(){
+    document.getElementById("sortAsc")?.addEventListener("click", function(){
         sortAndShowCategories(ORDER_ASC_BY_NAME);
     });
 
-    document.getElementById("sortDesc").addEventListener("click", function(){
+    document.getElementById("sortDesc")?.addEventListener("click", function(){
         sortAndShowCategories(ORDER_DESC_BY_NAME);
     });
 
-    document.getElementById("sortByCount").addEventListener("click", function(){
+    document.getElementById("sortByCount")?.addEventListener("click", function(){
         sortAndShowCategories(ORDER_BY_PROD_COUNT);
     });
 
-    document.getElementById("clearRangeFilter").addEventListener("click", function(){
+    document.getElementById("clearRangeFilter")?.addEventListener("click", function(){
         document.getElementById("rangeFilterCountMin").value = "";
         document.getElementById("rangeFilterCountMax").value = "";
-
         minCount = undefined;
         maxCount = undefined;
-
         showCategoriesList();
     });
+
+    document.getElementById("rangeFilterCount")?.addEventListener("click", function(){
+        minCount = parseInt(document.getElementById("rangeFilterCountMin").value) || undefined;
+        maxCount = parseInt(document.getElementById("rangeFilterCountMax").value) || undefined;
+        showCategoriesList();
+    });
+});
 
     document.getElementById("rangeFilterCount").addEventListener("click", function(){
         //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
@@ -140,4 +152,3 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         showCategoriesList();
     });
-});

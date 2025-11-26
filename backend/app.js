@@ -23,6 +23,10 @@ app.use('/login', authRoutes);
 const categoriesRoutes = require("./routes/categories");
 app.use("/categories", categoriesRoutes);
 
+const productsRoutes = require("./routes/products");
+app.use("/products", productsRoutes);
+
+
 
 // sirve los JSONs en /emercado-api/*
 app.use('/emercado-api', express.static(path.join(__dirname, 'json', 'emercado-api-main')));

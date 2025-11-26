@@ -2,12 +2,19 @@ let carInner, carIndicators;
 const CATEGORY_IDS = [101, 102, 103, 104, 105, 106, 107, 108, 109];
 
 document.addEventListener("DOMContentLoaded", async function () {
+
+ if (typeof getJSONData !== "function" || typeof normalizeSelectCat !== "function") {
+    console.error("Dependencias faltantes: asegúrate de cargar init.js y catalogService.js antes que index.js");
+    return;
+  }
+
   carInner = document.getElementById("top-carousel-inner");
   carIndicators = document.getElementById("top-carousel-indicators");
 
   try {
     const arrayPromises = CATEGORY_IDS.map(id =>
-      getJSONData(PRODUCTS_URL + id + EXT_TYPE)
+      getJSONData(PRODUCTS_URL + "/" + id)
+      //getJSONData(PRODUCTS_URL + id + EXT_TYPE)
     );
 
     const responses = await Promise.all(arrayPromises);
@@ -39,15 +46,15 @@ document.addEventListener("DOMContentLoaded", async function () {
     console.error("Error cargando top vendidos:", error);
   }
 
-  document.getElementById("autos").addEventListener("click", function () {
+  document.getElementById("autos")?.addEventListener("click", function () {
     localStorage.setItem("catID", 101);
     window.location = "products.html";
   });
-  document.getElementById("juguetes").addEventListener("click", function () {
+  document.getElementById("juguetes")?.addEventListener("click", function () {
     localStorage.setItem("catID", 102);
     window.location = "products.html";
   });
-  document.getElementById("muebles").addEventListener("click", function () {
+  document.getElementById("muebles")?.addEventListener("click", function () {
     localStorage.setItem("catID", 103);
     window.location = "products.html";
   });

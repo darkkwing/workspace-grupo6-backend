@@ -17,24 +17,31 @@ document.addEventListener("DOMContentLoaded", async () => {
     window.productos = [...allProducts]; // Guarda los productos para la búsqueda
 
     //llamada de la funcion para crear los elementos
-    catName([{ cat: title }]);
-    createList(visibleProducts);
+      if (typeof catName === "function" && catEl) {
+      catName([{ cat: title }]);
+    }
+     if (listEl) {
+      createList(visibleProducts);
+    } else {
+      console.warn("Elemento #list-products no encontrado.");
+    }
 
   } catch (error) {
     console.error("Error al cargar los productos:", error);
-    listEl.innerHTML = `
-  <li class="error">
-      No se pudieron cargar los productos. 
-      <br>Por favor, intenta recargar la página más tarde.
-    </li>
-  `;
+    if (listEl) {
+      listEl.innerHTML = `
+      <li class="error">
+          No se pudieron cargar los productos. 
+          <br>Por favor, intenta recargar la página más tarde.
+        </li>
+      `;
+    }
   }
-
-
 })
 
 
 function catName(categories) {
+  if (!catEl) return;
   let catHTML = categories.map(c => `
     ${c.cat}
   `).join("");
@@ -50,7 +57,7 @@ function formatPrice(currency, costNum) {
 
 //crea elementos de los productos
 function createList(items) {
-
+if (!listEl) return;
   let html = items.map(p => {
     let price = formatPrice(p.currency, p.costNum);
     return `

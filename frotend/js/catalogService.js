@@ -8,19 +8,26 @@ function getCurrentCatId() {
         return "101";
     }
 
-    return catId;
+    return String(catId);
 };
 
 
 //aqui con las constantes en init.js las usamos para construir una URL de la API
 function buildCategoryUrl(catId) {
-    return PRODUCTS_URL + catId + EXT_TYPE;
+    if (typeof PRODUCTS_URL === "undefined") {
+        throw new Error("PRODUCTS_URL no definido.");
+    }
+    return PRODUCTS_URL + "/" + catId;
+    //return PRODUCTS_URL + catId + EXT_TYPE;
 };
 
 //aca traemos los datos json de las categorias sin procesar desde la API
 // es async porque llamamos los datos de los Json en la API
 async function fetchCategoryRaw(catId) {
     try {
+        if (typeof getJSONData !== "function") {
+            throw new Error("getJSONData no disponible.");
+        }
         let getUrl = buildCategoryUrl(catId);
         let result = await getJSONData(getUrl)
 
