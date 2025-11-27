@@ -1,24 +1,28 @@
-const express = require('express');
-const path = require('path');
+const express = require("express");
+const path = require("path");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// para que el post /login pueda lea el json
-app.use(express.json());
-
-// es pa que el frontend (incluso desde file://) puea pedir los JSON
 app.use((req, res, next) => {
-	res.header('Access-Control-Allow-Origin', '*');
-	res.header('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
-	res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-	if (req.method === 'OPTIONS') return res.sendStatus(200);
-	next();
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200);
+  }
+
+  next();
 });
 
-// rutas del login
-const authRoutes = require('./routes/auth');
-app.use('/login', authRoutes);
+// leer json
+app.use(express.json());
+
+// routes
+const authRoutes = require("./routes/auth");
+console.log(">>> RUTA /login REGISTRADA <<<");
+app.use("/login", authRoutes);
 
 const categoriesRoutes = require("./routes/categories");
 app.use("/categories", categoriesRoutes);
@@ -26,19 +30,24 @@ app.use("/categories", categoriesRoutes);
 const productsRoutes = require("./routes/products");
 app.use("/products", productsRoutes);
 
+const usersRoutes = require("./routes/users");
+app.use("/users", usersRoutes);
 
+// JSONs
+app.use(
+  "/emercado-api",
+  express.static(path.join(__dirname, "json", "emercado-api-main"))
+);
 
-// sirve los JSONs en /emercado-api/*
-app.use('/emercado-api', express.static(path.join(__dirname, 'json', 'emercado-api-main')));
-
-// sirve el frontend (carpeta frotend que esta al lado) pa que la app ande en http://localhost:3000
-const frontendPath = path.join(__dirname, '..', 'frotend');
+// frontend
+const frontendPath = path.join(__dirname, "..", "frotend");
 app.use(express.static(frontendPath));
 
-app.get('/', (req, res) => {
-	res.sendFile(path.join(frontendPath, 'index.html'));
+app.get("/", (req, res) => {
+  res.sendFile(path.join(frontendPath, "index.html"));
 });
 
+// levantar servidor
 app.listen(PORT, () => {
-	console.log(`Servidor escuchando en http://localhost:${PORT}`);
+  console.log(`Servidor escuchando en http://localhost:${PORT}`);
 });

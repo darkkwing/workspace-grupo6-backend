@@ -48,16 +48,17 @@ if (!sessionStorage.getItem("refreshedLogin")) {
       // guarda el token en el session
       sessionStorage.setItem("token", data.token);
       sessionStorage.setItem("logueado", "true");
-      sessionStorage.setItem("usuario", emailValue);
+      //sessionStorage.setItem("usuario", emailValue);
 
       // crea entrada en local si no existe
-      if (!localStorage.getItem(emailValue)) {
-        const datosUsuario = {
-          email: emailValue,
-          imagenPerfil: null,
-        };
-        localStorage.setItem(emailValue, JSON.stringify(datosUsuario));
-      }
+      localStorage.setItem("user", JSON.stringify(data.user));
+      // if (!localStorage.getItem(emailValue)) {
+      //   const datosUsuario = {
+      //     email: emailValue,
+      //     imagenPerfil: null,
+      //   };
+      //   localStorage.setItem(emailValue, JSON.stringify(datosUsuario));
+      // }
 
       window.location.href = "index.html"; // Determina a que archivo se redirige si ambos campos tienen texto
     } catch (err) {

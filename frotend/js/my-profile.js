@@ -1,106 +1,110 @@
-// cambiar foto
-const usuario = sessionStorage.getItem("usuario"); // usuario actual
-const foto = document.getElementById('fotoPerfil');
-const inputFoto = document.getElementById('inputFoto');
-const imagenPorDefecto = 'img/person-circle.svg';
+document.addEventListener("DOMContentLoaded", () => {
 
-// cargar imagen del usuario
-let datosUsuario = {};
-if (usuario) {
-    datosUsuario = JSON.parse(localStorage.getItem(usuario)) || {};
-    foto.src = datosUsuario.imagenPerfil || imagenPorDefecto;
+  const usuario = JSON.parse(localStorage.getItem("user"));
+  const logueado = sessionStorage.getItem("logueado") === "true";
 
-    // Cargar los valores del perfil si existen
-  const campos = ["nombre", "apellido", "telefono", "email"];
-  campos.forEach((campo) => {
-    const input = document.getElementById(campo);
-    if (input) {
-      input.value = datosUsuario[campo] || "";
-      // El email no se edita manualmente
-      if (campo === "email") input.disabled = true;
-    }
-  });
-} else {
-    foto.src = imagenPorDefecto;
-    console.warn(" No hay usuario logueado.");
-}
+  if (!logueado || !usuario) {
+    window.location = "login.html";
+    return;
+  }
 
-// cambiar imagen
-foto.addEventListener('click', () => inputFoto.click());
+  const foto = document.getElementById("fotoPerfil");
+  const inputFoto = document.getElementById("inputFoto");
+  const nombreInput = document.getElementById("nombre");
+  const apellidoInput = document.getElementById("apellido");
+  const emailInput = document.getElementById("email");
+  const telefonoInput = document.getElementById("telefono");
+  const editarBtn = document.getElementById("btnEditar");
 
-inputFoto.addEventListener('change', (e) => {
+  // cargar datos
+  foto.src = usuario.imagenPerfil || "img/person-circle.svg";
+  nombreInput.value = usuario.nombre || "";
+  apellidoInput.value = usuario.apellido || "";
+  emailInput.value = usuario.email || "";
+  telefonoInput.value = usuario.telefono || "";
+
+  // click en foto 
+  foto.addEventListener("click", () => inputFoto.click());
+
+  inputFoto.addEventListener("change", e => {
     const file = e.target.files[0];
     if (!file) return;
 
     const reader = new FileReader();
     reader.onload = () => {
-        foto.src = reader.result;
+      foto.src = reader.result;
 
-        // guardar imagen en datos del usuario
-        if (usuario) {
-            datosUsuario.imagenPerfil = reader.result;
-            localStorage.setItem(usuario, JSON.stringify(datosUsuario));
-        }
+      // actualizar localStorage 
+      usuario.imagenPerfil = reader.result;
+      localStorage.setItem("user", JSON.stringify(usuario));
+
+      window.dispatchEvent(new Event("storage"));
     };
     reader.readAsDataURL(file);
-});
+  });
 
-// datos
-document.addEventListener('DOMContentLoaded', () => {
-    const btnEditar = document.getElementById('btnEditar');
-    const inputs = document.querySelectorAll('.perfil-info input');
+  let editando = false;
 
-    let editando = false;
-
-  btnEditar.addEventListener("click", () => {
-    editando = !editando; // alternar entre editar y guardar
+  editarBtn.addEventListener("click", async () => {
+    editando = !editando;
 
     if (editando) {
-      //  Modo edición activado
-      btnEditar.textContent = "Guardar";
-      inputs.forEach((input) => {
-        if (input.id !== "email") {
-          input.disabled = false;
-        }
-      });
-    } else {
-      //  Guardar cambios
-      ["nombre", "apellido", "telefono"].forEach((campo) => {
-        const el = document.getElementById(campo);
-        if (el) datosUsuario[campo] = el.value.trim();
+      editarBtn.textContent = "Guardar";
+      nombreInput.disabled = false;
+      apellidoInput.disabled = false;
+      telefonoInput.disabled = false;
+      inputFoto.disabled = false;
+      return;
+    }
+
+    // guardar cambios
+    const nuevosDatos = {
+      nombre: nombreInput.value,
+      apellido: apellidoInput.value,
+      telefono: telefonoInput.value
+    };
+
+    try {
+      const response = await fetch(`http://localhost:3000/users/${usuario.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + sessionStorage.getItem("token")
+        },
+        body: JSON.stringify(nuevosDatos)
       });
 
-      // Guardar el objeto completo del usuario
-      if (usuario) {
-        localStorage.setItem(usuario, JSON.stringify(datosUsuario));
+      const data = await response.json();
+
+      if (!data.success) {
+        alert("Error al guardar los cambios");
+        return;
       }
 
-      // Volver a deshabilitar inputs
-      inputs.forEach((input) => {
-        input.disabled = true;
-      });
+      // actualizar localStorage
+      Object.assign(usuario, nuevosDatos);
+      localStorage.setItem("user", JSON.stringify(usuario));
 
-      btnEditar.textContent = "Editar";
+      window.dispatchEvent(new Event("storage"));
+
+      editarBtn.textContent = "Editar";
+      nombreInput.disabled = true;
+      apellidoInput.disabled = true;
+      telefonoInput.disabled = true;
+      inputFoto.disabled = true;
+
+      alert("Datos actualizados correctamente");
+
+    } catch (err) {
+      console.error(err);
+      alert("Error al conectar con el servidor");
     }
   });
+
+  // solo números
+  telefonoInput.addEventListener("input", () => {
+    telefonoInput.value = telefonoInput.value.replace(/[^0-9]/g, "");
+  });
+
 });
 
-
-    // correo
-    const spanCorreo = document.getElementById('user-info');
-    const inputCorreo = document.getElementById('email');
-    const verificarCorreo = setInterval(() => {
-        const correo = spanCorreo?.textContent?.trim();
-        if (correo && correo.includes('@')) {
-            if (inputCorreo) inputCorreo.value = correo;
-            clearInterval(verificarCorreo);
-        }
-    }, 300);
-
-// que solo se permitan numeros en el campo del telefono
-const inputTelefono = document.getElementById('telefono');
-if (inputTelefono) {
-    inputTelefono.addEventListener('input', () => {
-        inputTelefono.value = inputTelefono.value.replace(/[^0-9]/g, '');
-    });
-}
