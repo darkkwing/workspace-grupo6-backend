@@ -1,42 +1,32 @@
 document.addEventListener("DOMContentLoaded", () => {
+  let productId = localStorage.getItem("selectedProductID");
   let container = document.getElementById("comentarios-container");
   let submitBtn = document.querySelector(".btn-submit");
   let cancelBtn = document.querySelector(".btn-cancel");
   let textarea = document.querySelector(".comment");
   let starsInput = document.getElementsByName("qualification");
 
-  //agarro el id del producto y comentarios del bootstrap
-  let productId = localStorage.getItem("selectedProductID");
-  let commentsURL = `https://japceibal.github.io/emercado-api/products_comments/${productId}.json`;
-
-  //aca voy a guardar los comentarios que vienen del json y locales
-  let jsonComments = [];
-  let localComments = JSON.parse(localStorage.getItem(`comments_${productId}`)) || [];
 
   //funcion que genera las estrellas
-  function generarEstrellas(score) {
+function generarEstrellas(score) {
     let html = "";
     for (let i = 1; i <= 5; i++) {
-      if (i <= score) {
-        html += '<span class="star filled">★</span>';
-      } else {
-        html += '<span class="star">★</span>';
-      }
+      html += `<span class="star ${i <= score ? "filled" : ""}">★</span>`;
     }
     return html;
   }
-
   //funcion para mostrar comentarios en pantalla
   function mostrarComentarios(comments) {
     container.innerHTML = "";
-    comments.forEach(c => {
-      let stars = generarEstrellas(parseInt(c.score || 0)); //calculo las estrellas
-      let nombre = c.user || "Tú"; //nombre del usuario
-      let fecha = c.dateTime || new Date().toISOString().slice(0,19).replace("T"," "); //fecha actual
-      let desc = c.description || ""; //descripcion del comentario
 
-      //formato del comentario
-      container.insertAdjacentHTML("beforeend", `
+    comments.forEach(c => {
+      let stars = generarEstrellas(parseInt(c.score));
+      let nombre = c.user || "Usuario";
+      let fecha = c.dateTime;
+
+      container.insertAdjacentHTML(
+        "beforeend",
+        `
         <div class="comentario">
           <div class="comentario-header">
             <div class="comentario-user">
@@ -48,52 +38,87 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             <div class="comentario-stars">${stars}</div>
           </div>
-          <p class="comentario-texto">${desc}</p>
+          <p class="comentario-texto">${c.description}</p>
         </div>
-      `);
+      `
+      );
     });
   }
 
   //traigo los comentarios del json oficial, este pedacito costo hacerlo andar
-  fetch(commentsURL)
-    .then(r => r.json())
-    .then(c => {
-      jsonComments = c;
-      mostrarComentarios([...jsonComments, ...localComments]); //muestro todos juntos
-    })
-    .catch(e => console.log("Error comentarios", e));
+async function cargarComentarios() {
+    try {
+      const response = await fetch(`http://localhost:3000/comments/${productId}`);
+      const data = await response.json();
+
+      if (data.status === "ok") {
+        mostrarComentarios(data.comments);
+      } else {
+        console.error("Error cargando comentarios");
+      }
+
+    } catch (e) {
+      console.error("Error:", e);
+    }
+  }
+
+  cargarComentarios();
 
 
-  submitBtn.addEventListener("click", () => {
+  submitBtn.addEventListener("click", async () => {
+
     let desc = textarea.value.trim();
-    if (!desc) return;
+    if (!desc) return alert("Debes escribir un comentario.");
+
     let valor = document.querySelector('input[name="qualification"]:checked');
-    if (!valor) { 
-      alert("Por favor selecciona una calificación"); 
-      return; 
+    if (!valor) return alert("Por favor selecciona una calificación");
+
+    const puntuacion = parseInt(valor.value);
+
+    const token = sessionStorage.getItem("token");
+    if (!token) {
+      alert("Debes estar logueado para agregar un comentario.");
+      return;
     }
 
-    let email = sessionStorage.getItem("usuario"); //agarro el usuario logueado
-    let nombre = email.split("@")[0]; //saco el nombre del email
-    let fecha = new Date().toISOString().slice(0,19).replace("T"," "); //fecha actual
-    let score = parseInt(valor.value); //valor de la estrella
+    const body = {
+      id_producto: productId,
+      puntuacion,
+      texto: desc,
+    };
 
+    try {
+      const response = await fetch("http://localhost:3000/comments", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+        body: JSON.stringify(body),
+      });
 
-    //creo el comentario nuevo y lo agrego a mis comentarios locales
-    let newComment = { user: nombre, dateTime: fecha, description: desc, score: score };
-    localComments.push(newComment);
-    localStorage.setItem(`comments_${productId}`, JSON.stringify(localComments));
+      const data = await response.json();
 
-    //muestro todos otra vez
-    mostrarComentarios([...jsonComments, ...localComments]);
+      if (data.status === "ok") {
+        textarea.value = "";
+        starsInput.forEach(s => s.checked = false);
 
-    //limpio el form
-    textarea.value = "";
-    starsInput.forEach(s => s.checked = false);
+        alert("Comentario agregado con éxito.");
+        cargarComentarios();
+
+      } else {
+        alert("Error al agregar el comentario");
+      }
+
+    } catch (e) {
+      console.error("Error:", e);
+      alert("Error al conectarse al servidor");
+    }
   });
+
 
   cancelBtn.addEventListener("click", () => {
     textarea.value = "";
-    starsInput.forEach(s => s.checked = false);
+    starsInput.forEach((s) => (s.checked = false));
   });
 });

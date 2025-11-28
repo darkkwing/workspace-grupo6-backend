@@ -33,6 +33,10 @@ app.use("/products", productsRoutes);
 const usersRoutes = require("./routes/users");
 app.use("/users", usersRoutes);
 
+const commentsRoutes = require("./routes/comments");
+app.use("/comments", commentsRoutes);
+
+
 // JSONs
 app.use(
   "/emercado-api",
