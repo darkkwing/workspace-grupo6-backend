@@ -4,6 +4,7 @@ const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// CORS
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
@@ -12,14 +13,13 @@ app.use((req, res, next) => {
   if (req.method === "OPTIONS") {
     return res.sendStatus(200);
   }
-
   next();
 });
 
-// leer json
+// leer JSON
 app.use(express.json());
 
-// routes
+//rutas backend
 const authRoutes = require("./routes/auth");
 console.log(">>> RUTA /login REGISTRADA <<<");
 app.use("/login", authRoutes);
@@ -36,22 +36,21 @@ app.use("/users", usersRoutes);
 const commentsRoutes = require("./routes/comments");
 app.use("/comments", commentsRoutes);
 
-
-// JSONs
+// JSONs viejos de eMercado API, ya que algunos se usan en el proyecto
 app.use(
   "/emercado-api",
   express.static(path.join(__dirname, "json", "emercado-api-main"))
 );
 
-// frontend
-const frontendPath = path.join(__dirname, "..", "frotend");
+//frontend
+const frontendPath = path.join(__dirname, "..", "frontend");
 app.use(express.static(frontendPath));
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(frontendPath, "index.html"));
 });
 
-// levantar servidor
+//iniciar servidor
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en http://localhost:${PORT}`);
 });

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Vender | GROUPE SIX</title>
+  <link href="img/groupe-six-icon.png" rel="icon">
+  <!-- CSS -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="css/dropzone.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <link href="css/sell.css" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link href="css/darkmodebtn.css" rel="stylesheet" />
+  <link href="css/darkmode.css" rel="stylesheet" />
+  <link href="css/cart.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-izq">
+      <a href="index.html"><img src="img/groupe-six.png" alt="groupe six" class="logo" /></a>
+    </div>
+
+    <div class="header-medio search-wrapper" role="search">
+      <input type="search" placeholder="¿Qué estás buscando?" class="buscador" id="search-input" />
+      <div id="search-results" class="resultados-container"></div>
+    </div>
+
+    <div class="header-der">
+      <a class="a-btn" href="categories.html"><button class="izq">Categorías</button></a>
+      <a class="a-btn" href="sell.html"><button class="izq">Vender</button></a>
+      <a id="cartBadgeDesktop" class="a-btn cart-badge" href="cart.html"><button class="izq btn-carrito"><i
+            class="bi bi-cart4"></i></button></a>
+      <div class="dropdown">
+        <button class="dropdown-toggle perfil-btn" type="button" id="cuentaMenu" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <img src="img/person-circle.svg" alt="Foto de perfil" class="foto-perfil" id="user-profile-img">
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="cuentaMenu">
+          <li><a href="my-profile.html" class="dropdown-item" id="user-info"></a></li>
+          <li>
+            <hr class="dropdown-divider" />
+          </li>
+          <li class="switch" id="themeSwitch" role="button"><i class="bx bx-sun"></i><i class="bx bx-moon"></i></li>
+          <li>
+            <hr class="dropdown-divider" />
+          </li>
+          <li><a class="dropdown-item" href="#" id="logoutBtn">Cerrar sesión</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Menú hamburguesa (mobile) -->
+    <nav class="menu" style="display: none;">
+      <div class="buscador-contenedor">
+        <i class="bi bi-search" id="buscador-logo"></i>
+        <div class="buscador-responsive">
+          <input type="search" placeholder="¿Qué estás buscando?" id="search-responsive" />
+          <div id="search-results-responsive" class="search-results-container"></div>
+        </div>
+      </div>
+      <input type="checkbox" id="menu-toggle" />
+      <label for="menu-toggle" class="menu-icon">&#9776;</label>
+      <ul class="menu-links">
+        <li><a href="my-profile.html" class="dropdown-item-text" id="user-info"></a></li>
+        <li><a id="cartBadgeMobile" class="cart-badge" href="cart.html">Carrito<i class="bi bi-cart4"></i></a></li>
+        <li><a href="categories.html">Categorías</a></li>
+        <li><a href="sell.html">Vender</a></li>
+        <li class="switch" id="themeSwitchMobile" role="button" aria-label="Cambiar tema">
+          <i class="bx bx-sun" aria-hidden="true"></i>
+          <i class="bx bx-moon" aria-hidden="true"></i>
+        </li>
+        <li><a class="dropdown-item" href="#" id="logoutBtnMobile">Cerrar sesión</a></li>
+      </ul>
+    </nav>
+
+  </header>
+
+
+  <!-- Contenido -->
+  <main>
+    <div class="container">
+      <div class="text-center">
+        <h2>Vender</h2>
+        <p>Publica en minutos, vende sin límites.</p>
+      </div>
+
+      <form id="sell-info" novalidate>
+        <input type="text" id="productName" name="productName" placeholder="Nombre">
+
+        <!-- SELECT CATEGORÍA AGREGADO -->
+        <select id="productCategory" name="productCategory">
+          <option value="" hidden selected>Selecciona categoría</option>
+          <option value="101">Autos</option>
+          <option value="102">Juguetes</option>
+          <option value="103">Muebles</option>
+          <option value="104">Herramientas</option>
+          <option value="105">Computadoras</option>
+          <option value="106">Vestimenta</option>
+          <option value="107">Electrodomésticos</option>
+          <option value="108">Deporte</option>
+          <option value="109">Celulares</option>
+        </select>
+
+        <div id="file-upload">
+          <div class="dz-message">Subí tus fotos y deja que tu producto hable por sí solo.</div>
+        </div>
+
+        <textarea id="productDescription" name="productDescription"
+          placeholder="Escribí aquí tu descripción con claridad."></textarea>
+
+        <div class="triple-input">
+          <div class="input-group">
+            <label for="productCostInput">Precio</label>
+            <input type="number" id="productCostInput" name="productCostInput" min="0" value="0">
+          </div>
+
+          <div class="input-group">
+            <label for="productCurrency">Moneda</label>
+            <select id="productCurrency" name="productCurrency">
+              <option value="" hidden selected>Selecciona aquí la moneda</option>
+              <option value="UYU">Pesos Uruguayos (UYU)</option>
+              <option value="USD">Dólares (USD)</option>
+            </select>
+
+          </div>
+
+          <div class="input-group">
+            <label for="productCountInput">Stock</label>
+            <input type="number" id="productCountInput" name="productCountInput" min="0" value="1">
+          </div>
+        </div>
+
+        <div class="radio-section">
+          <p>Tipo de publicación</p>
+          <label><input type="radio" id="goldradio" name="publicationType" checked> Gold (13%)</label>
+          <label><input type="radio" id="premiumradio" name="publicationType"> Premium (7%)</label>
+          <label><input type="radio" id="standardradio" name="publicationType"> Estándar (3%)</label>
+        </div>
+
+        <button type="button" class="btn-link" id="view-conditions">Ver condiciones</button>
+
+        <div class="cost-section">
+          <p><strong>Costos</strong></p>
+          <div class="cost-item">
+            <div>
+              <p class="cost-title"><b>Precio</b></p>
+              <small>Unitario del producto</small>
+            </div>
+            <span id="productCostText">-</span>
+          </div>
+
+          <div class="cost-item" id="cost-item2">
+            <div>
+              <p class="cost-title"><b>Porcentaje</b></p>
+              <small>Según el tipo de publicación</small>
+            </div>
+            <span id="comissionText">-</span>
+          </div>
+
+          <div class="cost-item total">
+            <p>Total ($)</p>
+            <strong id="totalCostText">-</strong>
+          </div>
+        </div>
+
+        <button class="btn-primary" type="submit">Vender</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Este sitio forma parte de
+      <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+    </p>
+  </footer>
+
+  <div class="alert alert-primary-dismissible fade" id="alertResult" role="alert">
+    <span id="resultSpan"></span>
+  </div>
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="contidionsModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Condiciones de publicación</h5>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <h5 class="text-warning">Gold (13%)</h5>
+              <p class="muted text-justify">Tu producto se verá de forma promocionada en portada, además de las
+                condiciones de Premium y Estándar.</p>
+            </div>
+            <hr>
+            <div class="row">
+              <h5 class="text-primary">Premium (7%)</h5>
+              <p class="muted text-justify">Se mostrará el producto en los primeros lugares de resultados de búsqueda,
+                así cómo cuando se ingrese a la categoría que pertenezca.</p>
+            </div>
+            <hr>
+            <div class="row">
+              <h5 class="text-secondary">Estándar (3%)</h5>
+              <p class="muted text-justify">El producto se listará en la categoría correspondiente, así como en los
+                resultados de búsquedas que coincidan con las palabras claves en el nombre.</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/dropzone.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/sell.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/darkmode.js"></script>
+  <script src="js/Cerrar_sesión.js"></script>
+  <script src="js/perfil_heder.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+
+</html>
