@@ -389,22 +389,22 @@ El desarrollo del proyecto se realizó de forma **colaborativa**, con rotación 
 ### **Micaela Pérez** — GitHub: `micaela-perez304`
 
 * **Roles principales:** Prototipado, UX/UI, desarrollo de frontend responsive, funcionalidades de frontend y funciones de backend (**middleware de autorización**).
-* **Tecnologías usadas:** **Figma**, HTML, CSS, JavaScript, **Node.js, Express**, `localStorage`, Postman.
+* **Tecnologías usadas:** **Figma**, HTML, CSS, JavaScript, **Node.js, Express**, `localStorage`(Web Storage API), Postman.
 
 ### **Alfonso Alexandre** — GitHub: `alfualex`
 
 * **Roles principales:** Prototipado, UX/UI, desarrollo de frontend responsive, funcionalidades de frontend y funciones de backend (**autenticación**).
-* **Tecnologías usadas:** **Figma**, HTML, CSS, JavaScript, **Node.js, Express**, **JWT**, `localStorage`, Postman.
+* **Tecnologías usadas:** **Figma**, HTML, CSS, JavaScript, **Node.js, Express**, **JWT**, `localStorage`(Web Storage API), Postman.
 
 ### **Daiana Chambón** — GitHub: `Daiana-Chambon`
 
 * **Roles principales:** Documentación, prototipado, UX/UI, desarrollo de frontend responsive, funcionalidades de frontend y **modelado de la base de datos** (**MER**).
-* **Tecnologías usadas:** **Figma**, HTML, CSS, JavaScript, **Node.js, Express**, **MER**, `localStorage`, Postman.
+* **Tecnologías usadas:** **Figma**, HTML, CSS, JavaScript, **Node.js, Express**, **Draw.io**, `localStorage`(Web Storage API), Postman.
 
 ### **Franco Márquez** — GitHub: `FrancooMarquez`
 
 * **Roles principales:** Prototipado, UX/UI, desarrollo de frontend responsive, funcionalidades de frontend y **manejo de datos JSON en backend**.
-* **Tecnologías usadas:** **Figma**, HTML, CSS, JavaScript, **Node.js, Express**, **JWT**, `localStorage`, Postman.
+* **Tecnologías usadas:** **Figma**, HTML, CSS, JavaScript, **Node.js, Express**, **JWT**, `localStorage`(Web Storage API), Postman.
 
 ### **Darwin Rodríguez** — GitHub: `darkkwing`
 
