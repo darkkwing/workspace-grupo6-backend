@@ -45,7 +45,7 @@ function generarEstrellas(score) {
     });
   }
 
-  //traigo los comentarios del json oficial, este pedacito costo hacerlo andar
+  //traigo los comentarios de la API
 async function cargarComentarios() {
     try {
       const response = await fetch(`http://localhost:3000/comments/${productId}`);
@@ -64,7 +64,7 @@ async function cargarComentarios() {
 
   cargarComentarios();
 
-
+//evento para agregar comentario
   submitBtn.addEventListener("click", async () => {
 
     let desc = textarea.value.trim();
@@ -75,12 +75,12 @@ async function cargarComentarios() {
 
     const puntuacion = parseInt(valor.value);
 
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
     if (!token) {
       alert("Debes estar logueado para agregar un comentario.");
       return;
     }
-
+//datos a enviar a BD
     const body = {
       id_producto: productId,
       puntuacion,

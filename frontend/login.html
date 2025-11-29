@@ -5,12 +5,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="img/groupe-six-icon.png" rel="icon">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet">
-  <link rel="preload" as="image" href="img/groupe-six.png">
-  <link rel="preload" as="image" href="img/groupe-six-blanco.png" media="(prefers-color-scheme: dark)">
   <link rel="stylesheet" href="css/login.css" />
   <link rel="stylesheet" href="css/darkmode.css">
   <title>Login | GROUPE SIX</title>
@@ -28,18 +22,25 @@
       <form>
         <input type="email" id="email" name="email" required placeholder="Correo electrónico" />
         <input type="password" id="password" name="password" required placeholder="Contraseña" />
-        <button type="submit">Iniciar Sesión</button>
+        
+        <button id="login-btn" type="button">Iniciar Sesión</button>
+
         <h5>¿No tienes una cuenta aun?</h5>
-        <button id="register-btn" type="submit">Crear una cuenta</button>
+
+        <button id="register-btn" type="button">Crear una cuenta</button>
+      </form>
     </section>
   </main>
 
   <footer>
     <div>
-      <p id="TextoFooter">Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes
-          a Programar</a></p>
+      <p id="TextoFooter">Este sitio forma parte de 
+        <a href="https://jovenesaprogramar.edu.uy/" target="_blank">
+        Jovenes a Programar</a>
+      </p>
     </div>
   </footer>
+
   <script src="js/login.js"></script>
   <script src="js/darkmode.js"></script>
 </body>

@@ -1,4 +1,3 @@
-// cuando termina de cargar el DOM
 document.addEventListener("DOMContentLoaded", () => {
 
   // revisa si en el localStorage esta guardado el id de un producto

@@ -21,7 +21,6 @@ app.use(express.json());
 
 //rutas backend
 const authRoutes = require("./routes/auth");
-console.log(">>> RUTA /login REGISTRADA <<<");
 app.use("/login", authRoutes);
 
 const categoriesRoutes = require("./routes/categories");
@@ -35,6 +34,13 @@ app.use("/users", usersRoutes);
 
 const commentsRoutes = require("./routes/comments");
 app.use("/comments", commentsRoutes);
+
+const cartRoutes = require("./routes/cart");
+app.use("/cart", cartRoutes);
+
+const checkoutRoutes = require("./routes/checkout");
+app.use("/checkout", checkoutRoutes);
+
 
 // JSONs viejos de eMercado API, ya que algunos se usan en el proyecto
 app.use(

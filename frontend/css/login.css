@@ -89,7 +89,7 @@ input[type="password"]:focus {
     color: #222;
 }
 
-button[type="submit"] {
+button[type="button"] {
     margin-top: 0.5rem;
     width: 100%;
     padding: 1rem 0;

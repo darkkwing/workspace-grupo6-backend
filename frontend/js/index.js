@@ -3,7 +3,7 @@ const CATEGORY_IDS = [101, 102, 103, 104, 105, 106, 107, 108, 109];
 
 document.addEventListener("DOMContentLoaded", async function () {
 
- if (typeof getJSONData !== "function" || typeof normalizeSelectCat !== "function") {
+  if (typeof getJSONData !== "function" || typeof normalizeSelectCat !== "function") {
     console.error("Dependencias faltantes: asegúrate de cargar init.js y catalogService.js antes que index.js");
     return;
   }
@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   try {
     const arrayPromises = CATEGORY_IDS.map(id =>
       getJSONData(PRODUCTS_URL + "/" + id)
-      //getJSONData(PRODUCTS_URL + id + EXT_TYPE)
     );
 
     const responses = await Promise.all(arrayPromises);
@@ -34,18 +33,19 @@ document.addEventListener("DOMContentLoaded", async function () {
       cat.products.map(p => ({ ...p, sourceCatId: cat.catId }))
     );
 
-    const TOP_N = 5;//aca se cambia cuantos productos se pueden ver
+    const TOP_N = 5;
     const topProducts = allProducts
       .filter(p => Number.isFinite(p.soldCount))
       .sort((a, b) => b.soldCount - a.soldCount)
       .slice(0, TOP_N);
 
-    renderCarrousel(topProducts);
+    renderCarousel(topProducts);
 
   } catch (error) {
     console.error("Error cargando top vendidos:", error);
   }
 
+  // navegación a categorías
   document.getElementById("autos")?.addEventListener("click", function () {
     localStorage.setItem("catID", 101);
     window.location = "products.html";
@@ -60,20 +60,18 @@ document.addEventListener("DOMContentLoaded", async function () {
   });
 });
 
-// evita duplicar el listener de click del carrusel
+// evitar duplicar el listener de click del carrusel
 let _carClickBound = false;
 
-function renderCarrousel(topProducts) {
+function renderCarousel(topProducts) {
   if (!carInner || !carIndicators || !Array.isArray(topProducts)) return;
 
   carIndicators.replaceChildren();
   carInner.replaceChildren();
 
-  // dots y slides
   let indFrag = document.createDocumentFragment();
 
   topProducts.forEach((p, i) => {
-    // ---- indicator
     const dot = document.createElement("button");
     dot.type = "button";
     dot.setAttribute("data-bs-target", "#top-carousel");
@@ -85,7 +83,6 @@ function renderCarrousel(topProducts) {
     }
     indFrag.appendChild(dot);
 
-    // slides
     const active = i === 0 ? "active" : "";
 
     const isUSD = (p.currency || "").toUpperCase() === "USD";
@@ -105,43 +102,49 @@ function renderCarrousel(topProducts) {
 
   carIndicators.appendChild(indFrag);
 
-  // arranca instancia de Carousel
   const topCarouselEl = document.getElementById("top-carousel");
   if (topCarouselEl && window.bootstrap && bootstrap.Carousel) {
     const instance = bootstrap.Carousel.getOrCreateInstance(topCarouselEl);
     instance.cycle();
   }
 
-  // click para navegar (guarda selectedProductID)
   if (!_carClickBound) {
     carInner.addEventListener("click", (ev) => {
-      // evitar clicks en flechas/dots
       if (ev.target.closest(".carousel-control-prev, .carousel-control-next, .carousel-indicators")) return;
 
       const slide = ev.target.closest(".carousel-item");
       if (!slide) return;
+
       ev.preventDefault();
 
       const productId = slide.dataset.productId;
       if (productId) localStorage.setItem("selectedProductID", String(productId));
+
       window.location.assign("product-info.html");
     });
     _carClickBound = true;
   }
 }
 
-window.addEventListener("load", function () { //Espera a que cargue el contenido de la ventana
-  const loguearse = sessionStorage.getItem("logueado");  //Carga la info de inicio de sesión
+// Verificar si el usuario está logueado y mostrar su información, esta es parte es nueva por el backend
+window.addEventListener("load", function () {
 
-  if (loguearse !== "true") {               //Condición: si no hay info de inicio de sesión
-    window.location.href = "login.html";   //Redirige al login para ingresar
+  const logueado = localStorage.getItem("logueado") === "true";
+
+  if (!logueado) {
+    window.location.href = "login.html";
+    return;
   }
 
-  const user = sessionStorage.getItem("usuario");  //Variable a la que se le asigna el valor guardado
-  if (user) {                                     //Consulta si el valor existe
-    const els = document.querySelectorAll('[id^="user-info"]'); // Buscar todos los elementos cuyo id empiece con "user-info"
-    els.forEach(el => {
-      el.innerText = user;   //Imprime el valor en cada uno
-    });
+  const usuario = JSON.parse(localStorage.getItem("user"));
+
+  if (usuario) {
+    const els = document.querySelectorAll('[id^="user-info"]');
+
+    const nombreCompleto = `${usuario.nombre || ""} ${usuario.apellido || ""}`.trim();
+    const texto = nombreCompleto || usuario.email;
+
+    els.forEach(el => el.innerText = texto);
   }
+
 });

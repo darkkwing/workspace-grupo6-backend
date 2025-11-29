@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   const usuario = JSON.parse(localStorage.getItem("user"));
-  const logueado = sessionStorage.getItem("logueado") === "true";
+  const logueado = localStorage.getItem("logueado") === "true";
 
   if (!logueado || !usuario) {
     window.location = "login.html";
@@ -64,12 +64,13 @@ document.addEventListener("DOMContentLoaded", () => {
       telefono: telefonoInput.value
     };
 
+    // enviar al servidor y actualizar
     try {
       const response = await fetch(`http://localhost:3000/users/${usuario.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer " + sessionStorage.getItem("token")
+          "Authorization": "Bearer " + localStorage.getItem("token")
         },
         body: JSON.stringify(nuevosDatos)
       });

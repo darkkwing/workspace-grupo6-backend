@@ -12,13 +12,11 @@ function getCurrentCurrency() {
 function convertCurrency(amount, from, to) {
   // si la monedas son iguales no se hace conversion
   if (!from || !to || from === to) return amount;
-
   // de dolar a peso uruguayo
   if (from === "USD" && to === "UYU") {
     return amount * USD_TO_UYU;
   }
-
-  // de peso uruguayo a dolar
+ // de peso uruguayo a dolar
   if (from === "UYU" && to === "USD") {
     return amount / USD_TO_UYU;
   }
@@ -26,7 +24,17 @@ function convertCurrency(amount, from, to) {
   return amount;
 }
 
-// esto es para el switch
+// limpia valores para el backend 
+function cleanCurrency(value) {
+  if (!value) return 0;
+
+  // quita símbolos, letras y comas
+  const cleaned = String(value).replace(/[^0-9.-]/g, "");
+
+  return Number(cleaned) || 0;
+}
+
+// esto es para el switch 
 document.addEventListener("DOMContentLoaded", () => {
   const switchBtn = document.getElementById("currencySwitch");
   if (!switchBtn) return;
@@ -36,9 +44,11 @@ document.addEventListener("DOMContentLoaded", () => {
   switchBtn.addEventListener("click", () => {
     switchBtn.classList.toggle("active");
 
-    currentCurrency = switchBtn.classList.contains("active") ? "UYU" : "USD";
+    currentCurrency = switchBtn.classList.contains("active")
+      ? "UYU"
+      : "USD";
 
-    // dispara el avento para llamar el carrito
+    // aviso al carrito que cambió la moneda
     document.dispatchEvent(
       new CustomEvent("currencyChange", {
         detail: { currency: currentCurrency }
@@ -46,3 +56,8 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   });
 });
+
+// exportar funciones globalmente si hace falta
+window.getCurrentCurrency = getCurrentCurrency;
+window.convertCurrency = convertCurrency;
+window.cleanCurrency = cleanCurrency;

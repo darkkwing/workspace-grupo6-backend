@@ -341,7 +341,7 @@ body.dark input[type="email"]:active {
   background-color: var(--gs-surface) !important;
 }
 
-body.dark button[type="submit"] {
+body.dark button[type="button"] {
   color: #fff;
   border: none;
 }

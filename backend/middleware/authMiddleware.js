@@ -3,10 +3,16 @@ const jwt = require("jsonwebtoken");
 const SECRET_KEY = "el_groupe_six_es_el_mejor";
 
 function authMiddleware(req, res, next) {
-  const authHeader = req.headers["authorization"];
+  // aceptar mayusculas y minúsculas
+  const authHeader =
+    req.headers.authorization ||
+    req.headers.Authorization ||
+    req.headers["authorization"] ||
+    req.headers["Authorization"];
+
 
   if (!authHeader) {
-    return res.status(401).json({ message: "Token no proporcionado" });
+    return res.status(401).json({ message: "Token no enviado" });
   }
 
   const parts = authHeader.split(" ");
@@ -19,6 +25,7 @@ function authMiddleware(req, res, next) {
 
   jwt.verify(token, SECRET_KEY, (err, decodedUser) => {
     if (err) {
+      console.log("❌ ERROR JWT:", err);
       return res.status(403).json({ message: "Token inválido o expirado" });
     }
 
