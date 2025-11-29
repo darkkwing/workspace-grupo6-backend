@@ -1,45 +1,47 @@
 GROUPE SIX - Proyecto Ecommerce JaP - 2025
 1. REQUISITOS PREVIOS
 
-Node.js 16+
+*Node.js 16+
 
-MariaDB 10.11.6
+*MariaDB 10.11.6
 
-Cliente SQL (HeidiSQL, Workbench, DBeaver, etc.)
+*Cliente SQL (HeidiSQL, Workbench, DBeaver, etc.)
 
-Git (opcional)
+*Git (opcional)
 
 2. ESTRUCTURA DEL PROYECTO
-workspace-grupo6-backend/
+
+*workspace-grupo6-backend/
 
     ■■■ backend/   (servidor Express + API REST + conexión a MariaDB)
 
     ■■■ frontend/  (HTML, CSS, JS servido automáticamente por el backend)
 
-backend/sql/groupeSix.sql → dump completo de la base de datos.
+*backend/sql/groupeSix.sql → dump completo de la base de datos.
 
 3. INSTALACIÓN
 
-Clonar el repositorio:
+*Clonar el repositorio:
 
 git clone https://github.com/darkkwing/workspace-grupo6-backend.git
 
 4. CONFIGURAR LA BASE DE DATOS
-4.1 Crear la base de datos
+
+**4.1 Crear la base de datos
 
 Se puede crear la base groupesix con HeidiSQL o por terminal.
 
-Por HeidiSQL:
+*Por HeidiSQL:
 
 Conectar como usuario root.
 
 Crear una base de datos nueva llamada: groupesix.
 
-Por terminal:
+*Por terminal:
 
 CREATE DATABASE groupesix;
 
-4.2 Importar el archivo SQL con HeidiSQL
+**4.2 Importar el archivo SQL con HeidiSQL
 
 Abrir HeidiSQL.
 
@@ -51,41 +53,45 @@ Seleccionar backend/sql/groupeSix.sql.
 
 5. IMPORTAR / EXPORTAR SQL POR TERMINAL (OPCIONAL)
 
-Para importar:
+*Para importar:
 
 mysql -u root -p groupesix < groupeSix.sql
 
 
-Para exportar:
+*Para exportar:
 
 mysqldump -u root -p groupesix > groupeSix.sql
 
 6. CONFIGURAR CONEXIÓN A MARIADB
 
-Editar el archivo:
+*Editar el archivo:
 
 backend/config/db.js
 
 
 Asegurarse de que los datos coincidan con la instalación local:
 
-host: "localhost"
-user: "root"
-password: "1234" // contraseña usada en MariaDB
-database: "groupesix"
+*host: "localhost"
+
+*user: "root"
+
+*password: "1234" // contraseña usada en MariaDB
+
+*database: "groupesix"
 
 
 Es importante que el nombre de la base de datos creada en MariaDB sea exactamente: groupesix.
 
 7. INSTALAR DEPENDENCIAS DEL BACKEND
 
-Desde la carpeta backend:
+*Desde la carpeta backend:
 
 cd backend
+
 npm install
 
 
-Dependencias principales (ver backend/package.json):
+*Dependencias principales (ver backend/package.json):
 
 cors
 
@@ -101,21 +107,22 @@ mysql2
 
 8. INICIAR EL BACKEND
 
-Desde la carpeta backend:
+*Desde la carpeta backend:
 
 cd backend
+
 npm start
 
 
 El servidor quedará disponible en:
+
 ➡️ http://localhost:3000
 
 9. ABRIR EL FRONTEND
 
 El backend sirve automáticamente la carpeta frontend.
 
-Para usar la aplicación, entrar en el navegador a:
-➡️ http://localhost:3000/
+Para usar la aplicación, entrar en el navegador a:➡️ http://localhost:3000/
 
 ⚠️ IMPORTANTE: No utilizar Live Server, ya que el frontend debe comunicarse con el backend Express en el mismo puerto.
 
@@ -123,7 +130,7 @@ Para usar la aplicación, entrar en el navegador a:
 
 El frontend está construido con HTML, CSS, JavaScript y Bootstrap5.
 
-Usa localStorage para almacenar:
+*Usa localStorage para almacenar:
 
 token de autenticación
 
@@ -154,7 +161,8 @@ Modo oscuro persistente. (La primera vez detectará el modo del sistema o navega
 Cambio de moneda USD ↔ UYU.
 
 11. MÓDULOS JS PRINCIPALES DEL FRONTEND
-frontend/js/index.js
+
+*frontend/js/index.js
 
 Carga el carrusel principal en la página de inicio.
 
@@ -164,7 +172,7 @@ Integra el buscador dinámico.
 
 Actualiza el badge del carrito (cantidad de ítems).
 
-frontend/js/products.js
+*frontend/js/products.js
 
 Lista productos según la categoría seleccionada.
 
@@ -174,7 +182,7 @@ Aplica filtros por rango de precios.
 
 Renderiza dinámicamente las cards de productos.
 
-frontend/js/product-info.js
+*frontend/js/product-info.js
 
 Obtiene el ID del producto desde localStorage.
 
@@ -190,7 +198,7 @@ Integra con el sistema de comentarios.
 
 Permite agregar el producto al carrito.
 
-frontend/js/agrega_comentario.js
+*frontend/js/agrega_comentario.js
 
 Permite enviar un nuevo comentario para el producto actual.
 
@@ -200,7 +208,7 @@ Envía la puntuación y el texto del comentario al backend.
 
 Refresca la lista de comentarios tras agregar uno nuevo.
 
-frontend/js/cart.js
+*frontend/js/cart.js
 
 Lee el carrito desde localStorage (y eventualmente desde backend).
 
@@ -210,25 +218,25 @@ Permite cambiar la cantidad de cada producto.
 
 Permite eliminar productos del carrito.
 
-Calcula:
+-Calcula:
 
-Subtotal
+-Subtotal
 
-Costo de envío (según tipo seleccionado: premium, express, standard)
+-Costo de envío (según tipo seleccionado: premium, express, standard)
 
-Total final
+-Total final
 
-Valida:
+-Valida:
 
-Dirección completa (departamento, localidad, calle, número, esquina)
++Dirección completa (departamento, localidad, calle, número, esquina)
 
-Tipo de envío seleccionado
++Tipo de envío seleccionado
 
-Método de pago seleccionado
++Método de pago seleccionado
 
 Cuando todo es válido, llama a la función de checkout ubicada en checkoutFront.js.
 
-frontend/js/checkoutFront.js
+*frontend/js/checkoutFront.js
 
 Obtiene el estado actual del carrito.
 
@@ -236,11 +244,11 @@ Lee subtotal, envío y total mostrados en pantalla.
 
 Recoge datos de:
 
-dirección
+-dirección
 
-tipo de envío
+-tipo de envío
 
-método de pago
+-método de pago
 
 Valida que toda la información requerida exista.
 
@@ -252,7 +260,7 @@ Limpia el carrito en localStorage.
 
 Puede recargar la página o redirigir al inicio.
 
-frontend/js/currency.js
+*frontend/js/currency.js
 
 Mantiene un interruptor para cambiar entre USD y UYU.
 
@@ -262,7 +270,7 @@ Lanza un evento personalizado (por ejemplo, currencyChange) para que otros módu
 
 Convierte dinámicamente los precios de productos y totales.
 
-frontend/js/darkmode.js
+*frontend/js/darkmode.js
 
 Alterna entre tema claro y oscuro.
 
@@ -270,7 +278,7 @@ Guarda la preferencia de tema en localStorage.
 
 Aplica clases CSS específicas para modo oscuro.
 
-frontend/js/perfil_heder.js
+*frontend/js/perfil_heder.js
 
 Carga los datos del usuario logueado desde localStorage.
 
@@ -278,13 +286,13 @@ Muestra el nombre y la imagen de perfil en el header.
 
 Actualiza el menú desplegable con información de la cuenta.
 
-frontend/js/Cerrar_sesión.js
+*frontend/js/Cerrar_sesión.js
 
 Borra el token de autenticación y otros datos relevantes del usuario de localStorage.
 
 Redirige a la página de login.
 
-frontend/js/init.js
+*frontend/js/init.js
 
 Define constantes globales, como URLs base de la API.
 
@@ -298,9 +306,11 @@ Muestran sugerencias al escribir.
 
 Manejan menús y comportamientos responsive.
 
-12. RUTAS PRINCIPALES DEL BACKEND (EXPANDIDO)
-AUTH
-POST /login
+12. RUTAS PRINCIPALES DEL BACKEND 
+
+**AUTH
+
+*POST /login
 
 Recibe correo y contraseña.
 
@@ -310,115 +320,121 @@ Devuelve token JWT con id_usuario.
 
 Si falla: retorna error de credenciales.
 
-CATEGORIES
-GET /categories
+**CATEGORIES
+
+*GET /categories
 
 Devuelve todas las categorías con id, nombre, descripción e imagen.
 
 Usado en el home para renderizar el carrusel y cards.
 
-PRODUCTS
-GET /products/:catID
+**PRODUCTS
+
+*GET /products/:catID
 
 Lista todos los productos de una categoría.
 
 Respuesta incluye: nombre, precio, moneda, vendidos, imagen.
 
-GET /products/item/:id
+*GET /products/item/:id
 
 Devuelve información completa de un producto.
 
 Incluye: datos principales + galería de imágenes.
 
-GET /products/related/:id
+*GET /products/related/:id
 
 Retorna IDs y detalles de productos relacionados.
 
-COMMENTS
-GET /comments/:productID
+**COMMENTS
+
+*GET /comments/:productID
 
 Lista todos los comentarios de un producto.
 
 Enviados por usuarios reales o preexistentes del dataset.
 
-POST /comments
+*POST /comments
 
 Requiere token.
 
 Guarda un comentario con:
 
-id_producto
+-id_producto
 
-id_usuario (desde token)
+-id_usuario (desde token)
 
-puntuación
+-puntuación
 
-texto
+-texto
 
-fecha del servidor
+-fecha del servidor
 
-CART
-GET /cart
+**CART
+
+*GET /cart
 
 Obtiene el carrito del usuario autenticado.
 
-Respuesta contiene:
+-Respuesta contiene:
 
-id_producto
++id_producto
 
-nombre
++nombre
 
-imagen
++imagen
 
-moneda
++moneda
 
-costo
++costo
 
-cantidad
++cantidad
 
-subtotal
++subtotal
 
-POST /cart/sync
+*POST /cart/sync
 
 Reemplaza el carrito del backend con el enviado desde frontend.
 
 Se ejecuta cada vez que el usuario modifica cantidades o elimina productos.
 
-CHECKOUT
-POST /checkout
+**CHECKOUT
+
+*POST /checkout
 
 Requiere token.
 
-Guarda una orden completa:
+-Guarda una orden completa:
 
-subtotal
++subtotal
 
-costo_envio
++costo_envio
 
-total
++total
 
-moneda
++moneda
 
-tipo de envío (premium, express, standard)
++tipo de envío (premium, express, standard)
 
-dirección (se inserta en tabla direccion)
++dirección (se inserta en tabla direccion)
 
-items (tabla orden_items)
++items (tabla orden_items)
 
-método de pago (tabla pago)
++método de pago (tabla pago)
 
 Devuelve success si todo fue correctamente insertado.
 
 13. ERRORES COMUNES
-ECONNREFUSED
+
+*ECONNREFUSED
 
 Sucede cuando MariaDB no está iniciado o no está escuchando en el puerto correcto.
 
-Access denied
+*Access denied
 
 Ocurre cuando la contraseña o el usuario en db.js no coinciden con los de MariaDB.
 
-Cannot find module
+*Cannot find module
 
 Generalmente indica que faltan dependencias.
 
@@ -426,25 +442,25 @@ Solución: ejecutar npm install dentro de backend.
 
 14. USO DE MARIADB DESDE TERMINAL
 
-Para abrir MariaDB desde la terminal:
+*Para abrir MariaDB desde la terminal:
 
 mysql -u root -p
 
 
-Luego ingresar la contraseña configurada.
+*Luego ingresar la contraseña configurada.
 
-Para salir:
+*Para salir:
 
 exit;
 
 15. IMPORTAR / EXPORTAR SQL DESDE TERMINAL
 
-Importar dump:
+*Importar dump:
 
 mysql -u root -p groupesix < groupeSix.sql
 
 
-Exportar dump:
+*Exportar dump:
 
 mysqldump -u root -p groupesix > groupeSix.sql
 
