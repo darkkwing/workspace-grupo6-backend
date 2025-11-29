@@ -11,7 +11,9 @@ Git (opcional)
 
 2. ESTRUCTURA DEL PROYECTO
 workspace-grupo6-backend/
+
     ■■■ backend/   (servidor Express + API REST + conexión a MariaDB)
+
     ■■■ frontend/  (HTML, CSS, JS servido automáticamente por el backend)
 
 backend/sql/groupeSix.sql → dump completo de la base de datos.
