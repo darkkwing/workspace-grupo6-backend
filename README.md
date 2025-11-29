@@ -1,7 +1,5 @@
 # 🛍️ GROUPE SIX - Proyecto E-commerce JaP - 2025
 
-Este proyecto contiene la solución completa de *backend* y *frontend* para el E-commerce desarrollado en el marco del programa **Jóvenes a Programar (JaP) 2025**.
-
 -----
 
 ## 1\. ⚙️ Requisitos Previos
