@@ -389,22 +389,22 @@ El desarrollo del proyecto se realizó de forma **colaborativa**, con rotación 
 ### **Micaela Pérez** — GitHub: `micaela-perez304`
 
 * **Roles principales:** Prototipado, UX/UI, desarrollo de frontend responsive, funcionalidades de frontend y funciones de backend (**middleware de autorización**).
-* **Tecnologías usadas:** **Figma**, HTML, CSS, JavaScript, **Node.js, Express**, `localStorage`(Web Storage API), Postman.
+* **Tecnologías usadas:** **Figma**, HTML, CSS, JavaScript, **Node.js, Express**, **Web Storage API** (`localStorage`), Postman.
 
 ### **Alfonso Alexandre** — GitHub: `alfualex`
 
 * **Roles principales:** Prototipado, UX/UI, desarrollo de frontend responsive, funcionalidades de frontend y funciones de backend (**autenticación**).
-* **Tecnologías usadas:** **Figma**, HTML, CSS, JavaScript, **Node.js, Express**, **JWT**, `localStorage`(Web Storage API), Postman.
+* **Tecnologías usadas:** **Figma**, HTML, CSS, JavaScript, **Node.js, Express**, **JWT**, **Web Storage API** (`localStorage`), Postman.
 
 ### **Daiana Chambón** — GitHub: `Daiana-Chambon`
 
-* **Roles principales:** Documentación, prototipado, UX/UI, desarrollo de frontend responsive, funcionalidades de frontend y **modelado de la base de datos** (**MER**).
-* **Tecnologías usadas:** **Figma**, HTML, CSS, JavaScript, **Node.js, Express**, **Draw.io**, `localStorage`(Web Storage API), Postman.
+* **Roles principales:** Documentación, prototipado, UX/UI, desarrollo de frontend responsive, funcionalidades de frontend y **modelado de la base de datos** (MER).
+* **Tecnologías usadas:** **Figma**, HTML, CSS, JavaScript, **Node.js, Express**, **Draw.io**, **Web Storage API** (`localStorage`), Postman.
 
 ### **Franco Márquez** — GitHub: `FrancooMarquez`
 
 * **Roles principales:** Prototipado, UX/UI, desarrollo de frontend responsive, funcionalidades de frontend y **manejo de datos JSON en backend**.
-* **Tecnologías usadas:** **Figma**, HTML, CSS, JavaScript, **Node.js, Express**, **JWT**, `localStorage`(Web Storage API), Postman.
+* **Tecnologías usadas:** **Figma**, HTML, CSS, JavaScript, **Node.js, Express**, **JWT**, **Web Storage API** (`localStorage`), Postman.
 
 ### **Darwin Rodríguez** — GitHub: `darkkwing`
 
@@ -414,4 +414,6 @@ El desarrollo del proyecto se realizó de forma **colaborativa**, con rotación 
 ---
 
 > **NOTA:** Las responsabilidades fueron compartidas y cambiaron durante las distintas etapas del trabajo. Los roles principales no reflejan completamente todo el trabajo realizado por cada integrante. El proyecto es fruto del esfuerzo conjunto del subgrupo, orientado a fines educativos dentro del programa **Jóvenes a Programar (JAP) 2025**.
+
+---
 
