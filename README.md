@@ -394,17 +394,17 @@ El desarrollo del proyecto se realizó de forma **colaborativa**, con rotación 
 ### **Alfonso Alexandre** — GitHub: `alfualex`
 
 * **Roles principales:** Prototipado, UX/UI, desarrollo de frontend responsive, funcionalidades de frontend y funciones de backend (**autenticación**).
-* **Tecnologías usadas:** **Figma**, HTML, CSS, JavaScript, **Node.js, Express**, **JWT**, Postman.
+* **Tecnologías usadas:** **Figma**, HTML, CSS, JavaScript, **Node.js, Express**, **JWT**, `localStorage`, Postman.
 
 ### **Daiana Chambón** — GitHub: `Daiana-Chambon`
 
 * **Roles principales:** Documentación, prototipado, UX/UI, desarrollo de frontend responsive, funcionalidades de frontend y **modelado de la base de datos** (**MER**).
-* **Tecnologías usadas:** **Figma**, HTML, CSS, JavaScript, **Node.js, Express**, **MER**, Postman.
+* **Tecnologías usadas:** **Figma**, HTML, CSS, JavaScript, **Node.js, Express**, **MER**, `localStorage`, Postman.
 
 ### **Franco Márquez** — GitHub: `FrancooMarquez`
 
 * **Roles principales:** Prototipado, UX/UI, desarrollo de frontend responsive, funcionalidades de frontend y **manejo de datos JSON en backend**.
-* **Tecnologías usadas:** **Figma**, HTML, CSS, JavaScript, **Node.js, Express**, **JWT**, Postman.
+* **Tecnologías usadas:** **Figma**, HTML, CSS, JavaScript, **Node.js, Express**, **JWT**, `localStorage`, Postman.
 
 ### **Darwin Rodríguez** — GitHub: `darkkwing`
 
